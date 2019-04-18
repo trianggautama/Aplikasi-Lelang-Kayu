@@ -32,3 +32,7 @@ Route::get('/peserta_lelang','lelangController@peserta_lelang_index' )->name('pe
 Route::get('/lelang','lelangController@lelang_index' )->name('lelang_index');
 
 //data  lelang
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
