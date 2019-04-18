@@ -73,7 +73,7 @@
 					<div class="row">
 						<div class="col-sm-3">
 							<div class="logo">
-								<a href="index.html">
+								<a href="{{ url('/') }}">
 									Dinas <span>Kehutanan</span>
 								</a>
 							</div><!-- /.logo-->
@@ -95,7 +95,7 @@
 										<li class="smooth-menu"><a href="#spo">Tentang Kami</a></li>
 										<li class="smooth-menu"><a href="#blog">Berita</a></li>
                                         <li class="smooth-menu"><a href="#subs">kontak</a></li>
-                                        <li class=""><a href="{{ route('admin_index') }}">login</a></li>
+                                        <li class=""><a href="{{ route('login') }}">login</a></li>
 
 
 									</ul>

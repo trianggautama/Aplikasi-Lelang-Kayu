@@ -5,7 +5,9 @@ Route::get('/', function () {
 });
 
 //halaman admin
-Route::get('/halaman_admin','adminController@index' )->name('admin_index');
+Route::group(['middleware' => 'admin'], function() {
+    Route::get('/halaman_admin','adminController@index' )->name('admin_index');
+
 // halaman admin
 
 //data karyawan
@@ -32,7 +34,8 @@ Route::get('/peserta_lelang','lelangController@peserta_lelang_index' )->name('pe
 Route::get('/lelang','lelangController@lelang_index' )->name('lelang_index');
 
 //data  lelang
+});
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'dashboardController@index')->name('home');
