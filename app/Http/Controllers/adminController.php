@@ -35,11 +35,9 @@ class adminController extends Controller
     public function karyawan_tambah_store(Request $request){
 
         $User           = new User;
-        $Password       = Hash::make($request->password);
-        // $Passwordhash   = $Password);
         $User->name     = $request->name;
-        $User->email     = $request->email;
-        // 'password' => Hash::make($data['password']),
+        $User->email    = $request->email;
+        $Password       = Hash::make($request->password);
         $User->password = $Password;
         $User->role     = $request->role;
         $User->save();
@@ -72,8 +70,8 @@ class adminController extends Controller
         $id = IDCrypt::Decrypt($id);
         $Karyawan = Karyawan::find($id);
         $User = User::find($Karyawan->id_user);
-        return view('admin.karyawan_detail', ['karyawan' => $Karyawan, 'user' => $User]);
-        // return view('admin.karyawan_detail');
+        return view('admin.karyawan_detail',compact('Karyawan','User'));
+        // return view('admin.karyawan_detail', ['karyawan' => $Karyawan, 'user' => $User]);
     }//menampilkan halaman detail  karyawan
 
     public function karyawan_edit($id){
