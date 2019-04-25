@@ -11,9 +11,18 @@ Route::group(['middleware' => 'admin'], function() {
 // halaman admin
 
 //data karyawan
-Route::get('/karyawan','adminController@karyawan_index' )->name('karyawan_index');
-Route::get('/karyawan_detail','adminController@karyawan_detail' )->name('karyawan_detail');
-Route::get('/karyawan_edit','adminController@karyawan_edit' )->name('karyawan_edit');
+Route::get('/karyawan','adminController@karyawan_index' )
+->name('karyawan_index');
+Route::get('/karyawan/tambah','adminController@karyawan_tambah')
+->name('karyawan_tambah');
+Route::POST('/karyawan/tambah','adminController@karyawan_tambah_store')
+->name('karyawan_tambah_store');
+Route::get('/karyawan/detail/{id}','adminController@karyawan_detail')
+->name('karyawan_detail');
+Route::get('/karyawan/edit/{id}','adminController@karyawan_edit')
+->name('karyawan_edit');
+// Route::get('/karyawan_edit/{id}/edit', 'AdminController@karyawan_edit')->name('karyawan_edit');
+Route::POST('/admin/datamahasiswa/{id}/edit', 'AdminController@storeeditDataMahasiswa');
 
 
 //data karyawan

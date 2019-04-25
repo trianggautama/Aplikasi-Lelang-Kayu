@@ -15,6 +15,7 @@
               </div>
             </div>
             <div class="d-flex justify-content-between align-items-end flex-wrap">
+                <a href="{{ route('karyawan_tambah') }}" class="btn btn-primary mt-2 mt-xl-0" > <i class=" mdi mdi-plus "></i> Tambah Data</a>
             </div>
           </div>
         </div>
@@ -28,25 +29,34 @@
                           <table class="table table-striped " id="myTable">
                             <thead>
                               <tr>
-                                <th>Nama</th>
-                                <th>Nip</th>
-                                <th>Alamat</th>
-                                <th>No Tlp</th>
+                                <th>No</th>
+                                <th>NIP</th>
+                                <th>NAMA</th>
+                                <th>TEMPAT LAHIR</th>
+                                <th>TANGGAL LAHIR</th>
+                                <th>ALAMAT</th>
+                                <th>TELEPON</th>
                                 <th class="text-center">Action</th>
                               </tr>
                             </thead>
                             <tbody>
                               <tr>
-                                <td>Dedy</td>
-                                <td>1997 654 90 01</td>
-                                <td>Mataraman</td>
-                                <td>081326543xxx</td>
+                                <?php $no = 0 ?>
+                                @foreach ($data as $datas)
+                                <td>{{$no = $no + 1}}</td>
+                                <td>{{$datas->NIP}}</td>
+                                <td>{{$datas->nama}}</td>
+                                <td>{{$datas->tempat_lahir}}</td>
+                                <td>{{$datas->tanggal_lahir}}</td>
+                                <td>{{$datas->alamat}}</td>
+                                <td>{{$datas->telepon}}</td>
                                 <td class="text-center">
-                                        <a href="{{ route('karyawan_detail') }}" class="btn btn-secondary "> <i class=" mdi mdi-eye "></i></a>
-                                        <a href="{{ route('karyawan_edit') }}" class="btn btn-info"> <i class="mdi mdi-pencil"></i></a>
+                                        <a href="{{ route('karyawan_detail', ['id' => IDCrypt::Encrypt( $datas->id)])}}" class="btn btn-secondary "> <i class=" mdi mdi-eye "></i></a>
+                                        
                                         <a href="" class="btn btn-danger"> <i class="mdi mdi-delete"></i></a>
                                     </td>
                               </tr>
+                              @endforeach
 
                             </tbody>
                           </table>
