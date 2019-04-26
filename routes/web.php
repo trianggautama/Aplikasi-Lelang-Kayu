@@ -1,4 +1,4 @@
-<?php   
+<?php
 
 Route::get('/', function () {
     return view('welcome');
@@ -9,7 +9,6 @@ Route::group(['middleware' => 'admin'], function() {
     Route::get('/halaman_admin','adminController@index' )->name('admin_index');
 
 // halaman admin
-
 //data karyawan
 Route::get('/karyawan','adminController@karyawan_index' )->name('karyawan_index');
 Route::get('/karyawan_detail','adminController@karyawan_detail' )->name('karyawan_detail');
@@ -39,3 +38,4 @@ Route::get('/lelang','lelangController@lelang_index' )->name('lelang_index');
 Auth::routes();
 
 Route::get('/home', 'dashboardController@index')->name('home');
+
