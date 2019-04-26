@@ -128,25 +128,22 @@
             </a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="{{ route('lelang_index') }}">
+              <i class="mdi mdi-emoticon menu-icon"></i>
+              <span class="menu-title">Lelang yang Berlangsung</span>
+            </a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <i class="mdi mdi-circle-outline menu-icon"></i>
-              <span class="menu-title">Master Data</span>
+              <span class="menu-title">Riwayat Saya</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-              <li class="nav-item"> <a class="nav-link" href="{{ route('karyawan_index') }}">Data Karyawan</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{ route('kayu_index') }}">Data Kayu</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{ route('peserta_lelang_index') }}">Data Peserta Lelang</a></li>
+              <li class="nav-item"> <a class="nav-link" href="{{ route('karyawan_index') }}">Riwayat Lelang</a></li>
               </ul>
             </div>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('lelang_index') }}">
-              <i class="mdi mdi-emoticon menu-icon"></i>
-              <span class="menu-title">Data Lelang</span>
-            </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">

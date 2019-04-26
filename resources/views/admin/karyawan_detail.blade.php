@@ -45,8 +45,9 @@
                                     <br>
                                     <br>
                                     <div class="text-right">
-                                            <a href="{{ route('karyawan_edit') }}" class="btn btn-primary"> Ubah data</a>
-                                            <a href="" class="btn btn-light"> Kembali</a>
+                                            {{-- <a href="{{ route('karyawan_edit') }}" class="btn btn-primary"> Ubah data</a> --}}
+                                            <a href="{{ route('karyawan_edit', ['id' => IDCrypt::Encrypt( $karyawan->id)])}}" class="btn btn-primary"> Ubah data</a>
+                                            <a href="{{ route('karyawan_index') }}" class="btn btn-danger"> Kembali</a>
                                        </div>
                                   </div>
                       </div>
