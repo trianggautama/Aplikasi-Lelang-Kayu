@@ -45,6 +45,10 @@ Route::get('/lelang','lelangController@lelang_index' )->name('lelang_index');
 //data  lelang
 });
 
+
+//halaman peserta
+Route::get('/halaman_user','pesertaController@index' )->name('index');
+
 Auth::routes();
 
 Route::get('/home', 'dashboardController@index')->name('home');
