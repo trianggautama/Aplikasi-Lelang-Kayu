@@ -22,10 +22,10 @@
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-            <div class="navbar-brand-wrapper d-flex justify-content-center">
+        <div class="navbar-brand-wrapper d-flex justify-content-center">
         <div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">
-          <a class="navbar-brand brand-logo" href="/halaman_admin"><img src="admin/images/logo.svg" alt="logo"/></a>
-          <a class="navbar-brand brand-logo-mini" href="/halaman_admin"><img src="admin/images/logo-mini.svg" alt="logo"/></a>
+          <a class="navbar-brand brand-logo" href="/halaman_admin" style="margin-right:22px !important;"><img src="admin/images/logo_pemprov.png" alt="logo"/>Dishut &nbsp</a>
+          <a class="navbar-brand brand-logo-mini" href="/halaman_admin" ><img src="admin/images/logo-mini.svg" alt="logo"/></a>
           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
             <span class="mdi mdi-sort-variant"></span>
           </button>
@@ -33,16 +33,6 @@
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
         <ul class="navbar-nav mr-lg-4 w-100">
-          <li class="nav-item nav-search d-none d-lg-block w-100">
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="search">
-                  <i class="mdi mdi-magnify"></i>
-                </span>
-              </div>
-              <input type="text" class="form-control" placeholder="Search now" aria-label="search" aria-describedby="search">
-            </div>
-          </li>
         </ul>
         <ul class="navbar-nav navbar-nav-right">
           <li class="nav-item dropdown mr-1">
@@ -90,14 +80,14 @@
           </li>
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-              <img src="images/faces/face5.jpg" alt="profile"/>
+              <img src="admin/images/faces/face5.jpg" alt="profile"/>
               <span class="nav-profile-name">{{ Auth::user()->name }}</span>
               {{-- {{ Auth::user()->name }} --}}
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
               <a class="dropdown-item">
-                <i class="mdi mdi-settings text-primary"></i>
-                Settings
+                <i class="mdi  mdi-account-circle  text-primary"></i>
+                Profil
               </a>
               <a class="dropdown-item" href="{{ route('logout') }}"
               onclick="event.preventDefault();
@@ -122,13 +112,13 @@
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('admin_index') }}">
+            <a class="nav-link" href="{{ route('peserta_index') }}">
               <i class="mdi mdi-home menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('lelang_index') }}">
+            <a class="nav-link" href="{{ route('lelang_berlangsung') }}">
               <i class="mdi mdi-emoticon menu-icon"></i>
               <span class="menu-title">Lelang yang Berlangsung</span>
             </a>
@@ -143,18 +133,6 @@
               <ul class="nav flex-column sub-menu">
               <li class="nav-item"> <a class="nav-link" href="{{ route('karyawan_index') }}">Riwayat Lelang</a></li>
               </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-              <i class="mdi mdi-account menu-icon"></i>
-              <span class="menu-title">Berita</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="auth">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Berita </a></li>
-         </ul>
             </div>
           </li>
         </ul>

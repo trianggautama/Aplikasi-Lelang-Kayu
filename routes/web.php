@@ -46,7 +46,8 @@ Route::get('/lelang','lelangController@lelang_index' )->name('lelang_index');
 
 
 //halaman peserta
-Route::get('/halaman_user','pesertaController@index' )->name('index');
+Route::get('/halaman_user','pesertaController@index' )->name('peserta_index');
+Route::get('/lelang_berlangsung','pesertaController@lelang_berlangsung' )->name('lelang_berlangsung');
 
 Auth::routes();
 
