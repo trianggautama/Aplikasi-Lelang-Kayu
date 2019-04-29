@@ -42,6 +42,10 @@ Route::get('/peserta_lelang','lelangController@peserta_lelang_index' )->name('pe
 Route::get('/lelang','lelangController@lelang_index' )->name('lelang_index');
 
 //data  lelang
+
+//Berita
+Route::get('/berita','adminController@Berita_index' )->name('berita_index');
+Route::get('/berita_tambah','adminController@Berita_tambah' )->name('berita_tambah');
 });
 
 

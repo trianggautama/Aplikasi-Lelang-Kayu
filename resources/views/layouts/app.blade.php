@@ -18,6 +18,9 @@
   <!-- endinject -->
   <link rel="shortcut icon" href="{{ asset('admin/images/favicon.png') }}" />
 </head>
+<style>
+.mce-notification-warning {display: none;}
+</style>
 <body>
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
@@ -146,7 +149,7 @@
             </a>
             <div class="collapse" id="auth">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Berita </a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ route('berita_index') }}"> Berita </a></li>
          </ul>
             </div>
           </li>
@@ -177,8 +180,17 @@
   <script src="{{asset('/admin/js/jquery.dataTables.js')}}"></script>
   <script src="{{asset('/admin/js/dataTables.bootstrap4.js')}}"></script>
   <script src="{{asset('/admin/js/file-upload.js')}}"></script>
+  <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+<script>tinymce.init({ selector:'#tinyMCE' });</script>
   <!-- End custom js for this page-->
   <script>
+  <script>
+tinymce.init({
+    selector:'#tinyMCE',
+    width: 900,
+    height: 300
+});
+</script>
         $(document).ready( function () {
           $('#myTable').DataTable();
       } );
