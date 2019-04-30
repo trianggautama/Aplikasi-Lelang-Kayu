@@ -18,17 +18,14 @@
   <!-- endinject -->
   <link rel="shortcut icon" href="{{ asset('admin/images/favicon.png') }}" />
 </head>
-<style>
-.mce-notification-warning {display: none;}
-</style>
 <body>
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-            <div class="navbar-brand-wrapper d-flex justify-content-center">
+        <div class="navbar-brand-wrapper d-flex justify-content-center">
         <div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">
-          <a class="navbar-brand brand-logo" href="" style="margin-right:32px !important;"><img src="admin/images/logo_pemprov.png" alt="logo"/>Dishut</a>
-          <a class="navbar-brand brand-logo-mini" href="/">Dishut Kal-sel</a>
+          <a class="navbar-brand brand-logo" href="/halaman_admin" style="margin-right:22px !important;"><img src="admin/images/logo_pemprov.png" alt="logo"/>Dishut &nbsp</a>
+          <a class="navbar-brand brand-logo-mini" href="/halaman_admin" ><img src="admin/images/logo-mini.svg" alt="logo"/></a>
           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
             <span class="mdi mdi-sort-variant"></span>
           </button>
@@ -83,14 +80,14 @@
           </li>
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-              <img src="images/faces/face5.jpg" alt="profile"/>
+              <img src="admin/images/faces/face5.jpg" alt="profile"/>
               <span class="nav-profile-name">{{ Auth::user()->name }}</span>
               {{-- {{ Auth::user()->name }} --}}
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
               <a class="dropdown-item">
-                <i class="mdi mdi-settings text-primary"></i>
-                Settings
+                <i class="mdi  mdi-account-circle  text-primary"></i>
+                Profil
               </a>
               <a class="dropdown-item" href="{{ route('logout') }}"
               onclick="event.preventDefault();
@@ -115,42 +112,27 @@
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('admin_index') }}">
+            <a class="nav-link" href="{{ route('peserta_index') }}">
               <i class="mdi mdi-home menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="{{ route('lelang_berlangsung') }}">
+              <i class="mdi mdi-emoticon menu-icon"></i>
+              <span class="menu-title">Lelang yang Berlangsung</span>
+            </a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <i class="mdi mdi-circle-outline menu-icon"></i>
-              <span class="menu-title">Master Data</span>
+              <span class="menu-title">Riwayat Saya</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-              <li class="nav-item"> <a class="nav-link" href="{{ route('karyawan_index') }}">Data Karyawan</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{ route('kayu_index') }}">Data Kayu</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{ route('peserta_lelang_index') }}">Data Peserta Lelang</a></li>
+              <li class="nav-item"> <a class="nav-link" href="{{ route('karyawan_index') }}">Riwayat Lelang</a></li>
               </ul>
-            </div>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('lelang_index') }}">
-              <i class="mdi mdi-emoticon menu-icon"></i>
-              <span class="menu-title">Data Lelang</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-              <i class="mdi mdi-account menu-icon"></i>
-              <span class="menu-title">Berita</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="auth">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{{ route('berita_index') }}"> Berita </a></li>
-         </ul>
             </div>
           </li>
         </ul>
@@ -180,17 +162,8 @@
   <script src="{{asset('/admin/js/jquery.dataTables.js')}}"></script>
   <script src="{{asset('/admin/js/dataTables.bootstrap4.js')}}"></script>
   <script src="{{asset('/admin/js/file-upload.js')}}"></script>
-  <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
-<script>tinymce.init({ selector:'#tinyMCE' });</script>
   <!-- End custom js for this page-->
   <script>
-  <script>
-tinymce.init({
-    selector:'#tinyMCE',
-    width: 900,
-    height: 300
-});
-</script>
         $(document).ready( function () {
           $('#myTable').DataTable();
       } );

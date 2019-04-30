@@ -17,9 +17,6 @@ class adminController extends Controller
         return view('admin.index');
     }
 
-
-
-
     //fungsi karyawan
 
     public function karyawan_index(){
@@ -106,4 +103,15 @@ class adminController extends Controller
         return view('admin.kayu_edit');
     }//menampilkan halaman edit  kayu
 
+    //fungsi berita
+
+    public function berita_index(){
+
+        return view('admin.berita_data');
+    }//halaman data Berita
+
+    public function berita_tambah(){
+
+        return view('admin.berita_tambah');
+    }//halaman Tambah Berita
 }
