@@ -26,7 +26,7 @@ class adminController extends Controller
 
 // fungsi route karyawan tambah
     public function karyawan_tambah(){
-        return view('admin.karyawan_tambah');
+        return view('admin.karyawan-tambah');
     }
 // fungsi karyawan tambah
     public function karyawan_tambah_store(Request $request){
@@ -60,7 +60,7 @@ class adminController extends Controller
 
         $karyawan->save();
        
-          return redirect(route('karyawan_index'))->with('success', 'Data karyawan '.$request->nama.' Berhasil di Tambahkan');
+          return redirect(route('karyawan-index'))->with('success', 'Data karyawan '.$request->nama.' Berhasil di Tambahkan');
       }//fungsi menambahkan data rambu
 
     public function karyawan_detail($id){
@@ -68,24 +68,50 @@ class adminController extends Controller
         $Karyawan = Karyawan::find($id);
         $User = User::find($Karyawan->id_user);
         return view('admin.karyawan_detail',compact('Karyawan','User'));
-        // return view('admin.karyawan_detail', ['karyawan' => $Karyawan, 'user' => $User]);
     }//menampilkan halaman detail  karyawan
 
     public function karyawan_edit($id){
         $id = IDCrypt::Decrypt($id);
         $Karyawan = Karyawan::findOrFail($id);
         $User = User::find($Karyawan->id_user);
-
-        // // return view('rambu.ubah_jenis_rambu',compact('jenis_rambu'));
-        // $Karyawan = Karyawan::find($id);
-        // $User = User::find($Karyawan->id_user);
-        // // dd($User);
-        return view('admin.karyawan_edit', ['karyawan' => $Karyawan, 'user' => $User]);
+        return view('admin.karyawan_edit', compact('Karyawan','User'));
     }//menampilkan halaman edit  karyawan
 
+    public function karyawan_update(Request $request, $id){
+        $id = IDCrypt::Decrypt($id);
+        $Karyawan = Karyawan::findOrFail($id);
+        $User = User::find($Karyawan->id_user);
+
+        //  $this->validate(request(),[
+        //     'kode_rambu'=>'required',
+        //     'nama_rambu'=>'required',
+        //     'keterangan'=>'required'
+        // ]);
+        $User->name     = $request->name;
+        $User->email    = $request->email;
+        $Password       = Hash::make($request->password);
+        $User->password = $Password;
+
+        if($request->foto != null){
+        $FotoExt  = $request->gambar->getClientOriginalExtension();
+        $FotoName = $request->id_user.' - '.$request->nama_karyawan;
+        $gambar   = $FotoName.'.'.$FotoExt;
+        $request->gambar->move('images/karyawan', $gambar);
+        $Karyawan->gambar       = $gambar;
+        }
+        $Karyawan->NIP          = $request->NIP;
+        $Karyawan->nama         = $request->nama;
+        $Karyawan->tempat_lahir = $request->tempat_lahir;
+        $Karyawan->alamat       = $request->alamat;
+        $Karyawan->tanggal_lahir= $request->tanggal_lahir;
+        $Karyawan->telepon      = $request->telepon;
+
+        $User->update();
+        $Karyawan->update();
+        return redirect(route('karyawan-index'))->with('success', 'Data Karyawan '.$request->nama.' Berhasil di ubah');
+         }
 
     //fungsi kayu
-
     public function kayu_index(){
 
         return view('admin.kayu_data');

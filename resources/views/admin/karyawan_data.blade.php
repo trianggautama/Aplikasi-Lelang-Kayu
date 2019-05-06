@@ -15,7 +15,7 @@
               </div>
             </div>
             <div class="d-flex justify-content-between align-items-end flex-wrap">
-                <a href="{{ route('karyawan_tambah') }}" class="btn btn-primary mt-2 mt-xl-0" > <i class=" mdi mdi-plus "></i> Tambah Data</a>
+                <a href="{{ route('karyawan-tambah') }}" class="btn btn-primary mt-2 mt-xl-0" > <i class=" mdi mdi-plus "></i> Tambah Data</a>
             </div>
           </div>
         </div>
@@ -51,7 +51,7 @@
                                 <td>{{$datas->alamat}}</td>
                                 <td>{{$datas->telepon}}</td>
                                 <td class="text-center">
-                                        <a href="{{ route('karyawan_detail', ['id' => IDCrypt::Encrypt( $datas->id)])}}" class="btn btn-secondary "> <i class=" mdi mdi-eye "></i></a>
+                                        <a href="{{ route('karyawan-detail', ['id' => IDCrypt::Encrypt( $datas->id)])}}" class="btn btn-secondary "> <i class=" mdi mdi-eye "></i></a>
                                         
                                         <a href="" class="btn btn-danger"> <i class="mdi mdi-delete"></i></a>
                                     </td>

@@ -65,15 +65,15 @@
                                             </div>
                                             {{ csrf_field() }}
                                     </div>
-                                     {{-- <div class="form-group">
+                                     <div class="form-group">
                                         <label for="exampleSelectGender">Status</label>
-                                            <select class="form-control" id="exampleSelectGender">
-                                                <option>Menikah</option>
-                                                <option>Belum Menikah</option>
+                                            <select class="form-control" name="status" id="exampleSelectGender">
+                                                <option value="1">Menikah</option>
+                                                <option value="2">Belum Menikah</option>
                                             </select>
-                                        </div> --}}
+                                        </div>
                               <button type="submit" class="btn btn-primary mr-2">Simpan</button>
-                              <a class="btn btn-danger" href="{{ route('karyawan_index') }}">Batal</a>
+                              <a class="btn btn-danger" href="{{ route('karyawan-index') }}">Batal</a>
                             </form>
                           </div>
                         </div>

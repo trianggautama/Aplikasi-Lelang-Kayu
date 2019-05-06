@@ -128,15 +128,15 @@
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-              <li class="nav-item"> <a class="nav-link" href="{{ route('karyawan_index') }}">Data Karyawan</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{ route('kayu_index') }}">Data Kayu</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{ route('peserta_lelang_index') }}">Data Peserta Lelang</a></li>
+              <li class="nav-item"> <a class="nav-link" href="{{ route('karyawan-index') }}">Data Karyawan</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ route('kayu-index') }}">Data Kayu</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ route('peserta-lelang-index') }}">Data Peserta Lelang</a></li>
               </ul>
             </div>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('lelang_index') }}">
+            <a class="nav-link" href="{{ route('lelang-index') }}">
               <i class="mdi mdi-emoticon menu-icon"></i>
               <span class="menu-title">Data Lelang</span>
             </a>
@@ -149,7 +149,7 @@
             </a>
             <div class="collapse" id="auth">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{{ route('berita_index') }}"> Berita </a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ route('berita-index') }}"> Berita </a></li>
          </ul>
             </div>
           </li>
