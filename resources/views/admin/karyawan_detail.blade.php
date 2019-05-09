@@ -34,11 +34,11 @@
                                     <h4 class="card-title">Biodata</h4>
 
                                     <div class="template-demo">
-                                      <h4>Nama :</h4>
-                                      <h4>NIP  :</h4>
-                                      <h4>Tempat, Tanggal Laihir :</h4>
-                                      <h4>Alamat :</h4>
-                                      <h4>No Telp :</h4>
+                                      <h4>Nama                    : {{$Karyawan->nama}}</h4>
+                                      <h4>NIP                     : {{$Karyawan->NIP}}</h4>
+                                      <h4>Tempat, Tanggal Lahir   : {{$Karyawan->tempat_lahir}}, {{$Karyawan->tanggal_lahir}}</h4>
+                                      <h4>Alamat                  : {{$Karyawan->alamat}} </h4>
+                                      <h4>No Telp                 : {{$Karyawan->telepon}}</h4>
                                       <h4>Status :</h4>
                                     </div>
                                     <br>
@@ -46,7 +46,7 @@
                                     <br>
                                     <div class="text-right">
                                             {{-- <a href="{{ route('karyawan_edit') }}" class="btn btn-primary"> Ubah data</a> --}}
-                                            <a href="{{ route('karyawan_edit', ['id' => IDCrypt::Encrypt( $karyawan->id)])}}" class="btn btn-primary"> Ubah data</a>
+                                            <a href="{{ route('karyawan_edit', ['id' => IDCrypt::Encrypt( $Karyawan->id)])}}" class="btn btn-primary"> Ubah data</a>
                                             <a href="{{ route('karyawan_index') }}" class="btn btn-danger"> Kembali</a>
                                        </div>
                                   </div>
