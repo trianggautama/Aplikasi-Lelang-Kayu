@@ -122,7 +122,7 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-              <i class="mdi mdi-circle-outline menu-icon"></i>
+              <i class="mdi mdi-library-books menu-icon"></i>
               <span class="menu-title">Master Data</span>
               <i class="menu-arrow"></i>
             </a>
@@ -137,13 +137,13 @@
 
           <li class="nav-item">
             <a class="nav-link" href="{{ route('lelang_index') }}">
-              <i class="mdi mdi-emoticon menu-icon"></i>
+              <i class="mdi mdi-currency-usd menu-icon"></i>
               <span class="menu-title">Data Lelang</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-              <i class="mdi mdi-account menu-icon"></i>
+              <i class="mdi mdi-newspaper menu-icon"></i>
               <span class="menu-title">Berita</span>
               <i class="menu-arrow"></i>
             </a>
