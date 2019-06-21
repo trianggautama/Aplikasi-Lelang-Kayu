@@ -83,7 +83,7 @@
           </li>
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-              <img src="images/faces/face5.jpg" alt="profile"/>
+              <img src="/images/karyawan/{{ Auth::user()->gambar }}" alt="profile"/>
               <span class="nav-profile-name">{{ Auth::user()->name }}</span>
               {{-- {{ Auth::user()->name }} --}}
             </a>
@@ -122,7 +122,7 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-              <i class="mdi mdi-circle-outline menu-icon"></i>
+              <i class="mdi mdi-library-books menu-icon"></i>
               <span class="menu-title">Master Data</span>
               <i class="menu-arrow"></i>
             </a>
@@ -143,7 +143,7 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-              <i class="mdi mdi-account menu-icon"></i>
+              <i class="mdi mdi-newspaper menu-icon"></i>
               <span class="menu-title">Berita</span>
               <i class="menu-arrow"></i>
             </a>

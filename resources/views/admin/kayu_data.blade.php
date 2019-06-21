@@ -11,11 +11,11 @@
           <div class="d-flex justify-content-between flex-wrap">
             <div class="d-flex align-items-end flex-wrap">
               <div class="mr-md-3 mr-xl-5">
-                <h2>Data Jenis Kayu,</h2>
+                <h2>Data Jenis Kayu</h2>
               </div>
             </div>
             <div class="d-flex justify-content-between align-items-end flex-wrap">
-              <a href="/" class="btn btn-primary mt-2 mt-xl-0" data-toggle="modal" data-target="#exampleModalCenter"> <i class=" mdi mdi-plus "></i> tabah data</a>
+              <a href="/" class="btn btn-primary mt-2 mt-xl-0" data-toggle="modal" data-target="#exampleModalCenter"> <i class=" mdi mdi-plus "></i> Tambah Data</a>
             </div>
           </div>
         </div>
@@ -40,7 +40,7 @@
                                 <td>Jati</td>
                                 <td class="text-center">
                                     <a href="" class="btn btn-secondary "> <i class=" mdi mdi-eye "></i></a>
-                                    <a href="{{ route('kayu_edit') }}" class="btn btn-info"> <i class="mdi mdi-pencil"></i></a>
+                                    <a href="{{ route('kayu-edit') }}" class="btn btn-info"> <i class="mdi mdi-pencil"></i></a>
                                     <a href="" class="btn btn-danger"> <i class="mdi mdi-delete"></i></a>
                                 </td>
                               </tr>

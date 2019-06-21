@@ -26,7 +26,7 @@ class adminController extends Controller
 
 // fungsi route karyawan tambah
     public function karyawan_tambah(){
-        return view('admin.karyawan-tambah');
+        return view('admin.karyawan_tambah');
     }
 // fungsi karyawan tambah
     public function karyawan_tambah_store(Request $request){
@@ -40,25 +40,40 @@ class adminController extends Controller
         $User->save();
 
         $id_user = $User->id;
-        $karyawan = new karyawan;
+        $Karyawan = new Karyawan;
 
-        if($request->foto != null){
-        $FotoExt  = $request->gambar->getClientOriginalExtension();
-        $FotoName = $request->id_user.' - '.$request->nama_karyawan;
-        $gambar   = $FotoName.'.'.$FotoExt;
-        $request->gambar->move('images/karyawan', $gambar);
-        $karyawan->gambar       = $gambar;
-        }
-        $karyawan->NIP          = $request->NIP;
-        $karyawan->nama         = $request->nama;
-        $karyawan->tempat_lahir = $request->tempat_lahir;
-        $karyawan->alamat       = $request->alamat;
-        $karyawan->tanggal_lahir= $request->tanggal_lahir;
-        $karyawan->telepon      = $request->telepon;
-        $karyawan->id_user      = $id_user;
+        // if($request->file('foto') != "") {
+        //     $file         = $request->file('foto');
+        //     $fileName     = $file->getClientOriginalName();
+        //     $dt           = new DateTime();
+        //     $time         = $dt->format('Y_m_d_H_i_s_');
+        //     $fileNameNew  = $time.$fileName;
+        //     $request->file('foto')->move("img/", $fileNameNew);
+
+        //     $user->foto = $fileNameNew;
+        //     if($request->file('foto') != ""){
+        // }
+        if ($request->gambar != "") {
+            $FotoExt  = $request->gambar->getClientOriginalExtension();
+            $FotoName = $request->id_user.' - '.$request->name;
+            $gambar     = $FotoName.'.'.$FotoExt;
+            $request->gambar->move('images/karyawan', $gambar);
+            $Karyawan->gambar= $gambar;
+        }else {
+            $Karyawan->gambar = 'default.png';
+          }
+          
+        $Karyawan->NIP          = $request->NIP;
+        $Karyawan->nama         = $request->nama;
+        $Karyawan->tempat_lahir = $request->tempat_lahir;
+        $Karyawan->alamat       = $request->alamat;
+        $Karyawan->tanggal_lahir= $request->tanggal_lahir;
+        $Karyawan->telepon      = $request->telepon;
+        $Karyawan->status      = $request->status;
+        $Karyawan->id_user      = $id_user;
 
 
-        $karyawan->save();
+        $Karyawan->save();
        
           return redirect(route('karyawan-index'))->with('success', 'Data karyawan '.$request->nama.' Berhasil di Tambahkan');
       }//fungsi menambahkan data rambu
@@ -91,8 +106,19 @@ class adminController extends Controller
         $User->email    = $request->email;
         $Password       = Hash::make($request->password);
         $User->password = $Password;
+        
+        // if($request->file('foto') != "") {
+        //     $file         = $request->file('foto');
+        //     $fileName     = $file->getClientOriginalName();
+        //     $dt           = new DateTime();
+        //     $time         = $dt->format('Y_m_d_H_i_s_');
+        //     $fileNameNew  = $time.$fileName;
+        //     $request->file('foto')->move("img/", $fileNameNew);
 
-        if($request->foto != null){
+        //     $user->foto = $fileNameNew;
+        //     if($request->file('foto') != ""){
+        // }
+        if($request->gambar != null){
         $FotoExt  = $request->gambar->getClientOriginalExtension();
         $FotoName = $request->id_user.' - '.$request->nama_karyawan;
         $gambar   = $FotoName.'.'.$FotoExt;

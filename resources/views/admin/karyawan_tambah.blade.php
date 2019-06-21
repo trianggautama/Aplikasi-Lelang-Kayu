@@ -60,7 +60,8 @@
                                              <div class="input-group col-xs-12">
                                                  <input type="text" class="form-control file-upload-info" disabled placeholder="isi jika ingin mengubah gambar">
                                                 <span class="input-group-append">
-                                                <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                                                    <input type="file" name="gambar"  class="form-control" />
+                                                {{-- <button class="file-upload-browse btn btn-primary" type="button">Upload</button> --}}
                                                 </span>
                                             </div>
                                             {{ csrf_field() }}
