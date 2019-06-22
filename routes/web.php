@@ -24,16 +24,25 @@ Route::put('/karyawan/edit/{id}','adminController@karyawan_update')
 ->name('karyawan-update');
 Route::get('/karyawan/hapus/{id}','adminController@karyawan_hapus')
 ->name('karyawan-hapus');
-
-
 //data karyawan
 
 //data kayu
-Route::get('/kayu','adminController@kayu_index' )->name('kayu-index');
-Route::post('/kayu','adminController@kayu_tambah' )->name('kayu-tambah');
-Route::get('/kayu_edit','adminController@kayu_edit' )->name('kayu-edit');
-
+Route::get('/kayu','adminController@kayu_index' )
+->name('kayu-index');
+// Route::get('/kayu/tambah','adminController@kayu_tambah')
+// ->name('kayu-tambah');
+Route::POST('/kayu','adminController@kayu_tambah_store')
+->name('kayu-tambah_store');
+Route::get('/kayu/detail/{id}','adminController@kayu_detail')
+->name('kayu-detail');
+Route::get('/kayu/edit/{id}','adminController@kayu_edit')
+->name('kayu-edit');
+Route::put('/kayu/edit/{id}','adminController@kayu_update')
+->name('kayu-update');
+Route::get('/kayu/hapus/{id}','adminController@kayu_hapus')
+->name('kayu-hapus');
 //data kayu
+
 
 //data peserta lelang
 Route::get('/peserta_lelang','lelangController@peserta_lelang_index' )->name('peserta-lelang-index');

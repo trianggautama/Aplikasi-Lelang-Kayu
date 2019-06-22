@@ -36,13 +36,17 @@
                             </thead>
                             <tbody>
                             <tr>
-                                <td>1</td>
-                                <td>Jati</td>
+                                <?php $no = 0 ?>
+                                @foreach ($kayu as $kayus)
+                                <td>{{$no = $no + 1}}</td>
+                                <td>{{$kayus->nama_kayu}}</td>
                                 <td class="text-center">
-                                    <a href="" class="btn btn-secondary "> <i class=" mdi mdi-eye "></i></a>
-                                    <a href="{{ route('kayu-edit') }}" class="btn btn-info"> <i class="mdi mdi-pencil"></i></a>
-                                    <a href="" class="btn btn-danger"> <i class="mdi mdi-delete"></i></a>
-                                </td>
+                                        <a href="{{ route('kayu-detail', ['id' => IDCrypt::Encrypt( $kayus->id)])}}" class="btn btn-secondary "> <i class=" mdi mdi-eye "></i></a>
+
+                                        <a href="{{ route('kayu-hapus', ['id' => IDCrypt::Encrypt( $kayus->id)])}}" class="btn btn-danger"> <i class="mdi mdi-delete"></i></a>
+                                    </td>
+                              </tr>
+                              @endforeach
                               </tr>
                             </tbody>
                           </table>
@@ -66,14 +70,15 @@
               </button>
             </div>
             <div class="modal-body">
-                    <form class="forms-sample">
+                <form class="forms-sample" method="POST" action="" enctype="multipart/form-data">
+                    {{ csrf_field() }}
                             <div class="form-group">
                               <label for="exampleInputUsername1">Nama Kayu</label>
-                              <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Nama Kayu">
+                              <input type="text" name="nama_kayu" class="form-control" id="exampleInputUsername1" placeholder="Nama Kayu">
                             </div>
                             <div class="form-group">
                                     <label>File upload</label>
-                                    <input type="file" name="img[]" class="file-upload-default">
+                                    <input type="file" name="foto" class="file-upload-default">
                                     <div class="input-group col-xs-12">
                                       <input type="text" class="form-control file-upload-info" disabled placeholder="Foto Kayu">
                                       <span class="input-group-append">
@@ -82,13 +87,14 @@
                                     </div>
                                   </div>
                             <div class="form-group">
-                                <label for="exampleTextarea1">Textarea</label>
-                                <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
+                                <label for="exampleTextarea1">Keterangan</label>
+                                <textarea name="keterangan" class="form-control" id="exampleTextarea1" rows="4"></textarea>
                             </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
+              <button type="submit" class="btn btn-primary">Save changes</button>
+              {{csrf_field() }}
             </form>
             </div>
           </div>

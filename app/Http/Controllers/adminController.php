@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Kayu;
 use App\Karyawan;
 use IDCrypt;
 Use File;
@@ -19,7 +20,6 @@ class adminController extends Controller
     }
 
     //fungsi karyawan
-
     public function karyawan_index(){
         $data = Karyawan::with('user')->get();
         return view('admin.karyawan_data', ['data' => $data]);
@@ -136,23 +136,82 @@ class adminController extends Controller
         return redirect(route('karyawan-index'))->with('success', 'Data karyawan Berhasil di hapus');
     }//fungsi menghapus data rambu
 
-    //fungsi kayu
+    //fungsi karyawan
     public function kayu_index(){
+        $kayu = kayu::all();
+        return view('admin.kayu_data',compact('kayu'));
+    }
 
-        return view('admin.kayu_data');
-    }//halaman data kayu
+// fungsi kayu tambah
+    public function kayu_tambah_store(Request $request){
 
-    public function kayu_tambah( Request $request){
+        $kayu = new kayu;
+
+        if ($request->foto) {
+            $FotoExt  = $request->foto->getClientOriginalExtension();
+            $FotoName = 'karyawan-'.$request->$id.'-'. $request->name;
+            $FotoName = 'kayu-'. $request->nama_kayu;
+            $foto     = $FotoName.'.'.$FotoExt;
+            $request->foto->move('images/kayu', $foto);
+            $kayu->foto= $foto;
+        }else {
+            $kayu->foto = 'default.png';
+          }
+        $kayu->nama_kayu  = $request->nama_kayu;
+        $kayu->keterangan = $request->keterangan;
 
 
-        return view('admin.kayu_data');
-    }//tambah data kayu
+        $kayu->save();
 
-    public function kayu_edit( /* isi parameter id*/ ){
+          return redirect(route('kayu-index'))->with('success', 'Data kayu '.$request->nama_kayu.' Berhasil di Tambahkan');
+      }//fungsi menambahkan data rambu
 
+    public function kayu_detail($id){
+        $id = IDCrypt::Decrypt($id);
+        $kayu = kayu::find($id);
 
-        return view('admin.kayu_edit');
+        return view('admin.kayu_detail',compact('kayu'));
+    }//menampilkan halaman detail  kayu
+
+    public function kayu_edit($id){
+        $id = IDCrypt::Decrypt($id);
+        $kayu = kayu::findOrFail($id);
+        return view('admin.kayu_edit', compact('kayu'));
     }//menampilkan halaman edit  kayu
+
+    public function kayu_update(Request $request, $id){
+        $id = IDCrypt::Decrypt($id);
+        $kayu = kayu::findOrFail($id);
+
+        if ($request->foto) {
+            if ($kayu->foto != 'default.png') {
+           // dd('foto dihapus');
+              File::delete('images/kayu/'.$kayu->foto);
+            }
+            //dd('foto tidak dihapus');
+            $FotoExt  = $request->foto->getClientOriginalExtension();
+            $FotoName = 'kayu-'. $request->nama_kayu;
+            $foto     = $FotoName.'.'.$FotoExt;
+            $request->foto->move('images/kayu', $foto);
+            $kayu->foto= $foto;
+          }
+        $kayu->nama_kayu          = $request->nama_kayu;
+        $kayu->keterangan         = $request->keterangan;
+
+        $kayu->update();
+        return redirect(route('kayu-index'))->with('success', 'Data kayu '.$request->nama.' Berhasil di ubah');
+         }
+
+        public function kayu_hapus($id){
+        $id = IDCrypt::Decrypt($id);
+        $kayu=kayu::findOrFail($id);
+        File::delete('images/kayu/'.$kayu->gambar);
+        $kayu->delete();
+
+        return redirect(route('kayu-index'))->with('success', 'Data kayu Berhasil di hapus');
+    }//fungsi menghapus data rambu
+
+
 
     //fungsi berita
 

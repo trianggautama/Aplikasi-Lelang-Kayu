@@ -83,7 +83,7 @@
           </li>
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-              <img src="/images/karyawan/{{ Auth::user()->gambar }}" alt="profile"/>
+              <img src="/images/karyawan/default.png" alt="profile"/>
               <span class="nav-profile-name">{{ Auth::user()->name }}</span>
               {{-- {{ Auth::user()->name }} --}}
             </a>
