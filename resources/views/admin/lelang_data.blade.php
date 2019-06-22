@@ -15,7 +15,7 @@
               </div>
             </div>
             <div class="d-flex justify-content-between align-items-end flex-wrap">
-              <a href="/" class="btn btn-primary mt-2 mt-xl-0"> <i class=" mdi mdi-plus "></i> tabah data</a>
+              <a href="{{ route('lelang-tambah') }}" class="btn btn-primary mt-2 mt-xl-0"> <i class=" mdi mdi-plus "></i> Tambah Data</a>
             </div>
           </div>
         </div>
@@ -29,43 +29,31 @@
                           <table class="table table-striped "  id="myTable">
                             <thead>
                               <tr>
-                                <th>User</th>
-                                <th>Product</th>
-                                <th>Sale</th>
+                                <th>No</th>
+                                <th>Nama</th>
+                                <th>Tanggal Lelang</th>
+                                <th>Tempat</th>
+                                <th>Harga Awal</th>
                                 <th>Status</th>
                               </tr>
                             </thead>
                             <tbody>
                               <tr>
-                                <td>Jacob</td>
-                                <td>Photoshop</td>
-                                <td class="text-danger"> 28.76% <i class="mdi mdi-arrow-down"></i></td>
-                                <td><label class="badge badge-danger">Pending</label></td>
+                                <?php $no = 0 ?>
+                                @foreach ($lelang as $lelangs)
+                                <td>{{$no = $no + 1}}</td>
+                                <td>{{$lelangs->nama}}</td>
+                                <td>{{$lelangs->tanggal_mulai}}</td>
+                                <td>{{$lelangs->tempat}}</td>
+                                <td>{{$lelangs->harga_awal}}</td>
+                                <td>{{$lelangs->status}}</td>
+                                <td class="text-center">
+                                        <a href="{{ route('lelang-detail', ['id' => IDCrypt::Encrypt( $lelangs->id)])}}" class="btn btn-secondary "> <i class=" mdi mdi-eye "></i></a>
+
+                                        <a href="{{ route('lelang-hapus', ['id' => IDCrypt::Encrypt( $lelangs->id)])}}" class="btn btn-danger"> <i class="mdi mdi-delete"></i></a>
+                                    </td>
                               </tr>
-                              <tr>
-                                <td>Messsy</td>
-                                <td>Flash</td>
-                                <td class="text-danger"> 21.06% <i class="mdi mdi-arrow-down"></i></td>
-                                <td><label class="badge badge-warning">In progress</label></td>
-                              </tr>
-                              <tr>
-                                <td>John</td>
-                                <td>Premier</td>
-                                <td class="text-danger"> 35.00% <i class="mdi mdi-arrow-down"></i></td>
-                                <td><label class="badge badge-info">Fixed</label></td>
-                              </tr>
-                              <tr>
-                                <td>Peter</td>
-                                <td>After effects</td>
-                                <td class="text-success"> 82.00% <i class="mdi mdi-arrow-up"></i></td>
-                                <td><label class="badge badge-success">Completed</label></td>
-                              </tr>
-                              <tr>
-                                <td>Dave</td>
-                                <td>53275535</td>
-                                <td class="text-success"> 98.05% <i class="mdi mdi-arrow-up"></i></td>
-                                <td><label class="badge badge-warning">In progress</label></td>
-                              </tr>
+                              @endforeach
                             </tbody>
                           </table>
                         </div>

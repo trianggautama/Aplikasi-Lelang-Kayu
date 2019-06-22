@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Kayu;
+use App\Lelang;
 use App\Karyawan;
 use IDCrypt;
 Use File;
@@ -75,7 +76,7 @@ class adminController extends Controller
         $Karyawan->save();
 
           return redirect(route('karyawan-index'))->with('success', 'Data karyawan '.$request->nama.' Berhasil di Tambahkan');
-      }//fungsi menambahkan data rambu
+      }//fungsi menambahkan data karyawan
 
     public function karyawan_detail($id){
         $id = IDCrypt::Decrypt($id);
@@ -134,9 +135,9 @@ class adminController extends Controller
         $karyawan->delete();
 
         return redirect(route('karyawan-index'))->with('success', 'Data karyawan Berhasil di hapus');
-    }//fungsi menghapus data rambu
+    }//fungsi menghapus data karyawan
 
-    //fungsi karyawan
+    //fungsi kayu
     public function kayu_index(){
         $kayu = kayu::all();
         return view('admin.kayu_data',compact('kayu'));
@@ -149,7 +150,6 @@ class adminController extends Controller
 
         if ($request->foto) {
             $FotoExt  = $request->foto->getClientOriginalExtension();
-            $FotoName = 'karyawan-'.$request->$id.'-'. $request->name;
             $FotoName = 'kayu-'. $request->nama_kayu;
             $foto     = $FotoName.'.'.$FotoExt;
             $request->foto->move('images/kayu', $foto);
@@ -164,7 +164,7 @@ class adminController extends Controller
         $kayu->save();
 
           return redirect(route('kayu-index'))->with('success', 'Data kayu '.$request->nama_kayu.' Berhasil di Tambahkan');
-      }//fungsi menambahkan data rambu
+      }//fungsi menambahkan data kayu
 
     public function kayu_detail($id){
         $id = IDCrypt::Decrypt($id);
@@ -209,9 +209,76 @@ class adminController extends Controller
         $kayu->delete();
 
         return redirect(route('kayu-index'))->with('success', 'Data kayu Berhasil di hapus');
-    }//fungsi menghapus data rambu
+    }//fungsi menghapus data kayu
+
+    //fungsi lelang
+    public function lelang_index(){
+        $lelang = lelang::all();
+        return view('admin.lelang_data',compact('lelang'));
+    }
+
+    public function lelang_tambah(){
+        $kayu = kayu::all();
+        return view('admin.lelang_tambah',compact('kayu'));
+    }
+
+// fungsi lelang tambah
+    public function lelang_tambah_store(Request $request){
+
+        $lelang = new lelang;
+
+        $lelang->nama  = $request->nama;
+        $lelang->tanggal_mulai  = $request->tanggal_mulai;
+        $lelang->tempat  = $request->tempat;
+        $lelang->harga_awal  = $request->harga_awal;
+        $lelang->kayu_id  = $request->kayu_id;
+        $status=1;
+        $lelang->status = $status;
 
 
+        $lelang->save();
+
+          return redirect(route('lelang-index'))->with('success', 'Data lelang '.$request->nama_lelang.' Berhasil di Tambahkan');
+      }//fungsi menambahkan data lelang
+
+    public function lelang_detail($id){
+        $id = IDCrypt::Decrypt($id);
+        $lelang = lelang::find($id);
+        $kayu = kayu::find($lelang->kayu_id);
+
+        return view('admin.lelang_detail',compact('lelang','kayu'));
+    }//menampilkan halaman detail  lelang
+
+    public function lelang_edit($id){
+        $id = IDCrypt::Decrypt($id);
+        $lelang = lelang::findOrFail($id);
+        $kayu = kayu::all();
+        return view('admin.lelang_edit', compact('lelang','kayu'));
+    }//menampilkan halaman edit  lelang
+
+    public function lelang_update(Request $request, $id){
+        $id = IDCrypt::Decrypt($id);
+        $lelang = lelang::findOrFail($id);
+
+        $lelang->nama  = $request->nama;
+        $lelang->tanggal_mulai  = $request->tanggal_mulai;
+        $lelang->tempat  = $request->tempat;
+        $lelang->harga_awal  = $request->harga_awal;
+        $lelang->kayu_id  = $request->kayu_id;
+        $status=1;
+        $lelang->status = $status;
+
+        $lelang->update();
+        return redirect(route('lelang-index'))->with('success', 'Data lelang '.$request->nama.' Berhasil di ubah');
+         }
+
+        public function lelang_hapus($id){
+        $id = IDCrypt::Decrypt($id);
+        $lelang=lelang::findOrFail($id);
+        $lelang->delete();
+
+        return redirect(route('lelang-index'))->with('success', 'Data lelang Berhasil di hapus');
+    }//fungsi menghapus data lelang
 
     //fungsi berita
 

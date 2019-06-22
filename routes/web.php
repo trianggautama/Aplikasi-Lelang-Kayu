@@ -29,8 +29,6 @@ Route::get('/karyawan/hapus/{id}','adminController@karyawan_hapus')
 //data kayu
 Route::get('/kayu','adminController@kayu_index' )
 ->name('kayu-index');
-// Route::get('/kayu/tambah','adminController@kayu_tambah')
-// ->name('kayu-tambah');
 Route::POST('/kayu','adminController@kayu_tambah_store')
 ->name('kayu-tambah_store');
 Route::get('/kayu/detail/{id}','adminController@kayu_detail')
@@ -43,14 +41,28 @@ Route::get('/kayu/hapus/{id}','adminController@kayu_hapus')
 ->name('kayu-hapus');
 //data kayu
 
+//data lelang
+Route::get('/lelang','adminController@lelang_index' )
+->name('lelang-index');
+Route::get('/lelang/tambah','adminController@lelang_tambah')
+->name('lelang-tambah');
+Route::POST('/lelang/tambah','adminController@lelang_tambah_store')
+->name('lelang-tambah_store');
+Route::get('/lelang/detail/{id}','adminController@lelang_detail')
+->name('lelang-detail');
+Route::get('/lelang/edit/{id}','adminController@lelang_edit')
+->name('lelang-edit');
+Route::put('/lelang/edit/{id}','adminController@lelang_update')
+->name('lelang-update');
+Route::get('/lelang/hapus/{id}','adminController@lelang_hapus')
+->name('lelang-hapus');
+//data lelang
+
 
 //data peserta lelang
 Route::get('/peserta_lelang','lelangController@peserta_lelang_index' )->name('peserta-lelang-index');
 //data peserta lelang
 
-//data  lelang
-
-Route::get('/lelang','lelangController@lelang_index' )->name('lelang-index');
 
 //data  lelang
 
