@@ -12,11 +12,6 @@
             <div class="d-flex align-items-end flex-wrap">
               <div class="mr-md-3 mr-xl-5">
                 <h2>Beranda,</h2>
-                <p class="mb-md-0">Selamat datang di beranda admin</p>
-              </div>
-              <div class="d-flex">
-                <i class="mdi mdi-home text-muted hover-cursor"></i>
-                <p class="text-muted mb-0 hover-cursor">&nbsp;/&nbsp;Beranda&nbsp;/&nbsp;</p>
               </div>
             </div>
             <div class="d-flex justify-content-between align-items-end flex-wrap">
@@ -28,58 +23,48 @@
           </div>
         </div>
       </div>
-   
-
       <div class="row">
       <div class="col-md-4 grid-margin stretch-card">
               <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Dta Peserta Lelang</h4>
-                  <div class="media">
+                <div class="card-body text-center">
+                  <h4 class="card-title">Data Peserta Lelang</h4>
                   <img src="admin/images/undraw_interview_rmcf.png" width="200" alt="">
-                    <div class="media-body">
-                      <p class="card-text">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque.</p>
-                    </div>
-                  </div>
+                </div>
+                <div class="card-footer text-center">
+                <h5>56 Peserta Lelang</h5>
                 </div>
               </div>
             </div>
             <div class="col-md-4 grid-margin stretch-card">
               <div class="card">
-                <div class="card-body">
+                <div class="card-body text-center">
                   <h4 class="card-title">Data Lelang</h4>
-                  <div class="media">
                   <img src="admin/images/undraw_wallet_aym5.png" width="200" alt="">
-                    <div class="media-body">
-                      <p class="card-text">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque.</p>
-                    </div>
-                  </div>
+                </div>
+                <div class="card-footer text-center">
+                <h5>56 Peserta Lelang</h5>
                 </div>
               </div>
             </div>
             <div class="col-md-4 grid-margin stretch-card">
               <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Data Karyawan</h4>
-                  <div class="media">
+                <div class="card-body text-center">
+                  <h4 class="card-title ">Data Karyawan</h4>
                   <img src="admin/images/undraw_resume_folder_2_arse.png" width="200" alt="">
-                    <div class="media-body">
-                      <p class="card-text">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque.</p>
-                    </div>
-                  </div>
+                </div>
+                <div class="card-footer text-center">
+                <h5>56 Peserta Lelang</h5>
                 </div>
               </div>
             </div>
             <div class="col-md-4 grid-margin stretch-card">
               <div class="card">
-                <div class="card-body">
+                <div class="card-body text-center">
                   <h4 class="card-title">Data Admin</h4>
-                  <div class="media">
                   <img src="admin/images/undraw_dashboard_nklg.png" width="200" alt="">
-                    <div class="media-body">
-                      <p class="card-text">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque.</p>
-                    </div>
-                  </div>
+                </div>
+                <div class="card-footer text-center">
+                <h5>56 Peserta Lelang</h5>
                 </div>
               </div>
             </div>

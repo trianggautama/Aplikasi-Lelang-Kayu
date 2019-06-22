@@ -14,9 +14,6 @@
                 <h2>Data Jenis Kayu</h2>
               </div>
             </div>
-            <div class="d-flex justify-content-between align-items-end flex-wrap">
-              <a href="/" class="btn btn-primary mt-2 mt-xl-0" data-toggle="modal" data-target="#exampleModalCenter"> <i class=" mdi mdi-plus "></i> Tambah Data</a>
-            </div>
           </div>
         </div>
       </div>
@@ -24,7 +21,10 @@
         <div class="col-md-12 grid-margin stretch-card">
           <div class="card">
                 <div class="card-body">
-                        <h4 class="card-title">Tabel Data</h4>
+                        <h1 class="card-title">Tabel Data</h1>
+                        <div class="text-right" style="margin-bottom:20px;">
+                          <a href="/" class="btn btn-sm btn-primary mt-2 mt-xl-0" data-toggle="modal" data-target="#exampleModalCenter"> <i class=" mdi mdi-plus "></i> Tambah Data</a>
+                        </div>
                         <div class="table-responsive">
                           <table class="table striped "  id="myTable">
                             <thead>
@@ -41,9 +41,8 @@
                                 <td>{{$no = $no + 1}}</td>
                                 <td>{{$kayus->nama_kayu}}</td>
                                 <td class="text-center">
-                                        <a href="{{ route('kayu-detail', ['id' => IDCrypt::Encrypt( $kayus->id)])}}" class="btn btn-secondary "> <i class=" mdi mdi-eye "></i></a>
-
-                                        <a href="{{ route('kayu-hapus', ['id' => IDCrypt::Encrypt( $kayus->id)])}}" class="btn btn-danger"> <i class="mdi mdi-delete"></i></a>
+                                        <a href="{{ route('kayu-detail', ['id' => IDCrypt::Encrypt( $kayus->id)])}}"class="btn btn-inverse-info" style="padding:6px !important;"> <i class=" mdi mdi-eye "></i></a>
+                                        <a href="{{ route('kayu-hapus', ['id' => IDCrypt::Encrypt( $kayus->id)])}}" class="btn btn-inverse-danger" style="padding:6px !important;"> <i class="mdi mdi-delete"></i></a>
                                     </td>
                               </tr>
                               @endforeach

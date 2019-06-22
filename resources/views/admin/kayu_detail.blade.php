@@ -23,8 +23,7 @@
                     <div class="col-md-5 grid-margin stretch-card">
                             <div class="card">
                               <div class="card-body text-center">
-                                <p class="card-title">Foto kayu</p>
-                               <img src="{{asset('/images/kayu/'.$kayu->foto)}}" alt="" width="330">
+                               <img src="{{asset('/images/kayu/'.$kayu->foto)}}" alt="" width="100%">
                               </div>
                             </div>
                           </div>
@@ -34,18 +33,16 @@
                                     <h4 class="card-title">Detail Kayu</h4>
 
                                     <div class="template-demo">
-                                      <h4>Nama                    : {{$kayu->nama_kayu}}</h4>
-                                      <h4>keterangan                     : {{$kayu->keterangan}}</h4>
+                                      <h4 class="card-title">Nama                    : {{$kayu->nama_kayu}}</h4>
+                                      <h4 class="card-title">keterangan              : {{$kayu->keterangan}}</h4>
                                     </div>
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <div class="text-right">
-                                            {{-- <a href="{{ route('kayu_edit') }}" class="btn btn-primary"> Ubah data</a> --}}
-                                            <a href="{{ route('kayu-edit', ['id' => IDCrypt::Encrypt( $kayu->id)])}}" class="btn btn-primary"> Ubah data</a>
-                                            <a href="{{ route('kayu-index') }}" class="btn btn-danger"> Kembali</a>
-                                       </div>
                                   </div>
+                                  <div class="card-footer">
+                                    <div class="text-right">
+                                            <a href="{{ route('kayu-edit', ['id' => IDCrypt::Encrypt( $kayu->id)])}}" class="btn btn-sm btn-inverse-primary" style="padding:10px !important;"> Ubah data</a>
+                                            <a href="{{ route('kayu-index') }}" class="btn btn-sm btn-inverse-danger" style="padding:10px !important;"> Kembali</a>
+                                       </div>
+                                    </div>
                       </div>
                     </div>
 
