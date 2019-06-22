@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Karyawan;
 use IDCrypt;
+Use File;
 use Auth;
 use Hash;
 
@@ -39,30 +40,28 @@ class adminController extends Controller
         $User->role     = $request->role;
         $User->save();
 
-        $id_user = $User->id;
+        $user_id = $User->id;
         $Karyawan = new Karyawan;
 
-        // if($request->file('foto') != "") {
-        //     $file         = $request->file('foto');
-        //     $fileName     = $file->getClientOriginalName();
-        //     $dt           = new DateTime();
-        //     $time         = $dt->format('Y_m_d_H_i_s_');
-        //     $fileNameNew  = $time.$fileName;
-        //     $request->file('foto')->move("img/", $fileNameNew);
-
-        //     $user->foto = $fileNameNew;
-        //     if($request->file('foto') != ""){
-        // }
-        if ($request->gambar != "") {
+        if ($request->gambar) {
             $FotoExt  = $request->gambar->getClientOriginalExtension();
-            $FotoName = $request->id_user.' - '.$request->name;
+            $FotoName = 'karyawan'.$request->user_id.'-'. $request->name;
             $gambar     = $FotoName.'.'.$FotoExt;
             $request->gambar->move('images/karyawan', $gambar);
             $Karyawan->gambar= $gambar;
         }else {
             $Karyawan->gambar = 'default.png';
           }
-          
+        // if ($request->gambar != "") {
+        //     $FotoExt  = $request->gambar->getClientOriginalExtension();
+        //     $FotoName = $request->user_id.' - '.$request->name;
+        //     $gambar     = $FotoName.'.'.$FotoExt;
+        //     $request->gambar->move('images/karyawan', $gambar);
+        //     $Karyawan->gambar= $gambar;
+        // }else {
+        //     $Karyawan->gambar = 'default.png';
+        //   }
+
         $Karyawan->NIP          = $request->NIP;
         $Karyawan->nama         = $request->nama;
         $Karyawan->tempat_lahir = $request->tempat_lahir;
@@ -70,72 +69,72 @@ class adminController extends Controller
         $Karyawan->tanggal_lahir= $request->tanggal_lahir;
         $Karyawan->telepon      = $request->telepon;
         $Karyawan->status      = $request->status;
-        $Karyawan->id_user      = $id_user;
+        $Karyawan->user_id      = $user_id;
 
 
         $Karyawan->save();
-       
+
           return redirect(route('karyawan-index'))->with('success', 'Data karyawan '.$request->nama.' Berhasil di Tambahkan');
       }//fungsi menambahkan data rambu
 
     public function karyawan_detail($id){
         $id = IDCrypt::Decrypt($id);
         $Karyawan = Karyawan::find($id);
-        $User = User::find($Karyawan->id_user);
+        $User = User::find($Karyawan->user_id);
+
         return view('admin.karyawan_detail',compact('Karyawan','User'));
     }//menampilkan halaman detail  karyawan
 
     public function karyawan_edit($id){
         $id = IDCrypt::Decrypt($id);
         $Karyawan = Karyawan::findOrFail($id);
-        $User = User::find($Karyawan->id_user);
+        $User = User::find($Karyawan->user_id);
         return view('admin.karyawan_edit', compact('Karyawan','User'));
     }//menampilkan halaman edit  karyawan
 
     public function karyawan_update(Request $request, $id){
         $id = IDCrypt::Decrypt($id);
         $Karyawan = Karyawan::findOrFail($id);
-        $User = User::find($Karyawan->id_user);
+        $User = User::find($Karyawan->user_id);
 
-        //  $this->validate(request(),[
-        //     'kode_rambu'=>'required',
-        //     'nama_rambu'=>'required',
-        //     'keterangan'=>'required'
-        // ]);
         $User->name     = $request->name;
         $User->email    = $request->email;
         $Password       = Hash::make($request->password);
         $User->password = $Password;
-        
-        // if($request->file('foto') != "") {
-        //     $file         = $request->file('foto');
-        //     $fileName     = $file->getClientOriginalName();
-        //     $dt           = new DateTime();
-        //     $time         = $dt->format('Y_m_d_H_i_s_');
-        //     $fileNameNew  = $time.$fileName;
-        //     $request->file('foto')->move("img/", $fileNameNew);
 
-        //     $user->foto = $fileNameNew;
-        //     if($request->file('foto') != ""){
-        // }
-        if($request->gambar != null){
-        $FotoExt  = $request->gambar->getClientOriginalExtension();
-        $FotoName = $request->id_user.' - '.$request->nama_karyawan;
-        $gambar   = $FotoName.'.'.$FotoExt;
-        $request->gambar->move('images/karyawan', $gambar);
-        $Karyawan->gambar       = $gambar;
-        }
+        if ($request->gambar) {
+            if ($Karyawan->gambar != 'default.png') {
+           // dd('gambar dihapus');
+              File::delete('images/karyawan/'.$Karyawan->gambar);
+            }
+            //dd('gambar tidak dihapus');
+            $FotoExt  = $request->gambar->getClientOriginalExtension();
+            $FotoName = 'karyawan-'.$request->$id.'-'. $request->name;
+            $gambar     = $FotoName.'.'.$FotoExt;
+            $request->gambar->move('images/karyawan', $gambar);
+            $Karyawan->gambar= $gambar;
+          }
         $Karyawan->NIP          = $request->NIP;
         $Karyawan->nama         = $request->nama;
         $Karyawan->tempat_lahir = $request->tempat_lahir;
         $Karyawan->alamat       = $request->alamat;
         $Karyawan->tanggal_lahir= $request->tanggal_lahir;
+        $Karyawan->status          = $request->status;
         $Karyawan->telepon      = $request->telepon;
 
         $User->update();
         $Karyawan->update();
         return redirect(route('karyawan-index'))->with('success', 'Data Karyawan '.$request->nama.' Berhasil di ubah');
          }
+
+        public function karyawan_hapus($id){
+        $id = IDCrypt::Decrypt($id);
+        $karyawan=karyawan::findOrFail($id);
+        File::delete('images/karyawan/'.$karyawan->gambar);
+        $karyawan->delete();
+
+        return redirect(route('karyawan-index'))->with('success', 'Data karyawan Berhasil di hapus');
+    }//fungsi menghapus data rambu
 
     //fungsi kayu
     public function kayu_index(){

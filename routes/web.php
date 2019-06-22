@@ -22,8 +22,8 @@ Route::get('/karyawan/edit/{id}','adminController@karyawan_edit')
 ->name('karyawan-edit');
 Route::put('/karyawan/edit/{id}','adminController@karyawan_update')
 ->name('karyawan-update');
-// Route::get('/karyawan_edit/{id}/edit', 'AdminController@karyawan_edit')->name('karyawan_edit');
-Route::POST('/admin/datamahasiswa/{id}/edit', 'AdminController@storeeditDataMahasiswa');
+Route::get('/karyawan/hapus/{id}','adminController@karyawan_hapus')
+->name('karyawan-hapus');
 
 
 //data karyawan

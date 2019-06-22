@@ -24,7 +24,7 @@
                             <div class="card">
                               <div class="card-body text-center">
                                 <p class="card-title">Foto Karyawan</p>
-                               <img src="/admin/images/faces/face24.jpg" alt="" width="330">
+                               <img src="{{asset('/images/karyawan/'.$Karyawan->gambar)}}" alt="" width="330">
                               </div>
                             </div>
                           </div>
@@ -39,7 +39,7 @@
                                       <h4>Tempat, Tanggal Lahir   : {{$Karyawan->tempat_lahir}}, {{$Karyawan->tanggal_lahir}}</h4>
                                       <h4>Alamat                  : {{$Karyawan->alamat}} </h4>
                                       <h4>No Telp                 : {{$Karyawan->telepon}}</h4>
-                                      <h4>Status :</h4>
+                                      <h4>Status                :  {{ $Karyawan->status }}</h4>
                                     </div>
                                     <br>
                                     <br>

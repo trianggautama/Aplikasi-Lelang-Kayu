@@ -14,7 +14,7 @@
                             <p class="card-description">
                                 <hr>
                             </p>
-                          <form class="forms-sample" method="POST" action="">
+                          <form class="forms-sample" method="POST" action="" enctype="multipart/form-data">
                               {{ csrf_field() }}
                               {{-- {{ route('karyawan_tambah_store') }} --}}
                                     <input type="hidden" class="form-control" id="role" name="role" value="2">
@@ -56,7 +56,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Foto</label>
-                                         <input type="file" name="gambar" class="file-upload-default">
+                                         <input type="file" class="file-upload-default">
                                              <div class="input-group col-xs-12">
                                                  <input type="text" class="form-control file-upload-info" disabled placeholder="isi jika ingin mengubah gambar">
                                                 <span class="input-group-append">
@@ -69,8 +69,8 @@
                                      <div class="form-group">
                                         <label for="exampleSelectGender">Status</label>
                                             <select class="form-control" name="status" id="exampleSelectGender">
-                                                <option value="1">Menikah</option>
-                                                <option value="2">Belum Menikah</option>
+                                                <option value="Menikah">Menikah</option>
+                                                <option value="Belum Menikah">Belum Menikah</option>
                                             </select>
                                         </div>
                               <button type="submit" class="btn btn-primary mr-2">Simpan</button>

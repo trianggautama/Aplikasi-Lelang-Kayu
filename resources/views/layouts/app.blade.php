@@ -191,9 +191,10 @@ tinymce.init({
     height: 300
 });
 </script>
+    <script>
         $(document).ready( function () {
           $('#myTable').DataTable();
-      } );
+        } );
       </script>
 @stack('scripts')
 </body>

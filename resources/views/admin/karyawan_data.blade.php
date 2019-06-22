@@ -52,8 +52,8 @@
                                 <td>{{$datas->telepon}}</td>
                                 <td class="text-center">
                                         <a href="{{ route('karyawan-detail', ['id' => IDCrypt::Encrypt( $datas->id)])}}" class="btn btn-secondary "> <i class=" mdi mdi-eye "></i></a>
-                                        
-                                        <a href="" class="btn btn-danger"> <i class="mdi mdi-delete"></i></a>
+
+                                        <a href="{{ route('karyawan-hapus', ['id' => IDCrypt::Encrypt( $datas->id)])}}" class="btn btn-danger"> <i class="mdi mdi-delete"></i></a>
                                     </td>
                               </tr>
                               @endforeach
