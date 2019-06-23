@@ -77,20 +77,20 @@ Route::get('/berita/hapus/{id}','adminController@berita_hapus')
 //data berita
 
 //data peserta
-Route::get('/peserta','adminController@peserta_index' )
-->name('peserta-index');
-Route::get('/peserta/tambah','adminController@peserta_tambah')
-->name('peserta-tambah');
-Route::POST('/peserta/tambah','adminController@peserta_tambah_store')
-->name('peserta-tambah_store');
-Route::get('/peserta/detail/{id}','adminController@peserta_detail')
-->name('peserta-detail');
-Route::get('/peserta/edit/{id}','adminController@peserta_edit')
-->name('peserta-edit');
-Route::put('/peserta/edit/{id}','adminController@peserta_update')
-->name('peserta-update');
-Route::get('/peserta/hapus/{id}','adminController@peserta_hapus')
-->name('peserta-hapus');
+Route::get('/peserta','adminController@peserta_lelang_index' )
+->name('peserta-lelang-index');
+Route::get('/peserta/tambah','adminController@peserta_lelang_tambah')
+->name('peserta-lelang-tambah');
+Route::POST('/peserta/tambah','adminController@peserta_lelang_tambah_store')
+->name('peserta-lelang-tambah_store');
+Route::get('/peserta/detail/{id}','adminController@peserta_lelang_detail')
+->name('peserta-lelang-detail');
+Route::get('/peserta/edit/{id}','adminController@peserta_lelang_edit')
+->name('peserta-lelang-edit');
+Route::put('/peserta/edit/{id}','adminController@peserta_lelang_update')
+->name('peserta-lelang-update');
+Route::get('/peserta/hapus/{id}','adminController@peserta_lelang_hapus')
+->name('peserta-lelang-hapus');
 //data berita
 
 //data  lelang
