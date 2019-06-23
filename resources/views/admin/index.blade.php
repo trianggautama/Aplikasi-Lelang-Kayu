@@ -1,7 +1,4 @@
 @extends('layouts.app')
-
-@section('title', __('outlet.list'))
-
 @section('content')
   <!-- partial -->
   <div class="main-panel">
@@ -42,7 +39,7 @@
                   <img src="admin/images/undraw_wallet_aym5.png" width="200" alt="">
                 </div>
                 <div class="card-footer text-center">
-                <h5>56 Peserta Lelang</h5>
+                <h5>10 Data Lelang</h5>
                 </div>
               </div>
             </div>
@@ -53,7 +50,7 @@
                   <img src="admin/images/undraw_resume_folder_2_arse.png" width="200" alt="">
                 </div>
                 <div class="card-footer text-center">
-                <h5>56 Peserta Lelang</h5>
+                <h5>88 karyawan</h5>
                 </div>
               </div>
             </div>
@@ -64,7 +61,7 @@
                   <img src="admin/images/undraw_dashboard_nklg.png" width="200" alt="">
                 </div>
                 <div class="card-footer text-center">
-                <h5>56 Peserta Lelang</h5>
+                <h5>2 Admin</h5>
                 </div>
               </div>
             </div>
