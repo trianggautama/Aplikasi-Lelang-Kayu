@@ -7,6 +7,7 @@ use App\User;
 use App\Kayu;
 use App\Lelang;
 use App\Berita;
+use App\Peserta;
 use App\Karyawan;
 use IDCrypt;
 Use File;
@@ -394,4 +395,107 @@ class adminController extends Controller
 
         return redirect(route('berita-index'))->with('success', 'Data berita Berhasil di hapus');
     }//fungsi menghapus data berita
+
+    //fungsi peserta
+    public function peserta_lelang_index(){
+        $data = peserta::with('user')->get();
+        return view('admin.peserta_lelang_data', ['data' => $data]);
+    }
+
+// fungsi route peserta tambah
+    public function peserta_lelang_tambah(){
+        return view('admin.peserta_lelang_tambah');
+    }
+// fungsi peserta tambah
+    public function peserta_lelang_tambah_store(Request $request){
+
+        $User           = new User;
+        $User->name     = $request->name;
+        $User->email    = $request->email;
+        $Password       = Hash::make($request->password);
+        $User->password = $Password;
+        $User->role     = $request->role;
+        $User->save();
+
+        $user_id = $User->id;
+        $peserta = new peserta;
+
+        if ($request->foto) {
+            $FotoExt  = $request->foto->getClientOriginalExtension();
+            $FotoName = 'peserta'.$request->user_id.'-'. $request->name;
+            $foto     = $FotoName.'.'.$FotoExt;
+            $request->foto->move('images/peserta', $foto);
+            $peserta->foto= $foto;
+        }else {
+            $peserta->foto = 'default.png';
+          }
+
+        $peserta->alamat          = $request->alamat;
+        $peserta->telepon         = $request->telepon;
+        $peserta->pekerjaan = $request->pekerjaan;
+        $peserta->user_id      = $user_id;
+
+
+        $peserta->save();
+
+          return redirect(route('peserta-lelang-index'))->with('success', 'Data peserta '.$request->name.' Berhasil di Tambahkan');
+      }//fungsi menambahkan data peserta
+
+    public function peserta_lelang_detail($id){
+        $id = IDCrypt::Decrypt($id);
+        $peserta = peserta::find($id);
+
+        return view('admin.peserta_lelang_detail',compact('peserta'));
+    }//menampilkan halaman detail  peserta
+
+    public function peserta_lelang_edit($id){
+        $id = IDCrypt::Decrypt($id);
+        $peserta = peserta::findOrFail($id);
+        return view('admin.peserta_lelang_edit', compact('peserta'));
+    }//menampilkan halaman edit  peserta
+
+    public function peserta_lelang_update(Request $request, $id){
+        $id = IDCrypt::Decrypt($id);
+        $peserta = peserta::findOrFail($id);
+        $User = User::find($peserta->user_id);
+
+        $User->name     = $request->name;
+        $User->email    = $request->email;
+        $Password       = Hash::make($request->password);
+        $User->password = $Password;
+
+        if ($request->foto) {
+            if ($peserta->foto != 'default.png') {
+           // dd('foto dihapus');
+              File::delete('images/peserta/'.$peserta->foto);
+            }
+            //dd('foto tidak dihapus');
+            $FotoExt  = $request->foto->getClientOriginalExtension();
+            $FotoName = 'peserta-'.$request->$id.'-'. $request->name;
+            $foto     = $FotoName.'.'.$FotoExt;
+            $request->foto->move('images/peserta', $foto);
+            $peserta->foto= $foto;
+          }
+
+        $peserta->alamat        = $request->alamat;
+        $peserta->telepon       = $request->telepon;
+        $peserta->pekerjaan     = $request->pekerjaan;
+
+        $User->update();
+        $peserta->update();
+        return redirect(route('peserta-lelang-index'))->with('success', 'Data peserta '.$request->name.' Berhasil di ubah');
+         }
+
+        public function peserta_lelang_hapus($id){
+        $id = IDCrypt::Decrypt($id);
+        $peserta=peserta::findOrFail($id);
+        if($peserta->foto != 'default.png'){
+            File::delete('images/peserta/'.$peserta->foto);
+            $peserta->delete();
+        }else{
+            $peserta->delete();
+        }
+
+        return redirect(route('peserta-lelang-index'))->with('success', 'Data peserta Berhasil di hapus');
+    }//fungsi menghapus data peserta
 }
