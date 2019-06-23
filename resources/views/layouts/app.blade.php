@@ -130,7 +130,7 @@
               <ul class="nav flex-column sub-menu">
               <li class="nav-item"> <a class="nav-link" href="{{ route('karyawan-index') }}">Data Karyawan</a></li>
                 <li class="nav-item"> <a class="nav-link" href="{{ route('kayu-index') }}">Data Kayu</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{ route('peserta-index') }}">Data Peserta Lelang</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ route('peserta-lelang-index') }}">Data Peserta Lelang</a></li>
               </ul>
             </div>
           </li>
