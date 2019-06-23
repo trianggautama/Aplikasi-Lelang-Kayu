@@ -6,6 +6,8 @@
         <div class="row">
             <div class="col-md-12 grid-margin">
                 <div class="d-flex justify-content-between flex-wrap">
+                        <a href="{{ route('peserta-lelang-tambah') }}" class="btn btn-primary mt-2 mt-xl-0"> <i
+                            class=" mdi mdi-plus "></i> Tambah Data</a>
                     <div class="d-flex align-items-end flex-wrap">
                         <div class="mr-md-3 mr-xl-5">
                             <h2>Data Peserta Lelang,</h2>
@@ -23,43 +25,27 @@
                             <table class="table table-striped " id="myTable">
                                 <thead>
                                     <tr>
-                                        <th>User</th>
-                                        <th>Product</th>
-                                        <th>Sale</th>
-                                        <th>Status</th>
+                                        <th>No</th>
+                                        <th>Nama Peserta</th>
+                                        <th>No Telepon</th>
+                                        <th>Pekerjaan</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Jacob</td>
-                                        <td>Photoshop</td>
-                                        <td class="text-danger"> 28.76% <i class="mdi mdi-arrow-down"></i></td>
-                                        <td><label class="badge badge-danger">Pending</label></td>
+                                <?php $no = 0 ?>
+                                @foreach ($data as $datas)
+                                    <td>{{$no = $no + 1}}</td>
+                                    <td>{{$datas->user->name}}</td>
+                                    <td>{{$datas->telepon}}</td>
+                                    <td>{{$datas->pekerjaan}}</td>
+                                    <td class="text-center">
+                                        <a href="{{ route('peserta-lelang-detail', ['id' => IDCrypt::Encrypt( $datas->id)])}}" class="btn btn-inverse-success" style="padding:6px !important;"> <i class=" mdi mdi-eye "></i></a>
+                                        <a href="{{ route('peserta-lelang-hapus', ['id' => IDCrypt::Encrypt( $datas->id)])}}" class="btn btn-inverse-danger" style="padding:6px !important;"> <i class="mdi mdi-delete"></i></a>
+                                    </td>
                                     </tr>
-                                    <tr>
-                                        <td>Messsy</td>
-                                        <td>Flash</td>
-                                        <td class="text-danger"> 21.06% <i class="mdi mdi-arrow-down"></i></td>
-                                        <td><label class="badge badge-warning">In progress</label></td>
-                                    </tr>
-                                    <tr>
-                                        <td>John</td>
-                                        <td>Premier</td>
-                                        <td class="text-danger"> 35.00% <i class="mdi mdi-arrow-down"></i></td>
-                                        <td><label class="badge badge-info">Fixed</label></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Peter</td>
-                                        <td>After effects</td>
-                                        <td class="text-success"> 82.00% <i class="mdi mdi-arrow-up"></i></td>
-                                        <td><label class="badge badge-success">Completed</label></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Dave</td>
-                                        <td>53275535</td>
-                                        <td class="text-success"> 98.05% <i class="mdi mdi-arrow-up"></i></td>
-                                        <td><label class="badge badge-warning">In progress</label></td>
-                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
