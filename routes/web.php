@@ -95,15 +95,15 @@ Route::get('/peserta/hapus/{id}','adminController@peserta_hapus')
 
 //data  lelang
 
-//Berita
-Route::get('/berita','adminController@Berita_index' )->name('berita-index');
-Route::get('/berita_tambah','adminController@Berita_tambah' )->name('berita-tambah');
+// // //Berita
+// // Route::get('/berita','adminController@Berita_index' )->name('berita-index');
+// Route::get('/berita_tambah','adminController@Berita_tambah' )->name('berita-tambah');
 });
 
 
 //halaman peserta
-Route::get('/halaman_user','pesertaController@index' )->name('peserta-index');
-Route::get('/lelang_berlangsung','pesertaController@lelang_berlangsung' )->name('lelang-berlangsung');
+Route::get('/halaman_user','pesertaController@index' )->name('peserta_index');
+Route::get('/lelang_berlangsung','pesertaController@lelang_berlangsung' )->name('lelang_berlangsung');
 
 Auth::routes();
 
