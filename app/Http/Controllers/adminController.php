@@ -16,6 +16,11 @@ use Hash;
 
 class adminController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     public function index(){
 
         return view('admin.index');
@@ -132,8 +137,12 @@ class adminController extends Controller
         public function karyawan_hapus($id){
         $id = IDCrypt::Decrypt($id);
         $karyawan=karyawan::findOrFail($id);
-        File::delete('images/karyawan/'.$karyawan->gambar);
-        $karyawan->delete();
+        if($karyawan->gambar != 'default.png'){
+            File::delete('images/karyawan/'.$karyawan->gambar);
+            $karyawan->delete();
+        }else{
+            $karyawan->delete();
+        }
 
         return redirect(route('karyawan-index'))->with('success', 'Data karyawan Berhasil di hapus');
     }//fungsi menghapus data karyawan
@@ -206,8 +215,12 @@ class adminController extends Controller
         public function kayu_hapus($id){
         $id = IDCrypt::Decrypt($id);
         $kayu=kayu::findOrFail($id);
-        File::delete('images/kayu/'.$kayu->gambar);
-        $kayu->delete();
+        if($kayu->foto != 'default.png'){
+            File::delete('images/kayu/'.$kayu->foto);
+            $kayu->delete();
+        }else{
+            $kayu->delete();
+        }
 
         return redirect(route('kayu-index'))->with('success', 'Data kayu Berhasil di hapus');
     }//fungsi menghapus data kayu
@@ -288,64 +301,96 @@ class adminController extends Controller
     }
 
     public function berita_tambah(){
-        $kayu = kayu::all();
-        return view('admin.berita_tambah',compact('kayu'));
+        return view('admin.berita_tambah');
     }
 
 // fungsi berita tambah
     public function berita_tambah_store(Request $request){
 
         $berita = new berita;
+        $path     = str_replace("?", "", $request->judul);
+    	$path     = explode(" ", $path);
+        $path     = implode("-", $path);
+        
+        $id     = Auth::user()->id;
 
-        $berita->nama  = $request->nama;
-        $berita->tanggal_mulai  = $request->tanggal_mulai;
-        $berita->tempat  = $request->tempat;
-        $berita->harga_awal  = $request->harga_awal;
-        $berita->kayu_id  = $request->kayu_id;
-        $status=1;
-        $berita->status = $status;
+        if ($request->foto) {
+            $FotoExt  = $request->foto->getClientOriginalExtension();
+            $FotoName = 'berita-'. $request->judul;
+            $foto     = $FotoName.'.'.$FotoExt;
+            $request->foto->move('images/berita', $foto);
+            $berita->foto= $foto;
+        }else {
+            $berita->foto = 'default.png';
+          }
+
+        $berita->karyawan_id  = $id;
+        $berita->judul  = $request->judul;
+        $berita->isi  = $request->isi;
+        $berita->path  = $path;
 
 
         $berita->save();
 
-          return redirect(route('berita-index'))->with('success', 'Data berita '.$request->nama_berita.' Berhasil di Tambahkan');
+          return redirect(route('berita-index'))->with('success', 'Data berita '.$request->judul.' Berhasil di Tambahkan');
       }//fungsi menambahkan data berita
 
     public function berita_detail($id){
         $id = IDCrypt::Decrypt($id);
         $berita = berita::find($id);
-        $kayu = kayu::find($berita->kayu_id);
+        // $kayu = kayu::find($berita->kayu_id);
 
-        return view('admin.berita_detail',compact('berita','kayu'));
+        return view('admin.berita_detail',compact('berita'));
     }//menampilkan halaman detail  berita
 
     public function berita_edit($id){
         $id = IDCrypt::Decrypt($id);
         $berita = berita::findOrFail($id);
-        $kayu = kayu::all();
-        return view('admin.berita_edit', compact('berita','kayu'));
+        // $kayu = kayu::all();
+        return view('admin.berita_edit', compact('berita'));
     }//menampilkan halaman edit  berita
 
     public function berita_update(Request $request, $id){
         $id = IDCrypt::Decrypt($id);
         $berita = berita::findOrFail($id);
 
-        $berita->nama  = $request->nama;
-        $berita->tanggal_mulai  = $request->tanggal_mulai;
-        $berita->tempat  = $request->tempat;
-        $berita->harga_awal  = $request->harga_awal;
-        $berita->kayu_id  = $request->kayu_id;
-        $status=1;
-        $berita->status = $status;
+        $path     = str_replace("?", "", $request->judul);
+    	$path     = explode(" ", $path);
+        $path     = implode("-", $path);
+        
+        $karyawan_id     = Auth::user()->id;
+
+        if ($request->foto) {
+            if ($berita->foto != 'default.png') {
+           // dd('foto dihapus');
+              File::delete('images/berita/'.$berita->foto);
+            }
+            //dd('foto tidak dihapus');
+            $FotoExt  = $request->foto->getClientOriginalExtension();
+            $FotoName = 'berita-'. $request->judul;
+            $foto     = $FotoName.'.'.$FotoExt;
+            $request->foto->move('images/berita', $foto);
+            $berita->foto= $foto;
+          }
+
+        $berita->karyawan_id  = $karyawan_id;
+        $berita->judul  = $request->judul;
+        $berita->isi  = $request->isi;
+        $berita->path  = $path;
 
         $berita->update();
-        return redirect(route('berita-index'))->with('success', 'Data berita '.$request->nama.' Berhasil di ubah');
+        return redirect(route('berita-index'))->with('success', 'Data berita '.$request->judul.' Berhasil di ubah');
          }
 
         public function berita_hapus($id){
         $id = IDCrypt::Decrypt($id);
         $berita=berita::findOrFail($id);
-        $berita->delete();
+        if($berita->foto != 'default.png'){
+            File::delete('images/berita/'.$berita->foto);
+            $berita->delete();
+        }else{
+            $berita->delete();
+        }
 
         return redirect(route('berita-index'))->with('success', 'Data berita Berhasil di hapus');
     }//fungsi menghapus data berita
