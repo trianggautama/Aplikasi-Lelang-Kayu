@@ -1,7 +1,4 @@
 @extends('layouts.app')
-
-@section('title', __('outlet.list'))
-
 @section('content')
   <!-- partial -->
   <div class="main-panel">
@@ -20,34 +17,33 @@
         </div>
       </div>
             <div class="row">
-                    <div class="col-md-5 grid-margin stretch-card">
+                    <div class="col-md-4 grid-margin stretch-card">
                             <div class="card">
                               <div class="card-body text-center">
                                 <p class="card-title">Foto Karyawan</p>
-                               <img src="{{asset('/images/karyawan/'.$Karyawan->gambar)}}" alt="" width="330">
+                               <img src="{{asset('/images/karyawan/'.$Karyawan->gambar)}}" alt="" width="100%">
                               </div>
                             </div>
                           </div>
-                    <div class="col-md-7 grid-margin stretch-card">
+                    <div class="col-md-8 grid-margin stretch-card">
                       <div class="card">
                             <div class="card-body">
                                     <h4 class="card-title">Biodata</h4>
 
                                     <div class="template-demo">
-                                      <h4>Nama                    : {{$Karyawan->nama}}</h4>
-                                      <h4>NIP                     : {{$Karyawan->NIP}}</h4>
-                                      <h4>Tempat, Tanggal Lahir   : {{$Karyawan->tempat_lahir}}, {{$Karyawan->tanggal_lahir}}</h4>
-                                      <h4>Alamat                  : {{$Karyawan->alamat}} </h4>
-                                      <h4>No Telp                 : {{$Karyawan->telepon}}</h4>
-                                      <h4>Status                :  {{ $Karyawan->status }}</h4>
+                                      <h4 class="card-title">Nama                    : {{$Karyawan->nama}}</h4>
+                                      <h4 class="card-title">NIP                     : {{$Karyawan->NIP}}</h4>
+                                      <h4 class="card-title">Tempat, Tanggal Lahir   : {{$Karyawan->tempat_lahir}}, {{$Karyawan->tanggal_lahir}}</h4>
+                                      <h4 class="card-title">Alamat                  : {{$Karyawan->alamat}} </h4>
+                                      <h4 class="card-title">No Telp                 : {{$Karyawan->telepon}}</h4>
+                                      <h4 class="card-title">Status                :  {{ $Karyawan->status }}</h4>
                                     </div>
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <div class="text-right">
-                                            {{-- <a href="{{ route('karyawan_edit') }}" class="btn btn-primary"> Ubah data</a> --}}
-                                            <a href="{{ route('karyawan-edit', ['id' => IDCrypt::Encrypt( $Karyawan->id)])}}" class="btn btn-primary"> Ubah data</a>
-                                            <a href="{{ route('karyawan-index') }}" class="btn btn-danger"> Kembali</a>
+                                  </div>
+                                  <div class="card-footer">
+                                  <div class="text-right">
+                                            <a href="{{ route('karyawan-edit', ['id' => IDCrypt::Encrypt( $Karyawan->id)])}}" class="btn btn-inverse-info"><i class=" mdi mdi-printer "></i> Cetak data</a>
+                                            <a href="{{ route('karyawan-edit', ['id' => IDCrypt::Encrypt( $Karyawan->id)])}}" class="btn btn-inverse-primary"><i class=" mdi mdi-pencil "></i> Ubah data</a>
+                                            <a href="{{ route('karyawan-index') }}" class="btn btn-inverse-danger"><i class=" mdi mdi-arrow-left-thick "></i> Kembali</a>
                                        </div>
                                   </div>
                       </div>

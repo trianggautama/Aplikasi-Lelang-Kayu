@@ -27,7 +27,7 @@
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="navbar-brand-wrapper d-flex justify-content-center">
         <div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">
-          <a class="navbar-brand brand-logo" href="" style="margin-right:32px !important;"><img src="admin/images/logo_pemprov.png" alt="logo"/>Dishut</a>
+          <a class="navbar-brand brand-logo" href="" style="margin-right:32px !important;"><img src="{{asset('admin/images/logo_pemprov.png')}}" alt="logo"/>Dishut</a>
           <a class="navbar-brand brand-logo-mini" href="/">Dishut Kal-sel</a>
           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
             <span class="mdi mdi-sort-variant"></span>
@@ -47,7 +47,7 @@
               <p class="mb-0 font-weight-normal float-left dropdown-header">Messages</p>
               <a class="dropdown-item">
                 <div class="item-thumbnail">
-                    <img src="admin/images/faces/face3.jpg" alt="image" class="profile-pic">
+                    <img src="{{asset('admin/images/faces/face2.jpg')}}" alt="image" class="profile-pic">
                 </div>
                 <div class="item-content flex-grow">
                   <h6 class="ellipsis font-weight-normal"> Johnson
@@ -183,8 +183,6 @@
   <script src="{{asset('/admin/js/file-upload.js')}}"></script>
   <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
 <script>tinymce.init({ selector:'#tinyMCE' });</script>
-  <!-- End custom js for this page-->
-  <script>
   <script>
 tinymce.init({
     selector:'#tinyMCE',

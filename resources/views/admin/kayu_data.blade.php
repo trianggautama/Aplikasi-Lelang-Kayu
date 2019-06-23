@@ -23,7 +23,8 @@
                 <div class="card-body">
                         <h1 class="card-title">Tabel Data</h1>
                         <div class="text-right" style="margin-bottom:20px;">
-                          <a href="/" class="btn btn-sm btn-primary mt-2 mt-xl-0" data-toggle="modal" data-target="#exampleModalCenter"> <i class=" mdi mdi-plus "></i> Tambah Data</a>
+                          <a href="/" class="btn btn-inverse-primary mt-2 mt-xl-0" data-toggle="modal" data-target="#exampleModalCenter"> <i class=" mdi mdi-plus "></i> Tambah Data</a>
+                          <a href="" class="btn btn-inverse-info" > <i class=" mdi mdi-printer "></i> Cetak Data</a>
                         </div>
                         <div class="table-responsive">
                           <table class="table striped "  id="myTable">
@@ -41,7 +42,7 @@
                                 <td>{{$no = $no + 1}}</td>
                                 <td>{{$kayus->nama_kayu}}</td>
                                 <td class="text-center">
-                                        <a href="{{ route('kayu-detail', ['id' => IDCrypt::Encrypt( $kayus->id)])}}"class="btn btn-inverse-info" style="padding:6px !important;"> <i class=" mdi mdi-eye "></i></a>
+                                        <a href="{{ route('kayu-detail', ['id' => IDCrypt::Encrypt( $kayus->id)])}}"class="btn btn-inverse-success" style="padding:6px !important;"> <i class=" mdi mdi-eye "></i></a>
                                         <a href="{{ route('kayu-hapus', ['id' => IDCrypt::Encrypt( $kayus->id)])}}" class="btn btn-inverse-danger" style="padding:6px !important;"> <i class="mdi mdi-delete"></i></a>
                                     </td>
                               </tr>
