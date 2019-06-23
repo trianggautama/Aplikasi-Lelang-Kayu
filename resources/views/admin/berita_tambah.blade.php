@@ -8,18 +8,19 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">form tambah Berita</h4>
-                        <form action="" method="post">
+                        <form class="forms-sample" method="POST" action="" enctype="multipart/form-data">
+                            {{ csrf_field() }}
                             <div class="form-group">
                                 <label for="exampleInputUsername1">Judul</label>
-                                <input type="password" class="form-control" name="judul" id="password"
+                                <input type="text" class="form-control" name="judul"
                                     placeholder="Judul Berita">
                             </div>
                             <div class="form-group">
                                 <label>File upload</label>
-                                <input type="file" name="img[]" class="file-upload-default">
+                                <input type="file" name="foto" class="file-upload-default">
                                 <div class="input-group col-xs-12">
                                     <input type="text" class="form-control file-upload-info" disabled
-                                        placeholder="Foto Kayu">
+                                        placeholder="Foto Berita">
                                     <span class="input-group-append">
                                         <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
                                     </span>
@@ -27,7 +28,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputDescription">Isi Berita:</label>
-                                <textarea id="tinyMCE" name="description"></textarea>
+                                <textarea id="tinyMCE" name="isi"></textarea>
                             </div>
                             {{ csrf_field() }}
                             <button type="submit" class="btn btn-primary">Simpan</button>
