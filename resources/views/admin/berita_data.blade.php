@@ -12,7 +12,7 @@
                         </div>
                     </div>
                     <div class="d-flex justify-content-between align-items-end flex-wrap">
-                        <a href="{{ route('berita_tambah') }}" class="btn btn-primary mt-2 mt-xl-0"> <i
+                        <a href="{{ route('berita-tambah') }}" class="btn btn-primary mt-2 mt-xl-0"> <i
                                 class=" mdi mdi-plus "></i> Tambah Data</a>
                     </div>
                 </div>
@@ -28,24 +28,27 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Tanggal</th>
+                                        <th>Nama Penulis</th>
                                         <th>Judul</th>
-                                        <th>Author</th>
+                                        <th>Tanggal Dibuat</th>
                                         <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>1</td>
-                                        <td>1 Apr 2019</td>
-                                        <td>Pembalakan Hutan di Kandangan</td>
-                                        <td>Supriadi</td>
-                                        <td class="text-center">
-                                            <a href="" class="btn btn-primary"><i class="mdi mdi-eye"></i></a>
-                                            <a href="" class="btn btn-warning"><i class="mdi mdi-pencil"></i></a>
-                                            <a href="" class="btn btn-danger"><i class="mdi mdi-delete"></i></a>
-                                        </td>
+                                    <?php $no = 0 ?>
+                                    @foreach ($berita as $beritas)
+                                    <td>{{$no = $no + 1}}</td>
+                                    <td>{{$beritas->karyawan->nama}}</td>
+                                    <td>{{$beritas->judul}}</td>
+                                    <td>{{$beritas->created_at}}</td>
+
+                                    <td class="text-center">
+                                        <a href="{{ route('berita-detail', ['id' => IDCrypt::Encrypt( $beritas->id)])}}"class="btn btn-inverse-success" style="padding:6px !important;"> <i class=" mdi mdi-eye "></i></a>
+                                        <a href="{{ route('berita-hapus', ['id' => IDCrypt::Encrypt( $beritas->id)])}}" class="btn btn-inverse-danger" style="padding:6px !important;"> <i class="mdi mdi-delete"></i></a>
+                                    </td>
                                     </tr>
+                                    @endforeach
 
                                 </tbody>
                             </table>
