@@ -76,7 +76,7 @@ Route::get('/berita/hapus/{id}','adminController@berita_hapus')
 ->name('berita-hapus');
 //data berita
 
-//data berita
+//data peserta
 Route::get('/peserta','adminController@peserta_index' )
 ->name('peserta-index');
 Route::get('/peserta/tambah','adminController@peserta_tambah')
