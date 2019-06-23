@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Kayu;
 use App\Lelang;
+use App\Berita;
 use App\Karyawan;
 use IDCrypt;
 Use File;
@@ -281,14 +282,71 @@ class adminController extends Controller
     }//fungsi menghapus data lelang
 
     //fungsi berita
-
     public function berita_index(){
-
-        return view('admin.berita_data');
-    }//halaman data Berita
+        $berita = berita::all();
+        return view('admin.berita_data',compact('berita'));
+    }
 
     public function berita_tambah(){
+        $kayu = kayu::all();
+        return view('admin.berita_tambah',compact('kayu'));
+    }
 
-        return view('admin.berita_tambah');
-    }//halaman Tambah Berita
+// fungsi berita tambah
+    public function berita_tambah_store(Request $request){
+
+        $berita = new berita;
+
+        $berita->nama  = $request->nama;
+        $berita->tanggal_mulai  = $request->tanggal_mulai;
+        $berita->tempat  = $request->tempat;
+        $berita->harga_awal  = $request->harga_awal;
+        $berita->kayu_id  = $request->kayu_id;
+        $status=1;
+        $berita->status = $status;
+
+
+        $berita->save();
+
+          return redirect(route('berita-index'))->with('success', 'Data berita '.$request->nama_berita.' Berhasil di Tambahkan');
+      }//fungsi menambahkan data berita
+
+    public function berita_detail($id){
+        $id = IDCrypt::Decrypt($id);
+        $berita = berita::find($id);
+        $kayu = kayu::find($berita->kayu_id);
+
+        return view('admin.berita_detail',compact('berita','kayu'));
+    }//menampilkan halaman detail  berita
+
+    public function berita_edit($id){
+        $id = IDCrypt::Decrypt($id);
+        $berita = berita::findOrFail($id);
+        $kayu = kayu::all();
+        return view('admin.berita_edit', compact('berita','kayu'));
+    }//menampilkan halaman edit  berita
+
+    public function berita_update(Request $request, $id){
+        $id = IDCrypt::Decrypt($id);
+        $berita = berita::findOrFail($id);
+
+        $berita->nama  = $request->nama;
+        $berita->tanggal_mulai  = $request->tanggal_mulai;
+        $berita->tempat  = $request->tempat;
+        $berita->harga_awal  = $request->harga_awal;
+        $berita->kayu_id  = $request->kayu_id;
+        $status=1;
+        $berita->status = $status;
+
+        $berita->update();
+        return redirect(route('berita-index'))->with('success', 'Data berita '.$request->nama.' Berhasil di ubah');
+         }
+
+        public function berita_hapus($id){
+        $id = IDCrypt::Decrypt($id);
+        $berita=berita::findOrFail($id);
+        $berita->delete();
+
+        return redirect(route('berita-index'))->with('success', 'Data berita Berhasil di hapus');
+    }//fungsi menghapus data berita
 }
