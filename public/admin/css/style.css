@@ -12893,7 +12893,10 @@ input[type="button"].btn-block {
   background-color: #fff;
   background-clip: border-box;
   border: 1px solid #e7eaed;
-  border-radius: 0;
+  border-radius: 7px;
+}
+.card:hover{
+  box-shadow: 2px 4px 18px #9c9a9a77;
 }
 
 .card > hr {
@@ -21894,7 +21897,6 @@ dl li {
 .rtl .sidebar-fixed .nav::-webkit-scrollbar-track,
 .rtl .table-responsive::-webkit-scrollbar-track,
 .rtl ul.chats::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
 
 .rtl .product-chart-wrapper::-webkit-scrollbar-thumb,

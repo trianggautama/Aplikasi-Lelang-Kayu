@@ -11,8 +11,8 @@
   <link rel="stylesheet" href="{{asset('admin/vendors/base/vendor.bundle.base.css')}}">
   <!-- endinject -->
   <!-- plugin css for this page -->
-  <link rel="stylesheet" href="{{ asset('/admin/vendors/datatables.net-bs4/dataTables.bootstrap4.css') }}">
-  <!-- End plugin css for this page -->
+  <link href="{{ asset('/admin/vendors/datatables.net-bs4/dataTables.bootstrap4.css') }}" rel="stylesheet">
+    <!-- End plugin css for this page -->
   <!-- inject:css -->
   <link rel="stylesheet" href="{{ asset('admin/css/style.css') }}">
   <!-- endinject -->
@@ -27,7 +27,7 @@
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="navbar-brand-wrapper d-flex justify-content-center">
         <div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">
-          <a class="navbar-brand brand-logo" href="" style="margin-right:32px !important;"><img src="admin/images/logo_pemprov.png" alt="logo"/>Dishut</a>
+          <a class="navbar-brand brand-logo" href="" style="margin-right:32px !important;"><img src="{{asset('admin/images/logo_pemprov.png')}}" alt="logo"/>Dishut</a>
           <a class="navbar-brand brand-logo-mini" href="/">Dishut Kal-sel</a>
           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
             <span class="mdi mdi-sort-variant"></span>
@@ -47,7 +47,7 @@
               <p class="mb-0 font-weight-normal float-left dropdown-header">Messages</p>
               <a class="dropdown-item">
                 <div class="item-thumbnail">
-                    <img src="admin/images/faces/face3.jpg" alt="image" class="profile-pic">
+                    <img src="{{asset('admin/images/faces/face2.jpg')}}" alt="image" class="profile-pic">
                 </div>
                 <div class="item-content flex-grow">
                   <h6 class="ellipsis font-weight-normal"> Johnson
@@ -156,6 +156,17 @@
         </ul>
       </nav>
       @yield('content')
+       <!-- content-wrapper ends -->
+    <!-- partial:partials/_footer.html -->
+    <footer class="footer">
+      <div class="d-sm-flex justify-content-center justify-content-sm-between">
+        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2018 <a href="https://www.urbanui.com/" target="_blank">Urbanui</a>. All rights reserved.</span>
+        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
+      </div>
+    </footer>
+    <!-- partial -->
+  </div>
+  <!-- main-panel ends -->
     </div>
     <!-- page-body-wrapper ends -->
   </div>
@@ -177,13 +188,12 @@
   <!-- Custom js for this page-->
   <script src="{{asset('/admin/js/dashboard.js')}}"></script>
   <script src="{{asset('/admin/js/data-table.js')}}"></script>
-  <script src="{{asset('/admin/js/jquery.dataTables.js')}}"></script>
-  <script src="{{asset('/admin/js/dataTables.bootstrap4.js')}}"></script>
+  <script src="{{ asset('/admin/js/data-table.js') }}"></script>
+    <script src="{{ asset('/admin/js/jquery.dataTables.js') }}"></script>
+    <script src="{{ asset('/admin/js/dataTables.bootstrap4.js') }}"></script>
   <script src="{{asset('/admin/js/file-upload.js')}}"></script>
   <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
 <script>tinymce.init({ selector:'#tinyMCE' });</script>
-  <!-- End custom js for this page-->
-  <script>
   <script>
 tinymce.init({
     selector:'#tinyMCE',

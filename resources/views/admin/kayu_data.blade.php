@@ -1,7 +1,4 @@
 @extends('layouts.app')
-
-@section('title', __('outlet.list'))
-
 @section('content')
   <!-- partial -->
   <div class="main-panel">
@@ -14,9 +11,6 @@
                 <h2>Data Jenis Kayu</h2>
               </div>
             </div>
-            <div class="d-flex justify-content-between align-items-end flex-wrap">
-              <a href="/" class="btn btn-primary mt-2 mt-xl-0" data-toggle="modal" data-target="#exampleModalCenter"> <i class=" mdi mdi-plus "></i> Tambah Data</a>
-            </div>
           </div>
         </div>
       </div>
@@ -24,7 +18,11 @@
         <div class="col-md-12 grid-margin stretch-card">
           <div class="card">
                 <div class="card-body">
-                        <h4 class="card-title">Tabel Data</h4>
+                        <h1 class="card-title">Tabel Data</h1>
+                        <div class="text-right" style="margin-bottom:20px;">
+                          <a href="/" class="btn btn-inverse-primary mt-2 mt-xl-0" data-toggle="modal" data-target="#exampleModalCenter"> <i class=" mdi mdi-plus "></i> Tambah Data</a>
+                          <a href="" class="btn btn-inverse-info" > <i class=" mdi mdi-printer "></i> Cetak Data</a>
+                        </div>
                         <div class="table-responsive">
                           <table class="table striped "  id="myTable">
                             <thead>
@@ -41,9 +39,8 @@
                                 <td>{{$no = $no + 1}}</td>
                                 <td>{{$kayus->nama_kayu}}</td>
                                 <td class="text-center">
-                                        <a href="{{ route('kayu-detail', ['id' => IDCrypt::Encrypt( $kayus->id)])}}" class="btn btn-secondary "> <i class=" mdi mdi-eye "></i></a>
-
-                                        <a href="{{ route('kayu-hapus', ['id' => IDCrypt::Encrypt( $kayus->id)])}}" class="btn btn-danger"> <i class="mdi mdi-delete"></i></a>
+                                        <a href="{{ route('kayu-detail', ['id' => IDCrypt::Encrypt( $kayus->id)])}}"class="btn btn-inverse-success" style="padding:6px !important;"> <i class=" mdi mdi-eye "></i></a>
+                                        <a href="{{ route('kayu-hapus', ['id' => IDCrypt::Encrypt( $kayus->id)])}}" class="btn btn-inverse-danger" style="padding:6px !important;"> <i class="mdi mdi-delete"></i></a>
                                     </td>
                               </tr>
                               @endforeach
@@ -100,15 +97,4 @@
           </div>
         </div>
       </div>
-    <!-- content-wrapper ends -->
-    <!-- partial:partials/_footer.html -->
-    <footer class="footer">
-      <div class="d-sm-flex justify-content-center justify-content-sm-between">
-        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2018 <a href="https://www.urbanui.com/" target="_blank">Urbanui</a>. All rights reserved.</span>
-        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
-      </div>
-    </footer>
-    <!-- partial -->
-  </div>
-  <!-- main-panel ends -->
 @endsection
