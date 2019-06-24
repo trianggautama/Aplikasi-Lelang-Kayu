@@ -35,6 +35,7 @@
                                       <h4 class="card-title">Alamat                  : {{$peserta->alamat}} </h4>
                                       <h4 class="card-title">No Telp                 : {{$peserta->telepon}}</h4>
                                       <h4 class="card-title">Email                :  {{ $peserta->user->email }}</h4>
+                                      <h4 class="card-title">Pekerjaan                 : {{$peserta->pekerjaan}}</h4>
                                     </div>
                                   </div>
                                   <div class="card-footer">
