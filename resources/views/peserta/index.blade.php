@@ -54,7 +54,15 @@
                         <li>Pastikan Profil Anda Sudah Lengkap </li>
                         <li>Apabila Profil Anda Sudah Lengkap maka Admin akan memverifikas akun anda , apabila akun anda belum tervirifikasi maka anda tidak dapat mengikuti proses lelang</li>
                         <li>Anda dapat melihat Status Verifikasi Akun Anda pada menu disamping, atau pada halaman progil anda</li>
+                        
                         </ol>
+                        
+                        @if(isset($peserta->user_id) && $peserta->user_id == $user_id)
+                        <a href="{{ route('peserta-detail', ['id' => IDCrypt::Encrypt( $peserta->id )])}}" class="btn btn-primary mt-2 mt-xl-0">Klik Disini Untuk Melihat Detail Profil Anda</a>
+                        @else
+                        <a href="{{ route('peserta-tambah')}}" class="btn btn-primary mt-2 mt-xl-0">Klik Disini Untuk Melengkapi Profil Anda</a>
+                        @endif
+                        {{-- <a href="{{ route('peserta-tambah')}}" class="btn btn-primary mt-2 mt-xl-0">Klik Disini Untuk Melengkapi Profil Anda</a> --}}
                       </div>
                     </div>
                   </div>
