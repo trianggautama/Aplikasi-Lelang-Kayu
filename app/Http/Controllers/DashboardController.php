@@ -17,7 +17,7 @@ class DashboardController extends Controller
         if (Auth::user()->role == 2){
         return redirect('/halaman_admin');
         } else {
-        return redirect('/halaman_user');
+        return redirect('/halaman-peserta');
         }
     }
 }
