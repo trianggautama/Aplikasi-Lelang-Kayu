@@ -43,4 +43,8 @@ class User extends Authenticatable
 
         return false;
     }
+
+    public function karyawan(){
+        return $this->HasOne('App\karyawan','id');
+      }
 }
