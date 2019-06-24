@@ -93,16 +93,22 @@ Route::get('/peserta/hapus/{id}','adminController@peserta_lelang_hapus')
 ->name('peserta-lelang-hapus');
 //data berita
 
-//data  lelang
-
-// // //Berita
-// // Route::get('/berita','adminController@Berita_index' )->name('berita-index');
-// Route::get('/berita_tambah','adminController@Berita_tambah' )->name('berita-tambah');
 });
 
 
 //halaman peserta
-Route::get('/halaman_user','pesertaController@index' )->name('peserta_index');
+Route::get('/halaman-peserta','pesertaController@index' )
+->name('peserta-index');
+Route::get('/halaman-peserta/tambah','pesertaController@peserta_lelang_tambah')
+->name('peserta-tambah');
+Route::post('/halaman-peserta/tambah','pesertaController@peserta_lelang_tambah_store')
+->name('peserta-tambah-store');
+Route::get('/halaman_peserta/detail/{id}','pesertaController@peserta_lelang_detail')
+->name('peserta-detail');
+Route::get('/halaman-peserta/edit/{id}','pesertaController@peserta_lelang_edit')
+->name('peserta-edit');
+Route::put('/halaman-peserta/edit/{id}','pesertaController@peserta_lelang_update')
+->name('peserta-update');
 Route::get('/lelang_berlangsung','pesertaController@lelang_berlangsung' )->name('lelang_berlangsung');
 
 Auth::routes();
