@@ -14,10 +14,6 @@
                 <h2>Beranda Peserta Lelang</h2>
                 <p class="mb-md-0">Selamat datang di Aplikasi Lelang Online </p>
               </div>
-              <div class="d-flex">
-                <i class="mdi mdi-home text-muted hover-cursor"></i>
-                <p class="text-muted mb-0 hover-cursor">&nbsp;/&nbsp;Beranda&nbsp;/&nbsp;</p>
-              </div>
             </div>
             <div class="d-flex justify-content-between align-items-end flex-wrap">
               <button type="button" class="btn btn-light bg-white btn-icon mr-3 d-none d-md-block " title="profil">
@@ -44,7 +40,7 @@
                 </li>
               </ul>
               <div class="tab-content py-0 px-0">
-                <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
+              <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
                   <div class="d-flex flex-wrap justify-content-xl-between">
                     <div class="d-flex py-3 border-md-right flex-grow-1  p-3 item">
                       <div class="d-flex flex-column ">
@@ -53,19 +49,20 @@
                         <ol>
                         <li>Pastikan Profil Anda Sudah Lengkap </li>
                         <li>Apabila Profil Anda Sudah Lengkap maka Admin akan memverifikas akun anda , apabila akun anda belum tervirifikasi maka anda tidak dapat mengikuti proses lelang</li>
-                        <li>Anda dapat melihat Status Verifikasi Akun Anda pada menu disamping, atau pada halaman progil anda</li>
-                        
-                        </ol>
-                        
-                        @if(isset($peserta->user_id) && $peserta->user_id == $user_id)
-                        <a href="{{ route('peserta-detail', ['id' => IDCrypt::Encrypt( $peserta->id )])}}" class="btn btn-primary mt-2 mt-xl-0">Klik Disini Untuk Melihat Detail Profil Anda</a>
-                        @else
-                        <a href="{{ route('peserta-tambah')}}" class="btn btn-primary mt-2 mt-xl-0">Klik Disini Untuk Melengkapi Profil Anda</a>
-                        @endif
-                        {{-- <a href="{{ route('peserta-tambah')}}" class="btn btn-primary mt-2 mt-xl-0">Klik Disini Untuk Melengkapi Profil Anda</a> --}}
+                        <li>Anda dapat melihat Status Verifikasi Akun Anda pada menu disamping, atau pada halaman progil anda</li>           
+                        </ol>       
                       </div>
                     </div>
                   </div>
+                  <div class="card-footer text-right" style="width:100%">
+                    @if(isset($peserta->user_id) && $peserta->user_id == $user_id)
+                        <a href="{{ route('peserta-detail', ['id' => IDCrypt::Encrypt( $peserta->id )])}}" class="btn btn-primary mt-xl-0">Klik Disini Untuk Melihat Detail Profil Anda</a>
+                        @else
+                        <a href="{{ route('peserta-tambah')}}" class="btn btn-primary">Klik Disini Untuk Melengkapi Profil Anda</a>
+                        @endif
+                        {{-- <a href="{{ route('peserta-tambah')}}" class="btn btn-primary mt-xl-0">Klik Disini Untuk Melengkapi Profil Anda</a> --}}
+                     
+                    </div> 
                 </div>
                 <div class="tab-pane fade" id="sales" role="tabpanel" aria-labelledby="sales-tab">
                   <div class="d-flex flex-wrap justify-content-xl-between">

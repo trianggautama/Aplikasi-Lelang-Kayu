@@ -41,14 +41,14 @@
                                 <td> Kayu Jati</td>
                                 <td  class="text-center"><label class="badge badge-warning">Rp.6 Jt</label></td>
                                 <td  class="text-center"> 20 Mei 2019</td>
-                                <td class="text-center"><a href="" class="btn  btn-primary">Lihat </a></td>
+                                <td class="text-center"><a href="" class="btn  btn-primary" style="padding:6px !important;"><i class=" mdi mdi-eye "> </i></a></td>
                               </tr>
                               <tr>
                                 <td>10 kg</td>
                                 <td>Kayu Ulin</td>
                                 <td  class="text-center"><label class="badge badge-danger">Rp.8 Jt</label></td>
                                 <td  class="text-center"> 25 Mei 2019</td>
-                                <td class="text-center"><a href="" class="btn  btn-primary">Lihat </a> </td>
+                                <td class="text-center"><a href="" class="btn  btn-primary" style="padding:6px !important;"> <i class=" mdi mdi-eye "> </i></a></td>
                               </tr>
                             </tbody>
                           </table>

@@ -24,8 +24,8 @@
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="navbar-brand-wrapper d-flex justify-content-center">
         <div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">
-          <a class="navbar-brand brand-logo" href="/halaman_admin" style="margin-right:22px !important;"><img src="admin/images/logo_pemprov.png" alt="logo"/>Dishut &nbsp</a>
-          <a class="navbar-brand brand-logo-mini" href="/halaman_admin" ><img src="admin/images/logo-mini.svg" alt="logo"/></a>
+          <a class="navbar-brand brand-logo" href="{{Route('peserta-index')}}" style="margin-right:22px !important;"><img src="{{asset('admin/images/logo_pemprov.png')}}" alt="logo"/>Dishut &nbsp</a>
+          <a class="navbar-brand brand-logo-mini" href="/halaman_admin" ><img src="{{asset('admin/images/logo-mini.svg')}}" alt="logo"/></a>
           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
             <span class="mdi mdi-sort-variant"></span>
           </button>
@@ -44,7 +44,7 @@
               <p class="mb-0 font-weight-normal float-left dropdown-header">Messages</p>
               <a class="dropdown-item">
                 <div class="item-thumbnail">
-                    <img src="admin/images/faces/face3.jpg" alt="image" class="profile-pic">
+                    <img src="{{asset('admin/images/faces/face3.jpg')}}" alt="image" class="profile-pic">
                 </div>
                 <div class="item-content flex-grow">
                   <h6 class="ellipsis font-weight-normal"> Johnson
