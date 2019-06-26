@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\User;
 use App\Peserta;
@@ -44,7 +43,6 @@ class pesertaController extends Controller
             $peserta->foto = 'default.png';
           }
 
-        
         $peserta->alamat       = $request->alamat;
         $peserta->telepon      = $request->telepon;
         $peserta->pekerjaan      = $request->pekerjaan;
@@ -112,6 +110,11 @@ class pesertaController extends Controller
     public function lelang_berlangsung_detail(){
 
         return view('peserta.lelang_detail');
+    }
+
+    public function form_lelang(){
+
+        return view('peserta.form_lelang');
     }
 
 

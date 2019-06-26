@@ -58,7 +58,6 @@ Route::get('/lelang/hapus/{id}','adminController@lelang_hapus')
 ->name('lelang-hapus');
 //data lelang
 
-
 //data berita
 Route::get('/berita','adminController@berita_index' )
 ->name('berita-index');
@@ -112,6 +111,9 @@ Route::put('/halaman-peserta/edit/{id}','pesertaController@peserta_lelang_update
 
 Route::get('/lelang_berlangsung','pesertaController@lelang_berlangsung' )->name('lelang_berlangsung');
 Route::get('/lelang_berlangsung_detail','pesertaController@lelang_berlangsung_detail' )->name('lelang_berlangsung_detail');
+Route::get('/form_lelang','pesertaController@form_lelang' )->name('form_lelang');
+
+
 
 Auth::routes();
 

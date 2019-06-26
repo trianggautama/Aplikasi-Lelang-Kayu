@@ -1,5 +1,4 @@
 @extends('layouts.peserta')
-@section('title', __('outlet.list'))
 @section('content')
   <!-- partial -->
   <div class="main-panel">
