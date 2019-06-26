@@ -109,5 +109,10 @@ class pesertaController extends Controller
         return view('peserta.lelang_berlangsung ');
     }
 
+    public function lelang_berlangsung_detail(){
+
+        return view('peserta.lelang_detail');
+    }
+
 
 }
