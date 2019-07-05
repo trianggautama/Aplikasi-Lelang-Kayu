@@ -111,7 +111,7 @@ Route::put('/halaman-peserta/edit/{id}','pesertaController@peserta_lelang_update
 ->name('peserta-update');
 
 Route::get('/lelang_berlangsung','pesertaController@lelang_berlangsung' )->name('lelang_berlangsung');
-Route::get('/lelang_berlangsung_detail','pesertaController@lelang_berlangsung_detail' )->name('lelang_berlangsung_detail');
+Route::get('/lelang_berlangsung_detail/{id}','pesertaController@lelang_berlangsung_detail' )->name('lelang_berlangsung_detail');
 
 Auth::routes();
 
