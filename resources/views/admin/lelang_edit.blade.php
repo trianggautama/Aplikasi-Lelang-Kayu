@@ -26,6 +26,11 @@
                                     value="{{ $lelang->tanggal_mulai}}">
                             </div>
                             <div class="form-group">
+                                <label for="exampleInputUsername1">Tanggal Selesai</label>
+                                <input type="date" class="form-control" name="tanggal_selesai" id="tanggal_selesai"
+                                    value="{{ $lelang->tanggal_selesai}}">
+                            </div>
+                            <div class="form-group">
                                 <label for="exampleInputUsername1">Tempat </label>
                                 <input type="text" class="form-control" name="tempat" id="tempat" placeholder="Tempat"
                                     value="{{ $lelang->tempat}}">
@@ -42,6 +47,15 @@
                                     <option value="{{ $j->id}}" {{ $lelang->kayu_id == $j->id ? 'selected' : ''}}>
                                         {{$j->nama_kayu}}</option>
                                     @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleSelectGender">Status</label>
+                                <select class="form-control" name="status">)
+                                    <option value="1" {{ $lelang->status == 1 ? 'selected' : ''}}>
+                                        Lelang Sedang Berlangsung</option>
+                                    <option value="2" {{ $lelang->status == 2 ? 'selected' : ''}}>
+                                        Lelang Sudah Selesai</option>
                                 </select>
                             </div>
                             {{ csrf_field() }}

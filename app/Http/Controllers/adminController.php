@@ -244,6 +244,7 @@ class adminController extends Controller
 
         $lelang->nama  = $request->nama;
         $lelang->tanggal_mulai  = $request->tanggal_mulai;
+        $lelang->tanggal_selesai  = $request->tanggal_selesai;
         $lelang->tempat  = $request->tempat;
         $lelang->harga_awal  = $request->harga_awal;
         $lelang->kayu_id  = $request->kayu_id;
@@ -253,7 +254,7 @@ class adminController extends Controller
 
         $lelang->save();
 
-          return redirect(route('lelang-index'))->with('success', 'Data lelang '.$request->nama_lelang.' Berhasil di Tambahkan');
+          return redirect(route('lelang-index'))->with('success', 'Data lelang '.$request->nama.' Berhasil di Tambahkan');
       }//fungsi menambahkan data lelang
 
     public function lelang_detail($id){
@@ -277,11 +278,11 @@ class adminController extends Controller
 
         $lelang->nama  = $request->nama;
         $lelang->tanggal_mulai  = $request->tanggal_mulai;
+        $lelang->tanggal_selesai  = $request->tanggal_selesai;
         $lelang->tempat  = $request->tempat;
         $lelang->harga_awal  = $request->harga_awal;
         $lelang->kayu_id  = $request->kayu_id;
-        $status=1;
-        $lelang->status = $status;
+        $lelang->status = $request->status;
 
         $lelang->update();
         return redirect(route('lelang-index'))->with('success', 'Data lelang '.$request->nama.' Berhasil di ubah');
@@ -312,7 +313,7 @@ class adminController extends Controller
         $path     = str_replace("?", "", $request->judul);
     	$path     = explode(" ", $path);
         $path     = implode("-", $path);
-        
+
         $id     = Auth::user()->id;
 
         if ($request->foto) {
@@ -358,7 +359,7 @@ class adminController extends Controller
         $path     = str_replace("?", "", $request->judul);
     	$path     = explode(" ", $path);
         $path     = implode("-", $path);
-        
+
         $karyawan_id     = Auth::user()->id;
 
         if ($request->foto) {

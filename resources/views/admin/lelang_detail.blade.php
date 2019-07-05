@@ -28,15 +28,20 @@
             <div class="col-md-7 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Biodata</h4>
+                        <h4 class="card-title">Detail Le;ang</h4>
 
                         <div class="template-demo">
                             <h4>Nama Lelang : {{$lelang->nama}}</h4>
                             <h4>Jenis Kayu : {{$kayu->nama_kayu}}</h4>
                             <h4>Tanggal Mulai : {{$lelang->tanggal_mulai}}</h4>
+                            <h4>Tanggal Selesai : {{$lelang->tanggal_selesai}}</h4>
                             <h4>Tempat : {{$lelang->tempat}}</h4>
                             <h4>Harga Awal : {{$lelang->harga_awal}} </h4>
-                            <h4>Status : {{ $lelang->status }}</h4>
+                            @if($lelang->status==1)
+                            <h4>Status : <label class="badge badge-primary">Lelang Sedang Berlangsung</label></h4>
+                            @else
+                            <h4>Status : <label class="badge badge-primary">Lelang Sudah Selesai</label></h4>
+                            @endif
                         </div>
                         <br>
                         <br>

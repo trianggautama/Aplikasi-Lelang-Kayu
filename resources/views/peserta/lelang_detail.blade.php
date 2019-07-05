@@ -16,7 +16,7 @@
           </div>
         </div>
       </div>
-    
+
       <div class="row">
             <div class="col-md-12 grid-margin stretch-card">
               <div class="card">
@@ -55,12 +55,12 @@
                         <br>
                         <h4 class="card-title text-primary">Detail Lelang</h4>
                         <div class="template-demo">
-                            <h4 class="card-title">Harga Awal: 50jt</h4>
-                            <h4 class="card-title">Tanggal Lelang :31 Juli 2019</h4>
+                            <h4 class="card-title">Harga Awal: {{$lelang->harga_awal}}</h4>
+                            <h4 class="card-title">Tanggal Lelang : {{$lelang->tanggal_mulai}}</h4>
                             <h4 class="card-title">Proses Lelang : Tahap Pendaftaran</h4>
                         </div>
                         <div class="card-footer text-right">
-                            <a href="" class="btn btn-danger">Kembali</a>
+                            <a href="{{route ('lelang_berlangsung') }}" class="btn btn-danger">Kembali</a>
                             <a href="" class="btn btn-primary">Ikut Lelang</a>
                         </div>
                     </div>
@@ -87,7 +87,7 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                              
+
                                     </tr>
                                 </tbody>
                             </table>
