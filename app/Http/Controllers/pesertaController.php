@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Lelang;
 use App\Peserta;
 use View;
 use IDCrypt;
@@ -16,7 +17,7 @@ class pesertaController extends Controller
 
     public function index(){
         $user_id = auth::user()->id;
-        
+
         $peserta = Peserta::where('user_id',$user_id)->first();
         // $peserta = peserta::all()->pluck('user_id');
         // dd($peserta);
@@ -25,7 +26,7 @@ class pesertaController extends Controller
 
     // fungsi route peserta lelang tambah
     public function peserta_lelang_tambah(){
-            return view('peserta.peserta_lelang_tambah');   
+            return view('peserta.peserta_lelang_tambah');
     }
 
     // fungsi peserta tambah
@@ -44,7 +45,7 @@ class pesertaController extends Controller
             $peserta->foto = 'default.png';
           }
 
-        
+
         $peserta->alamat       = $request->alamat;
         $peserta->telepon      = $request->telepon;
         $peserta->pekerjaan      = $request->pekerjaan;
@@ -92,12 +93,12 @@ class pesertaController extends Controller
             $request->foto->move('images/peserta', $foto);
             $peserta->foto= $foto;
           }
-        
+
         $peserta->alamat       = $request->alamat;
         $peserta->telepon      = $request->telepon;
         $peserta->pekerjaan= $request->pekerjaan;
         $peserta->user_id          = $user->id;
-        
+
 
         $user->update();
         $peserta->update();
@@ -105,13 +106,17 @@ class pesertaController extends Controller
          }
 
     public function lelang_berlangsung(){
+        $lelang=lelang::where('status',1)->get();
+        // dd($lelang);
 
-        return view('peserta.lelang_berlangsung ');
+        return view('peserta.lelang_berlangsung ',compact('lelang'));
     }
 
-    public function lelang_berlangsung_detail(){
+    public function lelang_berlangsung_detail($id){
+        $id = IDCrypt::Decrypt($id);
+        $lelang = lelang::findOrFail($id);
 
-        return view('peserta.lelang_detail');
+        return view('peserta.lelang_detail',compact('lelang'));
     }
 
 
