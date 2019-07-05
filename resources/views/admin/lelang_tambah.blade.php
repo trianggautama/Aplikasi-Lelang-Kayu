@@ -22,6 +22,10 @@
                                 <input type="date" class="form-control" name="tanggal_mulai" id="tanggal_mulai">
                             </div>
                             <div class="form-group">
+                                <label for="exampleInputUsername1">Tanggal Selesai</label>
+                                <input type="date" class="form-control" name="tanggal_selesai" id="tanggal_selesai">
+                            </div>
+                            <div class="form-group">
                                 <label for="exampleInputUsername1">Tempat </label>
                                 <input type="text" class="form-control" name="tempat" id="tempat" placeholder="Tempat">
                             </div>
