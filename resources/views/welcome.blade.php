@@ -508,78 +508,19 @@
 						<div class="gallery-content">
 						  	<div class="filtr-container">
 						  		<div class="row">
-
+                                    @foreach ($kayu as $kayus)
 						  			<div class="col-md-6">
 						  				<div class="filtr-item">
-											<img src="vendor/images/gallary/g1.jpg" alt="portfolio image"/>
+											<img src="{{ asset('/images/kayu/'.$kayus->foto) }}" alt="portfolio image"/>
 											<div class="item-title">
 												<a href="#">
-													china
+													{{ $kayus->nama_kayu }}
 												</a>
-												<p><span>20 tours</span><span>15 places</span></p>
+												{{-- <p><span>20 tours</span><span>15 places</span></p> --}}
 											</div><!-- /.item-title -->
 										</div><!-- /.filtr-item -->
-						  			</div><!-- /.col -->
-
-						  			<div class="col-md-6">
-						  				<div class="filtr-item">
-											<img src="vendor/images/gallary/g2.jpg" alt="portfolio image"/>
-											<div class="item-title">
-												<a href="#">
-													venuzuala
-												</a>
-												<p><span>12 tours</span><span>9 places</span></p>
-											</div> <!-- /.item-title-->
-										</div><!-- /.filtr-item -->
-						  			</div><!-- /.col -->
-
-						  			<div class="col-md-4">
-						  				<div class="filtr-item">
-											<img src="vendor/images/gallary/g3.jpg" alt="portfolio image"/>
-											<div class="item-title">
-												<a href="#">
-													brazil
-												</a>
-												<p><span>25 tours</span><span>10 places</span></p>
-											</div><!-- /.item-title -->
-										</div><!-- /.filtr-item -->
-						  			</div><!-- /.col -->
-
-						  			<div class="col-md-4">
-						  				<div class="filtr-item">
-											<img src="vendor/images/gallary/g4.jpg" alt="portfolio image"/>
-											<div class="item-title">
-												<a href="#">
-													australia
-												</a>
-												<p><span>18 tours</span><span>9 places</span></p>
-											</div> <!-- /.item-title-->
-										</div><!-- /.filtr-item -->
-						  			</div><!-- /.col -->
-
-						  			<div class="col-md-4">
-						  				<div class="filtr-item">
-											<img src="vendor/images/gallary/g5.jpg" alt="portfolio image"/>
-											<div class="item-title">
-												<a href="#">
-													netharland
-												</a>
-												<p><span>14 tours</span><span>12 places</span></p>
-											</div> <!-- /.item-title-->
-										</div><!-- /.filtr-item -->
-						  			</div><!-- /.col -->
-
-						  			<div class="col-md-8">
-						  				<div class="filtr-item">
-											<img src="vendor/images/gallary/g6.jpg" alt="portfolio image"/>
-											<div class="item-title">
-												<a href="#">
-													turkey
-												</a>
-												<p><span>14 tours</span><span>6 places</span></p>
-											</div> <!-- /.item-title-->
-										</div><!-- /.filtr-item -->
-						  			</div><!-- /.col -->
+                                      </div><!-- /.col -->
+                                      @endforeach
 
 						  		</div><!-- /.row -->
 
@@ -605,25 +546,27 @@
 				</div><!--/.gallery-header-->
 				<div class="packages-content">
 					<div class="row">
-
+                        @foreach ($lelang as $lelangs)
 						<div class="col-md-4 col-sm-6">
 							<div class="single-package-item">
-								<img src="vendor/images/packages/p1.jpg" alt="package-place">
+								<img src="{{ asset('/images/kayu/'.$lelangs->kayu->foto) }}" alt="package-place">
 								<div class="single-package-item-txt">
-									<h3>italy <span class="pull-right">$499</span></h3>
+									<h3>{{ $lelangs->kayu->nama_kayu }}<span class="pull-right">IDR {{ $lelangs->harga_awal }}</span></h3>
 									<div class="packages-para">
 										<p>
 											<span>
-												<i class="fa fa-angle-right"></i> 5 daays 6 nights
-											</span>
-											<i class="fa fa-angle-right"></i>  5 star accomodation
+												<i class="fa fa-angle-right"></i>Dimulai Tanggal {{ $lelangs->tanggal_mulai }}
+                                            </span>
+                                            <span>
+                                            <i class="fa fa-angle-right"></i>  Selesai Tanggal {{ $lelangs->tanggal_selesai }}
+                                            </span>
 										</p>
-										<p>
+										{{-- <p>
 											<span>
 												<i class="fa fa-angle-right"></i>  transportation
 											</span>
 											<i class="fa fa-angle-right"></i>  food facilities
-										 </p>
+										 </p> --}}
 									</div><!--/.packages-para-->
 									<div class="packages-review">
 										<p>
@@ -643,84 +586,8 @@
 								</div><!--/.single-package-item-txt-->
 							</div><!--/.single-package-item-->
 
-						</div><!--/.col-->
-						<div class="col-md-4 col-sm-6">
-							<div class="single-package-item">
-								<img src="vendor/images/packages/p5.jpg" alt="package-place">
-								<div class="single-package-item-txt">
-									<h3>spain <span class="pull-right">$999</span></h3>
-									<div class="packages-para">
-										<p>
-											<span>
-												<i class="fa fa-angle-right"></i> 5 daays 6 nights
-											</span>
-											<i class="fa fa-angle-right"></i>  5 star accomodation
-										</p>
-										<p>
-											<span>
-												<i class="fa fa-angle-right"></i>  transportation
-											</span>
-											<i class="fa fa-angle-right"></i>  food facilities
-										 </p>
-									</div><!--/.packages-para-->
-									<div class="packages-review">
-										<p>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<span>2544 review</span>
-										</p>
-									</div><!--/.packages-review-->
-									<div class="about-btn">
-										<button  class="about-view packages-btn">
-											daftar
-										</button>
-									</div><!--/.about-btn-->
-								</div><!--/.single-package-item-txt-->
-							</div><!--/.single-package-item-->
-
-						</div><!--/.col-->
-
-						<div class="col-md-4 col-sm-6">
-							<div class="single-package-item">
-								<img src="vendor/images/packages/p6.jpg" alt="package-place">
-								<div class="single-package-item-txt">
-									<h3>thailand <span class="pull-right">$799</span></h3>
-									<div class="packages-para">
-										<p>
-											<span>
-												<i class="fa fa-angle-right"></i> 5 daays 6 nights
-											</span>
-											<i class="fa fa-angle-right"></i>  5 star accomodation
-										</p>
-										<p>
-											<span>
-												<i class="fa fa-angle-right"></i>  transportation
-											</span>
-											<i class="fa fa-angle-right"></i>  food facilities
-										 </p>
-									</div><!--/.packages-para-->
-									<div class="packages-review">
-										<p>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<span>2544 review</span>
-										</p>
-									</div><!--/.packages-review-->
-									<div class="about-btn">
-										<button  class="about-view packages-btn">
-											daftar
-										</button>
-									</div><!--/.about-btn-->
-								</div><!--/.single-package-item-txt-->
-							</div><!--/.single-package-item-->
-
-						</div><!--/.col-->
+                        </div><!--/.col-->
+                        @endforeach
 
 					</div><!--/.row-->
 				</div><!--/.packages-content-->
@@ -798,82 +665,46 @@
 							</h2>
 							<p>
 								Kumpulan berita seputar lelang kayu
-							</p>
+                            </p>
+
 						</div><!--/.gallery-header-->
 						<div class="blog-content">
+                                @foreach ($berita as $beritas)
 							<div class="row">
 
-								<div class="col-sm-4 col-md-4">
-									<div class="thumbnail">
-										<h2>trending news <span>15 november 2017</span></h2>
-										<div class="thumbnail-img">
-											<img src="vendor/images/blog/b1.jpg" alt="blog-img">
-											<div class="thumbnail-img-overlay"></div><!--/.thumbnail-img-overlay-->
-
-										</div><!--/.thumbnail-img-->
-
-										<div class="caption">
-											<div class="blog-txt">
-												<h3>
-													<a href="#">
-														Discover on beautiful weather, Fantastic foods and historical place in Prag
-													</a>
-												</h3>
-												<p>
-													Lorem ipsum dolor sit amet, contur adip elit, sed do mod incid ut labore et dolore magna aliqua. Ut enim ad minim veniam
-												</p>
-												<a href="#">Read More</a>
-											</div><!--/.blog-txt-->
-										</div><!--/.caption-->
-									</div><!--/.thumbnail-->
-
-								</div><!--/.col-->
 
 								<div class="col-sm-4 col-md-4">
 									<div class="thumbnail">
-										<h2>trending news <span>15 november 2017</span></h2>
-										<div class="thumbnail-img">
-											<img src="vendor/images/blog/b2.jpg" alt="blog-img">
-											<div class="thumbnail-img-overlay"></div><!--/.thumbnail-img-overlay-->
 
-										</div><!--/.thumbnail-img-->
-										<div class="caption">
-											<div class="blog-txt">
-												<h3>
-													<a href="#">
-														Discover on beautiful weather, Fantastic foods and historical place in india
-													</a>
-												</h3>
-												<p>
-													Lorem ipsum dolor sit amet, contur adip elit, sed do mod incid ut labore et dolore magna aliqua. Ut enim ad minim veniam
-												</p>
-												<a href="#">Read More</a>
-											</div><!--/.blog-txt-->
-										</div><!--/.caption-->
-									</div><!--/.thumbnail-->
+                                            <h2>trending news <span>{{ $beritas->created_at }}</span></h2>
+                                            <div class="thumbnail-img">
+                                                    {{-- <img src="{{asset('/images/berita/'.$berita->foto)}}" alt="" width="100%"> --}}
+                                                <img src="{{ asset('/images/berita/'.$beritas->foto) }}" alt="blog-img">
+                                                <div class="thumbnail-img-overlay"></div><!--/.thumbnail-img-overlay-->
 
-								</div><!--/.col-->
+                                            </div><!--/.thumbnail-img-->
 
-								<div class="col-sm-4 col-md-4">
-									<div class="thumbnail">
-										<h2>trending news <span>15 november 2017</span></h2>
-										<div class="thumbnail-img">
-											<img src="vendor/images/blog/b3.jpg" alt="blog-img">
-											<div class="thumbnail-img-overlay"></div><!--/.thumbnail-img-overlay-->
+                                            <div class="caption">
+                                                <div class="blog-txt">
+                                                    <h3>
+                                                        <a href="#">
+                                                            {{ $beritas->judul }}
+                                                        </a>
+                                                    </h3>
+                                                    <p>
+                                                        {{ $beritas->isi }}
+                                                    </p>
+                                                    <a href="#">Read More</a>
+                                                </div><!--/.blog-txt-->
+                                            </div><!--/.caption-->
+                                        </div><!--/.thumbnail-->
 
-										</div><!--/.thumbnail-img-->
-										<div class="caption">
-											<div class="blog-txt">
-												<h3><a href="#">10 Most Natural place to Discover</a></h3>
-												<p>
-													Lorem ipsum dolor sit amet, contur adip elit, sed do mod incid ut labore et dolore magna aliqua. Ut enim ad minim veniam
-												</p>
-												<a href="#">Read More</a>
-											</div><!--/.blog-txt-->
-										</div><!--/.caption-->
-									</div><!--/.thumbnail-->
 
-								</div><!--/.col-->
+
+                                </div><!--/.col-->
+                                @endforeach
+
+
 
 							</div><!--/.row-->
 						</div><!--/.blog-content-->
