@@ -1,8 +1,10 @@
 <?php
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// Route::get('/','homeController@getalldata' );
+
+// });
 
 //halaman admin
 Route::group(['middleware' => 'admin'], function() {
@@ -113,6 +115,8 @@ Route::put('/halaman-peserta/edit/{id}','pesertaController@peserta_lelang_update
 Route::get('/lelang_berlangsung','pesertaController@lelang_berlangsung' )->name('lelang_berlangsung');
 Route::get('/lelang_berlangsung_detail/{id}','pesertaController@lelang_berlangsung_detail' )->name('lelang_berlangsung_detail');
 
+
+Route::get('/','welcomeController@index' );
 Auth::routes();
 
 Route::get('/home', 'dashboardController@index')->name('home');
