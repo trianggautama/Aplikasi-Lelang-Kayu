@@ -46,20 +46,20 @@ class adminController extends Controller
         $Password       = Hash::make($request->password);
         $User->password = $Password;
         $User->role     = $request->role;
+        if ($request->foto) {
+            $FotoExt  = $request->foto->getClientOriginalExtension();
+            $FotoName = 'karyawan'.$request->user_id.'-'. $request->name;
+            $foto     = $FotoName.'.'.$FotoExt;
+            $request->foto->move('images/karyawan', $foto);
+            $User->foto= $foto;
+        }else {
+            $User->foto = 'default.png';
+          }
         $User->save();
 
         $user_id = $User->id;
         $Karyawan = new Karyawan;
 
-        if ($request->gambar) {
-            $FotoExt  = $request->gambar->getClientOriginalExtension();
-            $FotoName = 'karyawan'.$request->user_id.'-'. $request->name;
-            $gambar     = $FotoName.'.'.$FotoExt;
-            $request->gambar->move('images/karyawan', $gambar);
-            $Karyawan->gambar= $gambar;
-        }else {
-            $Karyawan->gambar = 'default.png';
-          }
         // if ($request->gambar != "") {
         //     $FotoExt  = $request->gambar->getClientOriginalExtension();
         //     $FotoName = $request->user_id.' - '.$request->name;
