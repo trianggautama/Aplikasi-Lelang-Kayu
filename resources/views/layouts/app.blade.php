@@ -83,13 +83,13 @@
           </li>
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                
-                  <img src="{{asset('/images/karyawan/'.Auth::User()->karyawan->gambar)}}" alt="profile"/>
-              
-              
-              
-              {{-- <span class="nav-profile-name">{{ Auth::user()->karyawan->gambar }}</span> --}}
-              
+
+                  <img src="{{asset('/images/karyawan/'.Auth::User()->foto)}}" alt="profile"/>
+
+
+
+              {{-- <span class="nav-profile-name">{{ Auth::user()->foto }}</span> --}}
+
               <span class="nav-profile-name">{{ Auth::user()->name }}</span>
               {{-- {{ Auth::user()->name }} --}}
             </a>

@@ -9,10 +9,13 @@ use App\Lelang;
 use App\Berita;
 use App\Peserta;
 use App\Karyawan;
+
+use Carbon\Carbon;
 use IDCrypt;
 Use File;
 use Auth;
 use Hash;
+use PDF;
 
 
 class adminController extends Controller
@@ -46,20 +49,20 @@ class adminController extends Controller
         $Password       = Hash::make($request->password);
         $User->password = $Password;
         $User->role     = $request->role;
+        if ($request->foto) {
+            $FotoExt  = $request->foto->getClientOriginalExtension();
+            $FotoName = 'karyawan'.$request->user_id.'-'. $request->name;
+            $foto     = $FotoName.'.'.$FotoExt;
+            $request->foto->move('images/karyawan', $foto);
+            $User->foto= $foto;
+        }else {
+            $User->foto = 'default.png';
+          }
         $User->save();
 
         $user_id = $User->id;
         $Karyawan = new Karyawan;
 
-        if ($request->gambar) {
-            $FotoExt  = $request->gambar->getClientOriginalExtension();
-            $FotoName = 'karyawan'.$request->user_id.'-'. $request->name;
-            $gambar     = $FotoName.'.'.$FotoExt;
-            $request->gambar->move('images/karyawan', $gambar);
-            $Karyawan->gambar= $gambar;
-        }else {
-            $Karyawan->gambar = 'default.png';
-          }
         // if ($request->gambar != "") {
         //     $FotoExt  = $request->gambar->getClientOriginalExtension();
         //     $FotoName = $request->user_id.' - '.$request->name;
@@ -244,6 +247,7 @@ class adminController extends Controller
 
         $lelang->nama  = $request->nama;
         $lelang->tanggal_mulai  = $request->tanggal_mulai;
+        $lelang->tanggal_selesai  = $request->tanggal_selesai;
         $lelang->tempat  = $request->tempat;
         $lelang->harga_awal  = $request->harga_awal;
         $lelang->kayu_id  = $request->kayu_id;
@@ -253,7 +257,7 @@ class adminController extends Controller
 
         $lelang->save();
 
-          return redirect(route('lelang-index'))->with('success', 'Data lelang '.$request->nama_lelang.' Berhasil di Tambahkan');
+          return redirect(route('lelang-index'))->with('success', 'Data lelang '.$request->nama.' Berhasil di Tambahkan');
       }//fungsi menambahkan data lelang
 
     public function lelang_detail($id){
@@ -277,11 +281,11 @@ class adminController extends Controller
 
         $lelang->nama  = $request->nama;
         $lelang->tanggal_mulai  = $request->tanggal_mulai;
+        $lelang->tanggal_selesai  = $request->tanggal_selesai;
         $lelang->tempat  = $request->tempat;
         $lelang->harga_awal  = $request->harga_awal;
         $lelang->kayu_id  = $request->kayu_id;
-        $status=1;
-        $lelang->status = $status;
+        $lelang->status = $request->status;
 
         $lelang->update();
         return redirect(route('lelang-index'))->with('success', 'Data lelang '.$request->nama.' Berhasil di ubah');
@@ -312,7 +316,7 @@ class adminController extends Controller
         $path     = str_replace("?", "", $request->judul);
     	$path     = explode(" ", $path);
         $path     = implode("-", $path);
-        
+
         $id     = Auth::user()->id;
 
         if ($request->foto) {
@@ -358,7 +362,7 @@ class adminController extends Controller
         $path     = str_replace("?", "", $request->judul);
     	$path     = explode(" ", $path);
         $path     = implode("-", $path);
-        
+
         $karyawan_id     = Auth::user()->id;
 
         if ($request->foto) {
@@ -498,4 +502,13 @@ class adminController extends Controller
 
         return redirect(route('peserta-lelang-index'))->with('success', 'Data peserta Berhasil di hapus');
     }//fungsi menghapus data peserta
+
+    public function karyawan_cetak(){
+       // $permohonan_kalibrasi=permohonan_kalibrasi::all();
+        // $pejabat =pejabat::where('jabatan','Kepala Dinas')->get();
+        $tgl= Carbon::now()->format('d F Y');
+        $pdf =PDF::loadView('laporan.karyawan_keseluruhan', ['tgl'=>$tgl]);
+        $pdf->setPaper('a4', 'potrait');
+        return $pdf->stream('Karyawan Keseluruhan.pdf');
+       }//mencetak  perusahaan
 }

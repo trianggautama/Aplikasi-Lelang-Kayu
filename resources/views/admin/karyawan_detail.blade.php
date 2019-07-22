@@ -21,7 +21,7 @@
                             <div class="card">
                               <div class="card-body text-center">
                                 <p class="card-title">Foto Karyawan</p>
-                               <img src="{{asset('/images/karyawan/'.$Karyawan->gambar)}}" alt="" width="100%">
+                               <img src="{{asset('/images/karyawan/'.$Karyawan->user->foto)}}" alt="" width="100%">
                               </div>
                             </div>
                           </div>

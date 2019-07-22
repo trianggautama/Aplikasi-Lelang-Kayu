@@ -5,9 +5,7 @@
     <div class="content-wrapper">
         <div class="row">
             <div class="col-md-12 grid-margin">
-                <div class="d-flex justify-content-between flex-wrap">
-                        <a href="{{ route('peserta-lelang-tambah') }}" class="btn btn-primary mt-2 mt-xl-0"> <i
-                            class=" mdi mdi-plus "></i> Tambah Data</a>
+                <div class="d-flex justify-content-between flex-wrap">           
                     <div class="d-flex align-items-end flex-wrap">
                         <div class="mr-md-3 mr-xl-5">
                             <h2>Data Peserta Lelang,</h2>
@@ -21,6 +19,10 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Tabel Data</h4>
+                        <div class="text-right">
+                        <a href="{{ route('peserta-lelang-tambah') }}" class="btn btn-inverse-primary mt-2 mt-xl-0"> <i
+                            class=" mdi mdi-plus "></i> Tambah Data</a>
+                        </div>
                         <div class="table-responsive">
                             <table class="table table-striped " id="myTable">
                                 <thead>

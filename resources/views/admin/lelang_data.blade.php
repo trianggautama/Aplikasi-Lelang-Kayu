@@ -43,7 +43,12 @@
                                 <td>{{$lelangs->tanggal_mulai}}</td>
                                 <td>{{$lelangs->tempat}}</td>
                                 <td>{{$lelangs->harga_awal}}</td>
-                                <td>{{$lelangs->status}}</td>
+
+                                @if($lelangs->status==1)
+                                    <td  class="text-center"><label class="badge badge-primary">Lelang Sedang Berlangsung</label></td>
+                                @else
+                                    <td  class="text-center"><label class="badge badge-info">Lelang Sudah Selesai</label></td>
+                                @endif
                                 <td class="text-center">
                                         <a href="{{ route('lelang-detail', ['id' => IDCrypt::Encrypt( $lelangs->id)])}}" class="btn btn-secondary "> <i class=" mdi mdi-eye "></i></a>
 

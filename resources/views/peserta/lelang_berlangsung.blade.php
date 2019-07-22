@@ -28,28 +28,34 @@
                           <table class="table table-striped "  id="myTable">
                             <thead>
                               <tr>
+                                <th>No</th>
                                 <th>Nama</th>
-                                <th>Kayu</th>
-                                <th  class="text-center">Harga Awal</th>
-                                <th  class="text-center">Batas Lelang</th>
-                                <th  class="text-center">Aksi</th>
+                                <th>Tanggal Lelang</th>
+                                <th>Tempat</th>
+                                <th>Harga Awal</th>
+                                <th>Status</th>
                               </tr>
                             </thead>
                             <tbody>
                               <tr>
-                                <td>5 kg</td>
-                                <td> Kayu Jati</td>
-                                <td  class="text-center"><label class="badge badge-warning">Rp.6 Jt</label></td>
-                                <td  class="text-center"> 20 Mei 2019</td>
-                                <td class="text-center"><a href="{{Route('lelang_berlangsung_detail')}}" class="btn  btn-primary" style="padding:6px !important;"><i class=" mdi mdi-eye "> </i></a></td>
+                                <?php $no = 0 ?>
+                                @foreach ($lelang as $lelangs)
+                                <td>{{$no = $no + 1}}</td>
+                                <td>{{$lelangs->nama}}</td>
+                                <td>{{$lelangs->tanggal_mulai}}</td>
+                                <td>{{$lelangs->tempat}}</td>
+                                <td>{{$lelangs->harga_awal}}</td>
+
+                                @if($lelangs->status==1)
+                                    <td  class="text-center"><label class="badge badge-primary">Lelang Sedang Berlangsung</label></td>
+                                @else
+                                    <td  class="text-center"><label class="badge badge-info">Lelang Sudah Selesai</label></td>
+                                @endif
+                                <td class="text-center">
+                                        <a href="{{ route('lelang_berlangsung_detail', ['id' => IDCrypt::Encrypt( $lelangs->id)])}}" class="btn btn-secondary "> <i class=" mdi mdi-eye "></i></a>
+                                    </td>
                               </tr>
-                              <tr>
-                                <td>10 kg</td>
-                                <td>Kayu Ulin</td>
-                                <td  class="text-center"><label class="badge badge-danger">Rp.8 Jt</label></td>
-                                <td  class="text-center"> 25 Mei 2019</td>
-                                <td class="text-center"><a href="{{Route('lelang_berlangsung_detail')}}" class="btn  btn-primary" style="padding:6px !important;"> <i class=" mdi mdi-eye "> </i></a></td>
-                              </tr>
+                              @endforeach
                             </tbody>
                           </table>
                         </div>

@@ -23,7 +23,6 @@ class CreateKaryawansTable extends Migration
             $table->string('alamat')->length(255);
             $table->string('telepon')->length(13);
             $table->string('status')->length(13);
-            $table->string('gambar')->length('255')->default('default.png');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
