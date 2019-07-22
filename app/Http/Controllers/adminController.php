@@ -510,5 +510,24 @@ class adminController extends Controller
         $pdf =PDF::loadView('laporan.karyawan_keseluruhan', ['tgl'=>$tgl]);
         $pdf->setPaper('a4', 'potrait');
         return $pdf->stream('Karyawan Keseluruhan.pdf');
-       }//mencetak  perusahaan
+       }//mencetak  data karyawan
+
+       
+    public function kayu_cetak(){
+        // $permohonan_kalibrasi=permohonan_kalibrasi::all();
+         // $pejabat =pejabat::where('jabatan','Kepala Dinas')->get();
+         $tgl= Carbon::now()->format('d F Y');
+         $pdf =PDF::loadView('laporan.kayu', ['tgl'=>$tgl]);
+         $pdf->setPaper('a4', 'potrait');
+         return $pdf->stream('Data Kayu.pdf');
+        }//mencetak  data karyawan
+  
+    public function peserta_lelang_cetak(){
+        // $permohonan_kalibrasi=permohonan_kalibrasi::all();
+            // $pejabat =pejabat::where('jabatan','Kepala Dinas')->get();
+            $tgl= Carbon::now()->format('d F Y');
+            $pdf =PDF::loadView('laporan.peserta_lelang_keseluruhan', ['tgl'=>$tgl]);
+            $pdf->setPaper('a4', 'potrait');
+            return $pdf->stream('Data Peserta Lelang.pdf');
+        }//mencetak  data karyawan}
 }

@@ -43,6 +43,8 @@ Route::put('/kayu/edit/{id}','adminController@kayu_update')
 ->name('kayu-update');
 Route::get('/kayu/hapus/{id}','adminController@kayu_hapus')
 ->name('kayu-hapus');
+Route::get('/kayu/cetak','adminController@kayu_cetak')
+->name('kayu_cetak');
 //data kayu
 
 //data lelang
@@ -95,6 +97,8 @@ Route::put('/peserta/edit/{id}','adminController@peserta_lelang_update')
 ->name('peserta-lelang-update');
 Route::get('/peserta/hapus/{id}','adminController@peserta_lelang_hapus')
 ->name('peserta-lelang-hapus');
+Route::get('/peserta/cetak','adminController@peserta_lelang_cetak' )
+->name('peserta-lelang-cetak');
 //data berita
 
 });
