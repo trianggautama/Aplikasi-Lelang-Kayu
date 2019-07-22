@@ -50,14 +50,13 @@
                             <h4 class="card-title">Nama : Kayu Ulin</h4>
                             <h4 class="card-title">keterangan : Kayu yang biasa digunakan sebagai pondasi sebuah bangunan</h4>
                         </div>
-                        <br>
                         <hr>
                         <br>
                         <h4 class="card-title text-primary">Detail Lelang</h4>
                         <div class="template-demo">
                             <h4 class="card-title">Harga Awal: 50jt</h4>
                             <h4 class="card-title">Tanggal Lelang :31 Juli 2019</h4>
-                            <h4 class="card-title">Proses Lelang : Tahap Pendaftaran</h4>
+                            <h4 class="card-title">Proses Lelang : <label class="text-success"> Tahap Pendaftaran</label></h4>
                         </div>
                         <div class="card-footer text-right">
                             <a href="" class="btn btn-danger">Kembali</a>
