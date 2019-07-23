@@ -50,7 +50,6 @@
                             <h4 class="card-title">Nama &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;: {{ $lelang->kayu->nama_kayu }}</h4>
                             <h4 class="card-title">keterangan &nbsp;: {{ $lelang->kayu->keterangan }}</h4>
                         </div>
-                        <br>
                         <hr>
                         <br>
                         <h4 class="card-title text-primary">Detail Lelang</h4>
