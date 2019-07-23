@@ -34,6 +34,7 @@
                                 <th>Tempat</th>
                                 <th>Harga Awal</th>
                                 <th>Status</th>
+                                <th>Action</th>
                               </tr>
                             </thead>
                             <tbody>
