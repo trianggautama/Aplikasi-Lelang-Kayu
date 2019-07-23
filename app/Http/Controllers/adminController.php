@@ -403,6 +403,17 @@ class adminController extends Controller
         return view('admin.peserta_lelang_data', ['data' => $data]);
     }
 
+    public function status_update(Request $request, $id){
+        $id = IDCrypt::Decrypt($id);
+        $user = user::findOrFail($id);
+
+
+        $user->status       = $request->status;
+
+        $user->update();
+        return redirect(route('peserta-lelang-index'))->with('success', 'Data status '.$request->name.' Berhasil di ubah');
+         }
+
 // fungsi route peserta tambah
     public function peserta_lelang_tambah(){
         return view('admin.peserta_lelang_tambah');
