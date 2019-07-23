@@ -9,10 +9,13 @@ use App\Lelang;
 use App\Berita;
 use App\Peserta;
 use App\Karyawan;
+
+use Carbon\Carbon;
 use IDCrypt;
 Use File;
 use Auth;
 use Hash;
+use PDF;
 
 
 class adminController extends Controller
@@ -403,6 +406,17 @@ class adminController extends Controller
         return view('admin.peserta_lelang_data', ['data' => $data]);
     }
 
+    public function status_update(Request $request, $id){
+        $id = IDCrypt::Decrypt($id);
+        $user = user::findOrFail($id);
+
+
+        $user->status       = $request->status;
+
+        $user->update();
+        return redirect(route('peserta-lelang-index'))->with('success', 'Data status '.$request->name.' Berhasil di ubah');
+         }
+
 // fungsi route peserta tambah
     public function peserta_lelang_tambah(){
         return view('admin.peserta_lelang_tambah');
@@ -499,4 +513,32 @@ class adminController extends Controller
 
         return redirect(route('peserta-lelang-index'))->with('success', 'Data peserta Berhasil di hapus');
     }//fungsi menghapus data peserta
+
+    public function karyawan_cetak(){
+       // $permohonan_kalibrasi=permohonan_kalibrasi::all();
+        // $pejabat =pejabat::where('jabatan','Kepala Dinas')->get();
+        $tgl= Carbon::now()->format('d F Y');
+        $pdf =PDF::loadView('laporan.karyawan_keseluruhan', ['tgl'=>$tgl]);
+        $pdf->setPaper('a4', 'potrait');
+        return $pdf->stream('Karyawan Keseluruhan.pdf');
+       }//mencetak  data karyawan
+
+       
+    public function kayu_cetak(){
+        // $permohonan_kalibrasi=permohonan_kalibrasi::all();
+         // $pejabat =pejabat::where('jabatan','Kepala Dinas')->get();
+         $tgl= Carbon::now()->format('d F Y');
+         $pdf =PDF::loadView('laporan.kayu', ['tgl'=>$tgl]);
+         $pdf->setPaper('a4', 'potrait');
+         return $pdf->stream('Data Kayu.pdf');
+        }//mencetak  data karyawan
+  
+    public function peserta_lelang_cetak(){
+        // $permohonan_kalibrasi=permohonan_kalibrasi::all();
+            // $pejabat =pejabat::where('jabatan','Kepala Dinas')->get();
+            $tgl= Carbon::now()->format('d F Y');
+            $pdf =PDF::loadView('laporan.peserta_lelang_keseluruhan', ['tgl'=>$tgl]);
+            $pdf->setPaper('a4', 'potrait');
+            return $pdf->stream('Data Peserta Lelang.pdf');
+        }//mencetak  data karyawan}
 }

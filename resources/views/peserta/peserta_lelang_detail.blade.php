@@ -22,7 +22,7 @@
                             <div class="card">
                               <div class="card-body text-center">
                                 <p class="card-title">Foto peserta</p>
-                               <img src="{{asset('/images/peserta/'.$peserta->foto)}}" alt="" width="100%">
+                               <img src="{{asset('/images/peserta/'.$peserta->user->foto)}}" alt="" width="100%">
                               </div>
                             </div>
                           </div>

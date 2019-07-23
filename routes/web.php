@@ -26,6 +26,8 @@ Route::put('/karyawan/edit/{id}','adminController@karyawan_update')
 ->name('karyawan-update');
 Route::get('/karyawan/hapus/{id}','adminController@karyawan_hapus')
 ->name('karyawan-hapus');
+Route::get('/karyawan/cetak','adminController@karyawan_cetak')
+->name('karyawan-cetak');
 //data karyawan
 
 //data kayu
@@ -41,6 +43,8 @@ Route::put('/kayu/edit/{id}','adminController@kayu_update')
 ->name('kayu-update');
 Route::get('/kayu/hapus/{id}','adminController@kayu_hapus')
 ->name('kayu-hapus');
+Route::get('/kayu/cetak','adminController@kayu_cetak')
+->name('kayu_cetak');
 //data kayu
 
 //data lelang
@@ -85,6 +89,8 @@ Route::get('/peserta/tambah','adminController@peserta_lelang_tambah')
 ->name('peserta-lelang-tambah');
 Route::POST('/peserta/tambah','adminController@peserta_lelang_tambah_store')
 ->name('peserta-lelang-tambah_store');
+Route::put('/peserta/{id}', 'adminController@status_update')
+->name('status_update');
 Route::get('/peserta/detail/{id}','adminController@peserta_lelang_detail')
 ->name('peserta-lelang-detail');
 Route::get('/peserta/edit/{id}','adminController@peserta_lelang_edit')
@@ -93,6 +99,8 @@ Route::put('/peserta/edit/{id}','adminController@peserta_lelang_update')
 ->name('peserta-lelang-update');
 Route::get('/peserta/hapus/{id}','adminController@peserta_lelang_hapus')
 ->name('peserta-lelang-hapus');
+Route::get('/peserta/cetak','adminController@peserta_lelang_cetak' )
+->name('peserta-lelang-cetak');
 //data berita
 
 });
@@ -114,9 +122,16 @@ Route::put('/halaman-peserta/edit/{id}','pesertaController@peserta_lelang_update
 
 Route::get('/lelang_berlangsung','pesertaController@lelang_berlangsung' )->name('lelang_berlangsung');
 Route::get('/lelang_berlangsung_detail/{id}','pesertaController@lelang_berlangsung_detail' )->name('lelang_berlangsung_detail');
+Route::get('/peserta/lelang/{id}', 'pesertaController@lelang_proses')
+->name('lelang_proses');
+Route::put('/peserta/lelang/{id}','pesertaController@lelang_hasil_tambah')
+->name('lelang_hasil_tambah');
+Route::get('/riwayat_lelang','pesertaController@riwayat_lelang' )->name('riwayat_lelang');
 
 
 Route::get('/','welcomeController@index' );
+Route::get('/lelang/hasil-lelang/detail/{id}', 'welcomeController@hasil_lelang_detail')
+->name('hasil_lelang_detail');
 Auth::routes();
 
 Route::get('/home', 'dashboardController@index')->name('home');

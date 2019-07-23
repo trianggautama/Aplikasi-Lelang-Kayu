@@ -32,6 +32,7 @@
                                 <th>Tempat</th>
                                 <th>Harga Awal</th>
                                 <th>Status</th>
+                                <th>Action</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -51,7 +52,6 @@
                                 @endif
                                 <td class="text-center">
                                         <a href="{{ route('lelang-detail', ['id' => IDCrypt::Encrypt( $lelangs->id)])}}" class="btn btn-secondary "> <i class=" mdi mdi-eye "></i></a>
-
                                         <a href="{{ route('lelang-hapus', ['id' => IDCrypt::Encrypt( $lelangs->id)])}}" class="btn btn-danger"> <i class="mdi mdi-delete"></i></a>
                                     </td>
                               </tr>
