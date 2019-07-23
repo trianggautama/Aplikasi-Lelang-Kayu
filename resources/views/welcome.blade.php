@@ -578,10 +578,10 @@
 											<span>2544 review</span>
 										</p>
 									</div><!--/.packages-review-->
-									<div class="about-btn">
-										<button  class="about-view packages-btn">
-											daftar
-										</button>
+									<div class="about-btn" >
+										{{-- <button  class="about-view packages-btn" href="{{ route('hasil_lelang_detail', ['id' => IDCrypt::Encrypt( $lelangs->id)])}}"> --}}
+                                                <a href="{{ route('hasil_lelang_detail', ['id' => IDCrypt::Encrypt( $lelangs->id)])}}" class="about-view packages-btn ">Detail</a>
+										{{-- </button> --}}
 									</div><!--/.about-btn-->
 								</div><!--/.single-package-item-txt-->
 							</div><!--/.single-package-item-->
