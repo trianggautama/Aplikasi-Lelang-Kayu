@@ -47,21 +47,26 @@
                         <h4 class="card-title text-primary">Detail Kayu</h4>
 
                         <div class="template-demo">
-                            <h4 class="card-title">Nama : Kayu Ulin</h4>
-                            <h4 class="card-title">keterangan : Kayu yang biasa digunakan sebagai pondasi sebuah bangunan</h4>
+                            <h4 class="card-title">Nama &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;: {{ $lelang->kayu->nama_kayu }}</h4>
+                            <h4 class="card-title">keterangan &nbsp;: {{ $lelang->kayu->keterangan }}</h4>
                         </div>
                         <br>
                         <hr>
                         <br>
                         <h4 class="card-title text-primary">Detail Lelang</h4>
                         <div class="template-demo">
-                            <h4 class="card-title">Harga Awal: {{$lelang->harga_awal}}</h4>
-                            <h4 class="card-title">Tanggal Lelang : {{$lelang->tanggal_mulai}}</h4>
-                            <h4 class="card-title">Proses Lelang : Tahap Pendaftaran</h4>
+                            <h4 class="card-title">Harga Awal &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;: {{$lelang->harga_awal}}</h4>
+                            <h4 class="card-title">Tanggal Lelang &nbsp;: {{$lelang->tanggal_mulai}}</h4>
+                            @if($lelang->status==1)
+                            <h4 class="card-title">Status &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;: <label class="badge badge-primary">Lelang Sedang Berlangsung</label></h4>
+                            @else
+                            <h4 class="card-title">Status &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;: <label class="badge badge-primary">Lelang Sudah Selesai</label></h4>
+                            @endif
                         </div>
                         <div class="card-footer text-right">
                             <a href="{{route ('lelang_berlangsung') }}" class="btn btn-danger">Kembali</a>
-                            <a href="" class="btn btn-primary">Ikut Lelang</a>
+                            <a href="{{route ('lelang_proses', ['id' => IDCrypt::Encrypt( $lelang->id)]) }}" class="btn btn-primary">Ikut Lelang</a>
+
                         </div>
                     </div>
                 </div>
