@@ -299,6 +299,16 @@ class adminController extends Controller
 
         return redirect(route('lelang-index'))->with('success', 'Data lelang Berhasil di hapus');
     }//fungsi menghapus data lelang
+    
+    public function lelang_filter_status(){
+    
+        return view('admin.lelang_filter_status');
+    }//fungsi filter lelang status
+
+    public function lelang_filter_periode(){
+    
+        return view('admin.lelang_filter_periode');
+    }//fungsi filter lelang periode
 
     //fungsi berita
     public function berita_index(){

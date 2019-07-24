@@ -45,6 +45,7 @@ Route::get('/kayu/hapus/{id}','adminController@kayu_hapus')
 ->name('kayu-hapus');
 Route::get('/kayu/cetak','adminController@kayu_cetak')
 ->name('kayu_cetak');
+
 //data kayu
 
 //data lelang
@@ -62,6 +63,10 @@ Route::put('/lelang/edit/{id}','adminController@lelang_update')
 ->name('lelang-update');
 Route::get('/lelang/hapus/{id}','adminController@lelang_hapus')
 ->name('lelang-hapus');
+Route::get('/lelang/filter/status','adminController@lelang_filter_status')
+->name('lelang-filter-status');
+Route::get('/lelang/filter/periode','adminController@lelang_filter_periode')
+->name('lelang-filter-periode');
 //data lelang
 
 //data berita

@@ -111,9 +111,9 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
                                         <?php $no = 0 ?>
                                 @foreach ($value_hasil_lelang as $d)
+                                <tr>
                                     <td>{{$no = $no + 1}}</td>
                                     <td>{{$d->peserta->user->name}}</td>
                                     <td>Bid Ke - {{$d->status_bid}}</td>
