@@ -7,7 +7,7 @@
     <title>Document</title>
     <style>
     h4,h2{
-        font-family:serif; 
+        font-family:serif;
     }
         body{
             font-family:sans-serif;
@@ -105,13 +105,15 @@
                         </thead>
                         <tbody>
                         <?php $no = 0 ?>
+                        @foreach ($karyawan as $d)
                         <tr>
                             <td>{{$no = $no + 1}}</td>
-                            <td> 19990726 1984 03 1 009</td>
-                            <td>Dedi Irawan</td>
-                            <td>Jl.A.yani km 31 komplek berlina</td>
-                            <td>0851123456789</td>
+                            <td>{{ $d->NIP }}</td>
+                            <td>{{ $d->user->name }}</td>
+                            <td>{{ $d->alamat }}</td>
+                            <td>{{ $d->telepon }}</td>
                         </tr>
+                        @endforeach
                         </tbody>
                     </table>
                       <br>

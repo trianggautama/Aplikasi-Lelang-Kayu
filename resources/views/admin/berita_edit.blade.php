@@ -16,7 +16,7 @@
                               {{ csrf_field() }}
                               <div class="form-group">
                                 <label for="exampleInputUsername1">Nama Penulis</label>
-                              <input type="text" class="form-control" id="name" placeholder="Nama Penulis" value="{{ $berita->karyawan->nama }}" disabled>
+                              <input type="text" class="form-control" id="name" placeholder="Nama Penulis" value="{{ $berita->karyawan->user->name }}" disabled>
                         </div>
                         <div class="form-group">
                              <label for="exampleInputUsername1">Judul</label>

@@ -74,12 +74,10 @@ class adminController extends Controller
         //   }
 
         $Karyawan->NIP          = $request->NIP;
-        $Karyawan->nama         = $request->nama;
         $Karyawan->tempat_lahir = $request->tempat_lahir;
         $Karyawan->alamat       = $request->alamat;
         $Karyawan->tanggal_lahir= $request->tanggal_lahir;
         $Karyawan->telepon      = $request->telepon;
-        $Karyawan->status      = $request->status;
         $Karyawan->user_id      = $user_id;
 
 
@@ -110,27 +108,30 @@ class adminController extends Controller
 
         $User->name     = $request->name;
         $User->email    = $request->email;
-        $Password       = Hash::make($request->password);
+        if($request->password!=null){
+            $Password       = Hash::make($request->password);
+        }else{
+            $Password = $User->password;
+        }
+
         $User->password = $Password;
 
-        if ($request->gambar) {
-            if ($Karyawan->gambar != 'default.png') {
-           // dd('gambar dihapus');
-              File::delete('images/karyawan/'.$Karyawan->gambar);
+        if ($request->foto !=null) {
+            if ($User->foto != 'default.png') {
+           // dd('foto dihapus');
+              File::delete('images/karyawan/'.$User->foto);
             }
-            //dd('gambar tidak dihapus');
-            $FotoExt  = $request->gambar->getClientOriginalExtension();
+            //dd('foto tidak dihapus');
+            $FotoExt  = $request->foto->getClientOriginalExtension();
             $FotoName = 'karyawan-'.$request->$id.'-'. $request->name;
-            $gambar     = $FotoName.'.'.$FotoExt;
-            $request->gambar->move('images/karyawan', $gambar);
-            $Karyawan->gambar= $gambar;
+            $foto     = $FotoName.'.'.$FotoExt;
+            $request->foto->move('images/karyawan', $foto);
+            $User->foto= $foto;
           }
         $Karyawan->NIP          = $request->NIP;
-        $Karyawan->nama         = $request->nama;
         $Karyawan->tempat_lahir = $request->tempat_lahir;
         $Karyawan->alamat       = $request->alamat;
         $Karyawan->tanggal_lahir= $request->tanggal_lahir;
-        $Karyawan->status          = $request->status;
         $Karyawan->telepon      = $request->telepon;
 
         $User->update();
@@ -517,28 +518,41 @@ class adminController extends Controller
     public function karyawan_cetak(){
        // $permohonan_kalibrasi=permohonan_kalibrasi::all();
         // $pejabat =pejabat::where('jabatan','Kepala Dinas')->get();
+        $karyawan = Karyawan::all();
         $tgl= Carbon::now()->format('d F Y');
-        $pdf =PDF::loadView('laporan.karyawan_keseluruhan', ['tgl'=>$tgl]);
+        $pdf =PDF::loadView('laporan.karyawan_keseluruhan', ['tgl'=>$tgl,'karyawan'=>$karyawan]);
         $pdf->setPaper('a4', 'potrait');
         return $pdf->stream('Karyawan Keseluruhan.pdf');
        }//mencetak  data karyawan
 
-       
+
     public function kayu_cetak(){
         // $permohonan_kalibrasi=permohonan_kalibrasi::all();
          // $pejabat =pejabat::where('jabatan','Kepala Dinas')->get();
+         $kayu = kayu::all();
          $tgl= Carbon::now()->format('d F Y');
-         $pdf =PDF::loadView('laporan.kayu', ['tgl'=>$tgl]);
+         $pdf =PDF::loadView('laporan.kayu', ['tgl'=>$tgl,'kayu'=>$kayu]);
          $pdf->setPaper('a4', 'potrait');
          return $pdf->stream('Data Kayu.pdf');
         }//mencetak  data karyawan
-  
+
     public function peserta_lelang_cetak(){
         // $permohonan_kalibrasi=permohonan_kalibrasi::all();
             // $pejabat =pejabat::where('jabatan','Kepala Dinas')->get();
+            $peserta = peserta::all();
             $tgl= Carbon::now()->format('d F Y');
-            $pdf =PDF::loadView('laporan.peserta_lelang_keseluruhan', ['tgl'=>$tgl]);
+            $pdf =PDF::loadView('laporan.peserta_lelang_keseluruhan', ['tgl'=>$tgl,'peserta'=>$peserta]);
             $pdf->setPaper('a4', 'potrait');
             return $pdf->stream('Data Peserta Lelang.pdf');
+        }//mencetak  data karyawan}
+
+    public function berita_cetak(){
+        // $permohonan_kalibrasi=permohonan_kalibrasi::all();
+            // $pejabat =pejabat::where('jabatan','Kepala Dinas')->get();
+            $berita = berita::all();
+            $tgl= Carbon::now()->format('d F Y');
+            $pdf =PDF::loadView('laporan.berita_keseluruhan', ['tgl'=>$tgl,'berita'=>$berita]);
+            $pdf->setPaper('a4', 'potrait');
+            return $pdf->stream('Data Berita Keseluruhan.pdf');
         }//mencetak  data karyawan}
 }

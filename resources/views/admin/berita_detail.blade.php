@@ -31,7 +31,7 @@
                                     <h4 class="card-title">Detail Berita</h4>
 
                                     <div class="template-demo">
-                                      <h4 class="card-title">Nama Penulis     : {{$berita->karyawan->nama}}</h4>
+                                      <h4 class="card-title">Nama Penulis     : {{$berita->karyawan->user->name}}</h4>
                                       <h4 class="card-title">Judul            : {{$berita->judul}}</h4>
                                       <h4 class="card-title">Isi              : {{$berita->isi}}</h4>
                                       <h4 class="card-title">Tanggal Dibuat   : {{$berita->created_at}} </h4>

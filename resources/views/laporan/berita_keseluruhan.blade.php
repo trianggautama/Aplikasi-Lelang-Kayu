@@ -92,26 +92,22 @@
     <hr style="margin-top:1px;">
     <div class="container">
         <div class="isi">
-            <h2 style="text-align:center;">DATA PESERTA LELANG</h2>
+            <h2 style="text-align:center;">DATA BERITA KESELURUHAN</h2>
             <table class="table table-hover" id="myTable">
                         <thead>
                         <tr>
                             <th>No</th>
-                            <th>Nama</th>
-                            <th>Alamat</th>
-                            <th>Telepon</th>
-                            <th>Pekerjaan</th>
+                            <th>Judul</th>
+                            <th>Isi</th>
                         </tr>
                         </thead>
                         <tbody>
-                            @foreach ($peserta as $d)
+                            @foreach ($berita as $d)
                         <?php $no = 0 ?>
                         <tr>
                             <td>{{$no = $no + 1}}</td>
-                            <td>{{ $d->user->name }}</td>
-                            <td>{{ $d->alamat }}</td>
-                            <td>{{ $d->telepon }}</td>
-                            <td>{{ $d->pekerjaan }}</td>
+                            <td>{{ $d->judul }}</td>
+                            <td>{{ $d->isi }}</td>
                         </tr>
                         @endforeach
                         </tbody>

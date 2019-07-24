@@ -15,7 +15,7 @@
                               {{method_field('PUT') }}
                               {{ csrf_field() }}
                               <div class="form-group">
-                                <label for="exampleInputUsername1">Username</label>
+                                <label for="exampleInputUsername1">Nama Lengkap</label>
                               <input type="text" class="form-control" name="name" id="name" placeholder="Username" value="{{ $User->name }}">
                         </div>
                         <div class="form-group">
@@ -24,15 +24,11 @@
                         </div>
                         <div class="form-group">
                                 <label for="exampleInputUsername1">Password</label>
-                                <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+                                <input type="password" class="form-control" name="password" id="password" placeholder="isi jika ingi mengubah Password">
                         </div>
                         <div class="form-group">
                              <label for="exampleInputUsername1">NIP </label>
                              <input type="text" class="form-control" name="NIP" id="NIP" placeholder="NIP" value="{{ $Karyawan->NIP }}">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputUsername1">Nama Lengkap</label>
-                            <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama Lengkap" value="{{ $Karyawan->nama }}">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputUsername1">Tempat Lahir</label>
@@ -60,14 +56,7 @@
                                     </span>
                                 </div>
                         </div>
-                         <div class="form-group">
-                            <label for="exampleSelectGender">Status</label>
-                                <select class="form-control" name="status" id="exampleSelectGender">
-                                  <option @if(isset($Karyawan->status) && $Karyawan->status == 'Menikah')  {{'selected'}} @endif value="Menikah">Menikah</option>
-                                  <option @if(isset($Karyawan->status) && $Karyawan->status == 'Belum Menikah')  {{'selected'}} @endif value="Belum Menikah">Belum Menikah</option>
-                                </select>
-                                {{ csrf_field() }}
-                            </div>
+
                               <button type="submit" class="btn btn-primary mr-2">Ubah</button>
                               <a class="btn btn-danger" href="{{ route('karyawan-index') }}">Batal</a>
                             </form>
