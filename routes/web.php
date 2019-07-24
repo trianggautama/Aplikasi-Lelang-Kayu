@@ -67,6 +67,11 @@ Route::get('/lelang/filter/status','adminController@lelang_filter_status')
 ->name('lelang-filter-status');
 Route::get('/lelang/filter/periode','adminController@lelang_filter_periode')
 ->name('lelang-filter-periode');
+Route::get('/lelang/pemenang','adminController@pemenang_lelang')
+->name('pemenang_lelang');
+Route::get('/lelang/pemenang/filter','adminController@pemenang_lelang_filter_cetak')
+->name('pendapatan_lelang_filter_cetak');
+
 //data lelang
 
 //data berita
@@ -86,6 +91,8 @@ Route::get('/berita/hapus/{id}','adminController@berita_hapus')
 ->name('berita-hapus');
 Route::get('/berita/cetak','adminController@berita_cetak')
 ->name('berita_cetak');
+Route::get('/berita/cetak/periode','adminController@berita_cetak_periode')
+->name('berita_cetak_periode');
 //data berita
 
 //data peserta
@@ -127,18 +134,12 @@ Route::put('/halaman-peserta/edit/{id}','pesertaController@peserta_lelang_update
 ->name('peserta-update');
 
 Route::get('/lelang_berlangsung','pesertaController@lelang_berlangsung' )->name('lelang_berlangsung');
-<<<<<<< HEAD
-Route::get('/lelang_berlangsung_detail','pesertaController@lelang_berlangsung_detail' )->name('lelang_berlangsung_detail');
-Route::get('/form_lelang','pesertaController@form_lelang' )->name('form_lelang');
-
-=======
 Route::get('/lelang_berlangsung_detail/{id}','pesertaController@lelang_berlangsung_detail' )->name('lelang_berlangsung_detail');
 Route::get('/peserta/lelang/{id}', 'pesertaController@lelang_proses')
 ->name('lelang_proses');
 Route::put('/peserta/lelang/{id}','pesertaController@lelang_hasil_tambah')
 ->name('lelang_hasil_tambah');
 Route::get('/riwayat_lelang','pesertaController@riwayat_lelang' )->name('riwayat_lelang');
->>>>>>> f1bbfd77a02280bf5472bd355d22beccdbe16b81
 
 
 Route::get('/','welcomeController@index' );

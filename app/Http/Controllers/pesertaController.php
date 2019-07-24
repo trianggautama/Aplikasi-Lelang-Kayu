@@ -47,10 +47,6 @@ class pesertaController extends Controller
             $user->foto = 'default.png';
           }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> f1bbfd77a02280bf5472bd355d22beccdbe16b81
         $peserta->alamat       = $request->alamat;
         $peserta->telepon      = $request->telepon;
         $peserta->pekerjaan      = $request->pekerjaan;

@@ -310,6 +310,16 @@ class adminController extends Controller
         return view('admin.lelang_filter_periode');
     }//fungsi filter lelang periode
 
+    public function pemenang_lelang(){
+    
+        return view('admin.pemenang_lelang_data');
+    }//fungsi pemenang lelang
+
+    public function pemenang_lelang_filter_cetak(){
+    
+        return view('admin.pemenang_lelang_filter');
+    }//fungsi pemenang lelang filter
+
     //fungsi berita
     public function berita_index(){
         $berita = berita::all();
@@ -411,6 +421,11 @@ class adminController extends Controller
         return redirect(route('berita-index'))->with('success', 'Data berita Berhasil di hapus');
     }//fungsi menghapus data berita
 
+    public function berita_cetak_periode(){
+       
+        return view('admin.berita_filter_periode');
+    }//menampilkan halaman edit  berita
+    
     //fungsi peserta
     public function peserta_lelang_index(){
         $data = peserta::with('user')->get();
@@ -566,3 +581,5 @@ class adminController extends Controller
             return $pdf->stream('Data Berita Keseluruhan.pdf');
         }//mencetak  data karyawan}
 }
+
+

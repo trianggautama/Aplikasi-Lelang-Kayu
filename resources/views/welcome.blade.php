@@ -426,98 +426,9 @@
 		</section><!--/.blog-->
 		<!--blog end-->
 
-
-		<!--subscribe start-->
-		<section id="subs" class="subscribe">
-			<div class="container">
-				<div class="subscribe-title text-center">
-					<h2>
-						Join our Subscribers List to Get Regular Update
-					</h2>
-					<p>
-						Subscribe Now. We will send you Best offer for your Trip
-					</p>
-				</div>
-				<form>
-					<div class="row">
-						<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-							<div class="custom-input-group">
-								<input type="email" class="form-control" placeholder="Enter your Email Here">
-								<button class="appsLand-btn subscribe-btn">Subscribe</button>
-								<div class="clearfix"></div>
-								<i class="fa fa-envelope"></i>
-							</div>
-
-						</div>
-					</div>
-				</form>
-			</div>
-
-		</section>
-		<!--subscribe end-->
-
 		<!-- footer-copyright start -->
 		<footer  class="footer-copyright">
 			<div class="container">
-				<div class="footer-content">
-					<div class="row">
-
-						<div class="col-sm-3">
-							<div class="single-footer-item">
-								<div class="footer-logo">
-									<a href="index.html">
-										tour<span>Nest</span>
-									</a>
-									<p>
-										best travel agency
-									</p>
-								</div>
-							</div><!--/.single-footer-item-->
-						</div><!--/.col-->
-
-						<div class="col-sm-3">
-							<div class="single-footer-item">
-								<h2>link</h2>
-								<div class="single-footer-txt">
-									<p><a href="#">home</a></p>
-									<p><a href="#">destination</a></p>
-									<p><a href="#">spacial packages</a></p>
-									<p><a href="#">special offers</a></p>
-									<p><a href="#">blog</a></p>
-									<p><a href="#">contacts</a></p>
-								</div><!--/.single-footer-txt-->
-							</div><!--/.single-footer-item-->
-
-						</div><!--/.col-->
-
-						<div class="col-sm-3">
-							<div class="single-footer-item">
-								<h2>popular destination</h2>
-								<div class="single-footer-txt">
-									<p><a href="#">china</a></p>
-									<p><a href="#">venezuela</a></p>
-									<p><a href="#">brazil</a></p>
-									<p><a href="#">australia</a></p>
-									<p><a href="#">london</a></p>
-								</div><!--/.single-footer-txt-->
-							</div><!--/.single-footer-item-->
-						</div><!--/.col-->
-
-						<div class="col-sm-3">
-							<div class="single-footer-item text-center">
-								<h2 class="text-left">contacts</h2>
-								<div class="single-footer-txt text-left">
-									<p>+1 (300) 1234 6543</p>
-									<p class="foot-email"><a href="#">info@tnest.com</a></p>
-									<p>North Warnner Park 336/A</p>
-									<p>Newyork, USA</p>
-								</div><!--/.single-footer-txt-->
-							</div><!--/.single-footer-item-->
-						</div><!--/.col-->
-
-					</div><!--/.row-->
-
-				</div><!--/.footer-content-->
 				<hr>
 				<div class="foot-icons ">
 					<ul class="footer-social-links list-inline list-unstyled">

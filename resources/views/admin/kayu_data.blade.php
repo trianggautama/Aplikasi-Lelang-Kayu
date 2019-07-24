@@ -4,24 +4,13 @@
   <div class="main-panel">
     <div class="content-wrapper">
       <div class="row">
-        <div class="col-md-12 grid-margin">
-          <div class="d-flex justify-content-between flex-wrap">
-            <div class="d-flex align-items-end flex-wrap">
-              <div class="mr-md-3 mr-xl-5">
-                <h2>Data Jenis Kayu</h2>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
         <div class="col-md-12 grid-margin stretch-card">
           <div class="card">
                 <div class="card-body">
-                        <h1 class="card-title">Tabel Data</h1>
+                        <h1 class="card-title">Data Jenis Kayu</h1>
                         <div class="text-right" style="margin-bottom:20px;">
-                          <a href="/" class="btn btn-inverse-primary mt-2 mt-xl-0" data-toggle="modal" data-target="#exampleModalCenter"> <i class=" mdi mdi-plus "></i> Tambah Data</a>
-                          <a href="{{Route('kayu_cetak')}}" class="btn btn-inverse-info" > <i class=" mdi mdi-printer "></i> Cetak Data</a>
+                          <a href="/" class="btn btn-primary mt-2 mt-xl-0" data-toggle="modal" data-target="#exampleModalCenter"> <i class=" mdi mdi-plus "></i> Tambah Data</a>
+                          <a href="{{Route('kayu_cetak')}}" class="btn btn-info" > <i class=" mdi mdi-printer "></i> Cetak Data</a>
                         </div>
                         <div class="table-responsive">
                           <table class="table striped "  id="myTable">

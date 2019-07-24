@@ -4,24 +4,13 @@
   <div class="main-panel">
     <div class="content-wrapper">
       <div class="row">
-        <div class="col-md-12 grid-margin">
-          <div class="d-flex justify-content-between flex-wrap">
-            <div class="d-flex align-items-end flex-wrap">
-              <div class="mr-md-3 mr-xl-5">
-                <h2>Data Karyawan,</h2>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
         <div class="col-md-12 grid-margin stretch-card">
           <div class="card">
                 <div class="card-body">
-                        <h4 class="card-title">Tabel Data</h4>
+                        <h4 class="card-title">Data Karyawan</h4>
                         <div class="text-right" style="margin-bottom:20px;">
-                          <a href="{{ route('karyawan-tambah') }}" class="btn btn-inverse-primary" > <i class=" mdi mdi-plus "></i> Tambah Data</a>
-                          <a href="{{route('karyawan-cetak')}}" class="btn btn-inverse-info" > <i class=" mdi mdi-printer "></i> Cetak Data</a>
+                          <a href="{{ route('karyawan-tambah') }}" class="btn btn-primary" > <i class=" mdi mdi-plus "></i> Tambah Data</a>
+                          <a href="{{route('karyawan-cetak')}}" class="btn btn-info" > <i class=" mdi mdi-printer "></i> Cetak Data</a>
                        </div>
                         <div class="table-responsive">
                           <table class="table table-striped " id="myTable">

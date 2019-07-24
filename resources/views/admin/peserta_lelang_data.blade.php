@@ -20,9 +20,9 @@
                     <div class="card-body">
                         <h4 class="card-title">Tabel Data</h4>
                         <div class="text-right">
-                        <a href="{{ route('peserta-lelang-tambah') }}" class="btn btn-inverse-primary mt-2 mt-xl-0"> <i
+                        <a href="{{ route('peserta-lelang-tambah') }}" class="btn btn-primary mt-2 mt-xl-0"> <i
                             class=" mdi mdi-plus "></i> Tambah Data</a>
-                        <a href="{{ route('peserta-lelang-cetak') }}" class="btn btn-inverse-info mt-2 mt-xl-0"> <i
+                        <a href="{{ route('peserta-lelang-cetak') }}" class="btn btn-info mt-2 mt-xl-0"> <i
                             class=" mdi mdi-printer "></i> Cetak Data</a>
                         </div>
                         <div class="table-responsive">

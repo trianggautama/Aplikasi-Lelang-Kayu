@@ -28,6 +28,7 @@
                             <a href="{{ route('lelang-filter-periode') }}" class="btn btn-info mt-2 mt-xl-0"> <i
                             class=" mdi mdi-printer "></i> Cetak Lelang / periode</a>
                         </div>
+                        <br>
                         <div class="table-responsive">
                           <table class="table table-striped "  id="myTable">
                             <thead>
@@ -35,7 +36,6 @@
                                 <th>No</th>
                                 <th>Nama</th>
                                 <th>Tanggal Lelang</th>
-                                <th>Tempat</th>
                                 <th>Harga Awal</th>
                                 <th>Status</th>
                                 <th>Action</th>
@@ -48,7 +48,6 @@
                                 <td>{{$no = $no + 1}}</td>
                                 <td>{{$lelangs->nama}}</td>
                                 <td>{{$lelangs->tanggal_mulai}}</td>
-                                <td>{{$lelangs->tempat}}</td>
                                 <td>Rp.{{$lelangs->harga_awal}}</td>
 
                                 @if($lelangs->status==1)
@@ -57,8 +56,8 @@
                                     <td  class="text-center"><label class="badge badge-info">Lelang Sudah Selesai</label></td>
                                 @endif
                                 <td class="text-center">
-                                        <a href="{{ route('lelang-detail', ['id' => IDCrypt::Encrypt( $lelangs->id)])}}" class="btn btn-secondary "> <i class=" mdi mdi-eye "></i></a>
-                                        <a href="{{ route('lelang-hapus', ['id' => IDCrypt::Encrypt( $lelangs->id)])}}" class="btn btn-danger"> <i class="mdi mdi-delete"></i></a>
+                                        <a href="{{ route('lelang-detail', ['id' => IDCrypt::Encrypt( $lelangs->id)])}}" class="btn btn-inverse-success" style="padding:6px !important;"> <i class=" mdi mdi-eye "></i></a>
+                                        <a href="{{ route('lelang-hapus', ['id' => IDCrypt::Encrypt( $lelangs->id)])}}" class="btn btn-inverse-danger" style="padding:6px !important;"> <i class="mdi mdi-delete"></i></a>
                                     </td>
                               </tr>
                               @endforeach
