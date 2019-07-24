@@ -117,17 +117,24 @@
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
+          @if(auth::user()->status==0)
+          <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <i class="mdi mdi-circle-outline menu-icon"></i>
+                  <span class="menu-title">Menu belum tersedia</span>
+                </a>
+              </li>
+          @else
           <li class="nav-item">
             <a class="nav-link" href="{{ route('lelang_berlangsung') }}">
-              <i class="mdi mdi-emoticon menu-icon"></i>
+              <i class="mdi mdi-circle-outline menu-icon"></i>
               <span class="menu-title">Lelang yang Berlangsung</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+            <a class="nav-link" href="{{ route('riwayat_lelang') }}">
               <i class="mdi mdi-circle-outline menu-icon"></i>
               <span class="menu-title">Riwayat Saya</span>
-              <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
@@ -135,6 +142,7 @@
               </ul>
             </div>
           </li>
+          @endif
         </ul>
       </nav>
       @yield('content')

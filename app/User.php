@@ -47,4 +47,8 @@ class User extends Authenticatable
     public function karyawan(){
         return $this->HasOne('App\karyawan','id');
       }
+
+    public function peserta(){
+        return $this->HasOne('App\peserta');
+      }
 }

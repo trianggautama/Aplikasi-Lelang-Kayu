@@ -162,6 +162,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -229,7 +230,7 @@ return [
         'IDCrypt' => App\Helpers\IDCryptHelper::class,
         'Form'      => 'Illuminate\Html\FormFacade',
         'Html'      => 'Illuminate\Html\HtmlFacade',
-
+        'PDF' => Barryvdh\DomPDF\Facade::class,
     ],
 
 ];

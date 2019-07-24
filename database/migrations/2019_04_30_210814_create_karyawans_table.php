@@ -17,13 +17,11 @@ class CreateKaryawansTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedbigInteger('user_id');
             $table->string('NIP')->length('25');
-            $table->string('nama')->length(255);
             $table->string('tempat_lahir')->length(255);
             $table->date('tanggal_lahir');
             $table->string('alamat')->length(255);
             $table->string('telepon')->length(13);
-            $table->string('status')->length(13);
-            $table->string('gambar')->length('255')->default('default.png');
+            // $table->string('status')->length(13);
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });

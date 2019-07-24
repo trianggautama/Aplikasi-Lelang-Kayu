@@ -9,10 +9,13 @@ use App\Lelang;
 use App\Berita;
 use App\Peserta;
 use App\Karyawan;
+
+use Carbon\Carbon;
 use IDCrypt;
 Use File;
 use Auth;
 use Hash;
+use PDF;
 
 
 class adminController extends Controller
@@ -46,20 +49,20 @@ class adminController extends Controller
         $Password       = Hash::make($request->password);
         $User->password = $Password;
         $User->role     = $request->role;
+        if ($request->foto) {
+            $FotoExt  = $request->foto->getClientOriginalExtension();
+            $FotoName = 'karyawan'.$request->user_id.'-'. $request->name;
+            $foto     = $FotoName.'.'.$FotoExt;
+            $request->foto->move('images/karyawan', $foto);
+            $User->foto= $foto;
+        }else {
+            $User->foto = 'default.png';
+          }
         $User->save();
 
         $user_id = $User->id;
         $Karyawan = new Karyawan;
 
-        if ($request->gambar) {
-            $FotoExt  = $request->gambar->getClientOriginalExtension();
-            $FotoName = 'karyawan'.$request->user_id.'-'. $request->name;
-            $gambar     = $FotoName.'.'.$FotoExt;
-            $request->gambar->move('images/karyawan', $gambar);
-            $Karyawan->gambar= $gambar;
-        }else {
-            $Karyawan->gambar = 'default.png';
-          }
         // if ($request->gambar != "") {
         //     $FotoExt  = $request->gambar->getClientOriginalExtension();
         //     $FotoName = $request->user_id.' - '.$request->name;
@@ -71,12 +74,10 @@ class adminController extends Controller
         //   }
 
         $Karyawan->NIP          = $request->NIP;
-        $Karyawan->nama         = $request->nama;
         $Karyawan->tempat_lahir = $request->tempat_lahir;
         $Karyawan->alamat       = $request->alamat;
         $Karyawan->tanggal_lahir= $request->tanggal_lahir;
         $Karyawan->telepon      = $request->telepon;
-        $Karyawan->status      = $request->status;
         $Karyawan->user_id      = $user_id;
 
 
@@ -107,27 +108,30 @@ class adminController extends Controller
 
         $User->name     = $request->name;
         $User->email    = $request->email;
-        $Password       = Hash::make($request->password);
+        if($request->password!=null){
+            $Password       = Hash::make($request->password);
+        }else{
+            $Password = $User->password;
+        }
+
         $User->password = $Password;
 
-        if ($request->gambar) {
-            if ($Karyawan->gambar != 'default.png') {
-           // dd('gambar dihapus');
-              File::delete('images/karyawan/'.$Karyawan->gambar);
+        if ($request->foto !=null) {
+            if ($User->foto != 'default.png') {
+           // dd('foto dihapus');
+              File::delete('images/karyawan/'.$User->foto);
             }
-            //dd('gambar tidak dihapus');
-            $FotoExt  = $request->gambar->getClientOriginalExtension();
+            //dd('foto tidak dihapus');
+            $FotoExt  = $request->foto->getClientOriginalExtension();
             $FotoName = 'karyawan-'.$request->$id.'-'. $request->name;
-            $gambar     = $FotoName.'.'.$FotoExt;
-            $request->gambar->move('images/karyawan', $gambar);
-            $Karyawan->gambar= $gambar;
+            $foto     = $FotoName.'.'.$FotoExt;
+            $request->foto->move('images/karyawan', $foto);
+            $User->foto= $foto;
           }
         $Karyawan->NIP          = $request->NIP;
-        $Karyawan->nama         = $request->nama;
         $Karyawan->tempat_lahir = $request->tempat_lahir;
         $Karyawan->alamat       = $request->alamat;
         $Karyawan->tanggal_lahir= $request->tanggal_lahir;
-        $Karyawan->status          = $request->status;
         $Karyawan->telepon      = $request->telepon;
 
         $User->update();
@@ -244,6 +248,7 @@ class adminController extends Controller
 
         $lelang->nama  = $request->nama;
         $lelang->tanggal_mulai  = $request->tanggal_mulai;
+        $lelang->tanggal_selesai  = $request->tanggal_selesai;
         $lelang->tempat  = $request->tempat;
         $lelang->harga_awal  = $request->harga_awal;
         $lelang->kayu_id  = $request->kayu_id;
@@ -253,7 +258,7 @@ class adminController extends Controller
 
         $lelang->save();
 
-          return redirect(route('lelang-index'))->with('success', 'Data lelang '.$request->nama_lelang.' Berhasil di Tambahkan');
+          return redirect(route('lelang-index'))->with('success', 'Data lelang '.$request->nama.' Berhasil di Tambahkan');
       }//fungsi menambahkan data lelang
 
     public function lelang_detail($id){
@@ -277,11 +282,11 @@ class adminController extends Controller
 
         $lelang->nama  = $request->nama;
         $lelang->tanggal_mulai  = $request->tanggal_mulai;
+        $lelang->tanggal_selesai  = $request->tanggal_selesai;
         $lelang->tempat  = $request->tempat;
         $lelang->harga_awal  = $request->harga_awal;
         $lelang->kayu_id  = $request->kayu_id;
-        $status=1;
-        $lelang->status = $status;
+        $lelang->status = $request->status;
 
         $lelang->update();
         return redirect(route('lelang-index'))->with('success', 'Data lelang '.$request->nama.' Berhasil di ubah');
@@ -312,7 +317,7 @@ class adminController extends Controller
         $path     = str_replace("?", "", $request->judul);
     	$path     = explode(" ", $path);
         $path     = implode("-", $path);
-        
+
         $id     = Auth::user()->id;
 
         if ($request->foto) {
@@ -358,7 +363,7 @@ class adminController extends Controller
         $path     = str_replace("?", "", $request->judul);
     	$path     = explode(" ", $path);
         $path     = implode("-", $path);
-        
+
         $karyawan_id     = Auth::user()->id;
 
         if ($request->foto) {
@@ -401,6 +406,17 @@ class adminController extends Controller
         $data = peserta::with('user')->get();
         return view('admin.peserta_lelang_data', ['data' => $data]);
     }
+
+    public function status_update(Request $request, $id){
+        $id = IDCrypt::Decrypt($id);
+        $user = user::findOrFail($id);
+
+
+        $user->status       = $request->status;
+
+        $user->update();
+        return redirect(route('peserta-lelang-index'))->with('success', 'Data status '.$request->name.' Berhasil di ubah');
+         }
 
 // fungsi route peserta tambah
     public function peserta_lelang_tambah(){
@@ -498,4 +514,45 @@ class adminController extends Controller
 
         return redirect(route('peserta-lelang-index'))->with('success', 'Data peserta Berhasil di hapus');
     }//fungsi menghapus data peserta
+
+    public function karyawan_cetak(){
+       // $permohonan_kalibrasi=permohonan_kalibrasi::all();
+        // $pejabat =pejabat::where('jabatan','Kepala Dinas')->get();
+        $karyawan = Karyawan::all();
+        $tgl= Carbon::now()->format('d F Y');
+        $pdf =PDF::loadView('laporan.karyawan_keseluruhan', ['tgl'=>$tgl,'karyawan'=>$karyawan]);
+        $pdf->setPaper('a4', 'potrait');
+        return $pdf->stream('Karyawan Keseluruhan.pdf');
+       }//mencetak  data karyawan
+
+
+    public function kayu_cetak(){
+        // $permohonan_kalibrasi=permohonan_kalibrasi::all();
+         // $pejabat =pejabat::where('jabatan','Kepala Dinas')->get();
+         $kayu = kayu::all();
+         $tgl= Carbon::now()->format('d F Y');
+         $pdf =PDF::loadView('laporan.kayu', ['tgl'=>$tgl,'kayu'=>$kayu]);
+         $pdf->setPaper('a4', 'potrait');
+         return $pdf->stream('Data Kayu.pdf');
+        }//mencetak  data karyawan
+
+    public function peserta_lelang_cetak(){
+        // $permohonan_kalibrasi=permohonan_kalibrasi::all();
+            // $pejabat =pejabat::where('jabatan','Kepala Dinas')->get();
+            $peserta = peserta::all();
+            $tgl= Carbon::now()->format('d F Y');
+            $pdf =PDF::loadView('laporan.peserta_lelang_keseluruhan', ['tgl'=>$tgl,'peserta'=>$peserta]);
+            $pdf->setPaper('a4', 'potrait');
+            return $pdf->stream('Data Peserta Lelang.pdf');
+        }//mencetak  data karyawan}
+
+    public function berita_cetak(){
+        // $permohonan_kalibrasi=permohonan_kalibrasi::all();
+            // $pejabat =pejabat::where('jabatan','Kepala Dinas')->get();
+            $berita = berita::all();
+            $tgl= Carbon::now()->format('d F Y');
+            $pdf =PDF::loadView('laporan.berita_keseluruhan', ['tgl'=>$tgl,'berita'=>$berita]);
+            $pdf->setPaper('a4', 'potrait');
+            return $pdf->stream('Data Berita Keseluruhan.pdf');
+        }//mencetak  data karyawan}
 }

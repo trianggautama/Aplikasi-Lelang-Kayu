@@ -9,6 +9,6 @@ class Karyawan extends Model
     protected $table = 'karyawans';
 
     public function user(){
-      return $this->belongsTo('App\User', 'id_user');
+      return $this->belongsTo('App\User');
     }
 }

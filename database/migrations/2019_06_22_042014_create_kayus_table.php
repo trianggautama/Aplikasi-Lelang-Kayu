@@ -16,7 +16,7 @@ class CreateKayusTable extends Migration
         Schema::create('kayus', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nama_kayu')->length(100);
-            $table->string('keterangan')->length(191);
+            $table->text('keterangan');
             $table->string('foto')->length(191)->default('default.png');
             $table->timestamps();
         });

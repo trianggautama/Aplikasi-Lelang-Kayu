@@ -1,4 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.peserta')
+
+@section('title', __('outlet.list'))
+
 @section('content')
   <!-- partial -->
   <div class="main-panel">
@@ -8,11 +11,10 @@
           <div class="d-flex justify-content-between flex-wrap">
             <div class="d-flex align-items-end flex-wrap">
               <div class="mr-md-3 mr-xl-5">
-                <h2>Data Lelang,</h2>
+                <h2>Data Riwayat Lelang Saya</h2>
               </div>
             </div>
             <div class="d-flex justify-content-between align-items-end flex-wrap">
-              <a href="{{ route('lelang-tambah') }}" class="btn btn-primary mt-2 mt-xl-0"> <i class=" mdi mdi-plus "></i> Tambah Data</a>
             </div>
           </div>
         </div>
@@ -27,33 +29,30 @@
                             <thead>
                               <tr>
                                 <th>No</th>
-                                <th>Nama</th>
+                                <th>Nama Lelang</th>
                                 <th>Tanggal Lelang</th>
-                                <th>Tempat</th>
                                 <th>Harga Awal</th>
+                                <th>Status Bid Saya</th>
+                                <th>Harga Bid Saya</th>
                                 <th>Status</th>
-                                <th>Action</th>
                               </tr>
                             </thead>
                             <tbody>
                               <tr>
                                 <?php $no = 0 ?>
-                                @foreach ($lelang as $lelangs)
+                                @foreach ($hasil_lelang as $d)
                                 <td>{{$no = $no + 1}}</td>
-                                <td>{{$lelangs->nama}}</td>
-                                <td>{{$lelangs->tanggal_mulai}}</td>
-                                <td>{{$lelangs->tempat}}</td>
-                                <td>{{$lelangs->harga_awal}}</td>
+                                <td>{{$d->lelang->nama}}</td>
+                                <td>{{$d->lelang->tanggal_mulai}}</td>
+                                <td>{{$d->lelang->harga_awal}}</td>
+                                <td>Bid ke - {{$d->status_bid}}</td>
+                                <td>{{$d->bid_harga}}</td>
 
-                                @if($lelangs->status==1)
+                                @if($d->status==1)
                                     <td  class="text-center"><label class="badge badge-primary">Lelang Sedang Berlangsung</label></td>
                                 @else
                                     <td  class="text-center"><label class="badge badge-info">Lelang Sudah Selesai</label></td>
                                 @endif
-                                <td class="text-center">
-                                        <a href="{{ route('lelang-detail', ['id' => IDCrypt::Encrypt( $lelangs->id)])}}" class="btn btn-secondary "> <i class=" mdi mdi-eye "></i></a>
-                                        <a href="{{ route('lelang-hapus', ['id' => IDCrypt::Encrypt( $lelangs->id)])}}" class="btn btn-danger"> <i class="mdi mdi-delete"></i></a>
-                                    </td>
                               </tr>
                               @endforeach
                             </tbody>
@@ -63,5 +62,17 @@
           </div>
         </div>
       </div>
+
     </div>
+    <!-- content-wrapper ends -->
+    <!-- partial:partials/_footer.html -->
+    <footer class="footer">
+      <div class="d-sm-flex justify-content-center justify-content-sm-between">
+        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2018 <a href="https://www.urbanui.com/" target="_blank">Urbanui</a>. All rights reserved.</span>
+        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
+      </div>
+    </footer>
+    <!-- partial -->
+  </div>
+  <!-- main-panel ends -->
 @endsection

@@ -21,7 +21,7 @@
                         <h1 class="card-title">Tabel Data</h1>
                         <div class="text-right" style="margin-bottom:20px;">
                           <a href="/" class="btn btn-inverse-primary mt-2 mt-xl-0" data-toggle="modal" data-target="#exampleModalCenter"> <i class=" mdi mdi-plus "></i> Tambah Data</a>
-                          <a href="" class="btn btn-inverse-info" > <i class=" mdi mdi-printer "></i> Cetak Data</a>
+                          <a href="{{Route('kayu_cetak')}}" class="btn btn-inverse-info" > <i class=" mdi mdi-printer "></i> Cetak Data</a>
                         </div>
                         <div class="table-responsive">
                           <table class="table striped "  id="myTable">

@@ -21,7 +21,7 @@
                         <h4 class="card-title">Tabel Data</h4>
                         <div class="text-right" style="margin-bottom:20px;">
                           <a href="{{ route('karyawan-tambah') }}" class="btn btn-inverse-primary" > <i class=" mdi mdi-plus "></i> Tambah Data</a>
-                          <a href="" class="btn btn-inverse-info" > <i class=" mdi mdi-printer "></i> Cetak Data</a>
+                          <a href="{{route('karyawan-cetak')}}" class="btn btn-inverse-info" > <i class=" mdi mdi-printer "></i> Cetak Data</a>
                        </div>
                         <div class="table-responsive">
                           <table class="table table-striped " id="myTable">

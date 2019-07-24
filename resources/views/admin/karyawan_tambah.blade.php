@@ -16,8 +16,9 @@
                             {{-- {{ route('karyawan_tambah_store') }} --}}
                             <input type="hidden" class="form-control" id="role" name="role" value="2">
                             <div class="form-group">
-                                <label for="exampleInputUsername1">Username</label>
-                                <input type="text" class="form-control" name="name" id="name" placeholder="Username">
+                                    <label for="exampleInputUsername1">Nama Lengkap</label>
+                                    <input type="text" class="form-control" name="name" id="name"
+                                        placeholder="Nama Lengkap">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputUsername1">Email</label>
@@ -31,11 +32,6 @@
                             <div class="form-group">
                                 <label for="exampleInputUsername1">NIP </label>
                                 <input type="text" class="form-control" name="NIP" id="NIP" placeholder="NIP">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputUsername1">Nama Lengkap</label>
-                                <input type="text" class="form-control" name="nama" id="nama"
-                                    placeholder="Nama Lengkap">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputUsername1">Tempat Lahir</label>
@@ -67,13 +63,6 @@
                                     </span>
                                 </div>
                                 {{ csrf_field() }}
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleSelectGender">Status</label>
-                                <select class="form-control" name="status" id="exampleSelectGender">
-                                    <option value="Menikah">Menikah</option>
-                                    <option value="Belum Menikah">Belum Menikah</option>
-                                </select>
                             </div>
                             <button type="submit" class="btn btn-primary mr-2">Simpan</button>
                             <a class="btn btn-danger" href="{{ route('karyawan-index') }}">Batal</a>

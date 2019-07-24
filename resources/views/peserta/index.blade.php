@@ -24,6 +24,7 @@
       <div class="row">
         <div class="col-md-12 grid-margin stretch-card">
           <div class="card">
+                @if(Auth::user()->status==0)
             <div class="card-body dashboard-tabs p-0">
               <ul class="nav nav-tabs px-4" role="tablist">
                 <li class="nav-item">
@@ -46,8 +47,8 @@
                         <ol>
                         <li>Pastikan Profil Anda Sudah Lengkap </li>
                         <li>Apabila Profil Anda Sudah Lengkap maka Admin akan memverifikas akun anda , apabila akun anda belum tervirifikasi maka anda tidak dapat mengikuti proses lelang</li>
-                        <li>Anda dapat melihat Status Verifikasi Akun Anda pada menu disamping, atau pada halaman progil anda</li>           
-                        </ol>       
+                        <li>Anda dapat melihat Status Verifikasi Akun Anda pada menu disamping, atau pada halaman progil anda</li>
+                        </ol>
                       </div>
                     </div>
                   </div>
@@ -58,8 +59,8 @@
                         <a href="{{ route('peserta-tambah')}}" class="btn btn-primary">Klik Disini Untuk Melengkapi Profil Anda</a>
                         @endif
                         {{-- <a href="{{ route('peserta-tambah')}}" class="btn btn-primary mt-xl-0">Klik Disini Untuk Melengkapi Profil Anda</a> --}}
-                     
-                    </div> 
+
+                    </div>
                 </div>
                 <div class="tab-pane fade" id="sales" role="tabpanel" aria-labelledby="sales-tab">
                   <div class="d-flex flex-wrap justify-content-xl-between">
@@ -70,16 +71,16 @@
                         <ol>
                         <li>Anda Dapat Mengikuti Lelang yang ada di Menu "Lelang yang Berlangsung"</li>
                         <li>Apabila sudah menentukan lelang yang ingin diikuti maka klik "ikut lelang" dan lengkapi form yang sudah di sediakan</li>
-                        <li>Ikuti Petunjuk Pembayaran Registrasi yang ada saat mengisi fom pembayaran</li>
+                        <li>Ikuti Petunjuk Pembayaran Registrasi yang ada saat mengisi form pembayaran</li>
                         <li>Tunggu Verifikasi Pembayaran dari Admin, ketika sudah terverifikasi maka anda dapat mengajukan penawaran pada lelang yang dipilih</li>
                         </ol>
                       </div>
-                    </div>  
+                    </div>
                   </div>
                 </div>
                 <div class="tab-pane fade" id="purchases" role="tabpanel" aria-labelledby="purchases-tab">
                   <div class="d-flex flex-wrap justify-content-xl-between">
-                   
+
                     <div class="d-flex py-3 border-md-right flex-grow-1  p-3 item">
                       <div class="d-flex flex-column ">
                       <h5 class="mb-1 text-muted">Ketentuan Proses Lelang</h5>
@@ -87,7 +88,7 @@
                         <ol>
                         <li>Penawaran Hanya dapat dilakukan maksimal 3 kali pada 1 lelang</li>
                         <li>Apabila Anda Memenangkan Lelang Maka Anda Akan Di Hubngi Oleh Admin Dari Dinas Kehutanan Provinsi Kalsel</li>
-                        <li>Apabila Anda Kalah Lelang, maka uang pendaftaran yang sudah di bayarkan akan dikembalikan via tranfer</li>
+                        <li>Apabila Anda Kalah Lelang, maka uang pendaftaran yang sudah di bayarkan akan dikembalikan via transfer</li>
                         </ol>
                       </div>
                     </div>
@@ -95,6 +96,25 @@
                 </div>
               </div>
             </div>
+            @else
+            <div class="tab-content py-0 px-0">
+              <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
+                  <div class="d-flex flex-wrap justify-content-xl-between">
+                    <div class="d-flex py-3 border-md-right flex-grow-1  p-3 item">
+                      <div class="d-flex flex-column ">
+                        <h5 class="mb-1 text-muted">Selamat akun anda sudah aktif</h5>
+                        <br>
+                        <ol>
+                        <li>Selamat mengikuti lelang Dinas Kehutanan Provinsi Kalimantan Selatan </li>
+                        {{-- <li>Apabila Profil Anda Sudah Lengkap maka Admin akan memverifikas akun anda , apabila akun anda belum tervirifikasi maka anda tidak dapat mengikuti proses lelang</li>
+                        <li>Anda dapat melihat Status Verifikasi Akun Anda pada menu disamping, atau pada halaman progil anda</li> --}}
+                        </ol>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            @endif
           </div>
         </div>
       </div>

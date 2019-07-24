@@ -21,7 +21,7 @@
                             <div class="card">
                               <div class="card-body text-center">
                                 <p class="card-title">Foto peserta</p>
-                               <img src="{{asset('/images/peserta/'.$peserta->foto)}}" alt="" width="100%">
+                               <img src="{{asset('/images/peserta/'.$peserta->user->foto)}}" alt="" width="100%">
                               </div>
                             </div>
                           </div>
@@ -31,11 +31,16 @@
                                     <h4 class="card-title">Biodata Peserta</h4>
 
                                     <div class="template-demo">
-                                      <h4 class="card-title">Nama Peserta                    : {{$peserta->user->name}}</h4>
-                                      <h4 class="card-title">Alamat                  : {{$peserta->alamat}} </h4>
-                                      <h4 class="card-title">No Telp                 : {{$peserta->telepon}}</h4>
-                                      <h4 class="card-title">Email                :  {{ $peserta->user->email }}</h4>
-                                      <h4 class="card-title">Pekerjaan                 : {{$peserta->pekerjaan}}</h4>
+                                      <h4 class="card-title">Nama Peserta &nbsp;                    : {{$peserta->user->name}}</h4>
+                                      <h4 class="card-title">Alamat &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;: {{$peserta->alamat}} </h4>
+                                      <h4 class="card-title">No Telp &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;: {{$peserta->telepon}}</h4>
+                                      <h4 class="card-title">Email &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; :  {{ $peserta->user->email }}</h4>
+                                      <h4 class="card-title">Pekerjaan &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{$peserta->pekerjaan}}</h4>
+                                      @if($peserta->user->status==0)
+                                      <h4 class="card-title">Status Akun &nbsp;&nbsp;  &nbsp; &nbsp;:  <label class="badge badge-danger">Akun Belum Aktif</label></h4>
+                                      @else
+                                      <h4 class="card-title">Status Akun  &nbsp;&nbsp; &nbsp; &nbsp;: <label class="badge badge-primary">Akun Aktif</label></h4>
+                                      @endif
                                     </div>
                                   </div>
                                   <div class="card-footer">

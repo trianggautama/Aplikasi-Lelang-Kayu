@@ -11,9 +11,10 @@
                             <h2>Data Berita,</h2>
                         </div>
                     </div>
-                    <div class="d-flex justify-content-between align-items-end flex-wrap">
+                    <div class="text-right" style="margin-bottom:20px;">
                         <a href="{{ route('berita-tambah') }}" class="btn btn-primary mt-2 mt-xl-0"> <i
                                 class=" mdi mdi-plus "></i> Tambah Data</a>
+                        <a href="{{Route('berita_cetak')}}" class="btn btn-inverse-info" > <i class=" mdi mdi-printer "></i> Cetak Data</a>
                     </div>
                 </div>
             </div>
@@ -39,7 +40,7 @@
                                     <?php $no = 0 ?>
                                     @foreach ($berita as $beritas)
                                     <td>{{$no = $no + 1}}</td>
-                                    <td>{{$beritas->karyawan->nama}}</td>
+                                    <td>{{$beritas->karyawan->user->name}}</td>
                                     <td>{{$beritas->judul}}</td>
                                     <td>{{$beritas->created_at}}</td>
 
