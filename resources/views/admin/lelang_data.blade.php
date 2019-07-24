@@ -11,9 +11,6 @@
                 <h2>Data Lelang,</h2>
               </div>
             </div>
-            <div class="d-flex justify-content-between align-items-end flex-wrap">
-              <a href="{{ route('lelang-tambah') }}" class="btn btn-primary mt-2 mt-xl-0"> <i class=" mdi mdi-plus "></i> Tambah Data</a>
-            </div>
           </div>
         </div>
       </div>
@@ -22,6 +19,15 @@
           <div class="card">
                 <div class="card-body">
                         <h4 class="card-title">Tabel Data</h4>
+                        <div class="text-right">
+                          <a href="{{ route('lelang-tambah') }}" class="btn btn-bg btn-primary mt-2 mt-xl-0"> <i class=" mdi mdi-plus "></i> Tambah Data</a>
+                          <a href="{{ route('peserta-lelang-cetak') }}" class="btn btn-info mt-2 mt-xl-0"> <i
+                            class=" mdi mdi-printer "></i> Cetak Lelang</a>
+                            <a href="{{ route('lelang-filter-status') }}" class="btn btn-info mt-2 mt-xl-0"> <i
+                            class=" mdi mdi-printer "></i> Cetak Lelang Status</a>
+                            <a href="{{ route('lelang-filter-periode') }}" class="btn btn-info mt-2 mt-xl-0"> <i
+                            class=" mdi mdi-printer "></i> Cetak Lelang / periode</a>
+                        </div>
                         <div class="table-responsive">
                           <table class="table table-striped "  id="myTable">
                             <thead>
@@ -43,7 +49,7 @@
                                 <td>{{$lelangs->nama}}</td>
                                 <td>{{$lelangs->tanggal_mulai}}</td>
                                 <td>{{$lelangs->tempat}}</td>
-                                <td>{{$lelangs->harga_awal}}</td>
+                                <td>Rp.{{$lelangs->harga_awal}}</td>
 
                                 @if($lelangs->status==1)
                                     <td  class="text-center"><label class="badge badge-primary">Lelang Sedang Berlangsung</label></td>

@@ -56,14 +56,14 @@
                                                     {{method_field('PUT') }}
                                                     {{ csrf_field() }}
                                                     {{-- <a href="" class="btn btn-inverse-warning" data-toggle="tooltip" data-placement="top" title="Banned" ><i class="icon-close"></i></i></a> --}}
-                                                    <button type="submit" class="btn btn-inverse-info" data-toggle="tooltip" data-placement="top" title="Aktif" name="status" value="1" ><i class=" mdi mdi-check "></i></button>
+                                                    <button type="submit" class="btn btn-inverse-info" data-toggle="tooltip" data-placement="top" title="Aktif" name="status" value="1" style="padding:6px !important;"><i class=" mdi mdi-check "></i></button>
                                                 </form>
                                             @else
                                             <form action="{{ route('status_update', ['id' => IDCrypt::Encrypt( $datas->user->id)]) }}" method="POST">
                                                     {{method_field('PUT') }}
                                                     {{ csrf_field() }}
                                                     {{-- <a href="" class="btn btn-inverse-warning" data-toggle="tooltip" data-placement="top" title="Banned" ><i class="icon-close"></i></i></a> --}}
-                                                    <button type="submit" class="btn btn-inverse-danger" data-toggle="tooltip" data-placement="top" title="Banned" name="status" value="0" ><i class="mdi mdi-close"></i></i></button>
+                                                    <button type="submit" class="btn btn-inverse-danger" data-toggle="tooltip" data-placement="top" title="Banned" name="status" value="0" style="padding:6px !important;" ><i class="mdi mdi-close"></i></i></button>
                                                 </form>
                                             @endif
 

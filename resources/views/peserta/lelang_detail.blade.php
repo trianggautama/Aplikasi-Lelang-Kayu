@@ -34,14 +34,14 @@
                       <div class="d-flex flex-wrap justify-content-xl-between">
                         <div class="d-none d-xl-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
                         <div class="row">
-            <div class="col-md-5 grid-margin stretch-card">
+            <div class="col-md-4 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body text-center">
                         <img src="{{asset('/images/kayu/default.png')}}" alt="" width="100%">
                     </div>
                 </div>
             </div>
-            <div class="col-md-7 grid-margin stretch-card">
+            <div class="col-md-8 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title text-primary">Detail Kayu</h4>
