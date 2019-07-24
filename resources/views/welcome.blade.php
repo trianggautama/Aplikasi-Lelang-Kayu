@@ -17,38 +17,38 @@
 		<title>Aplikasi Lelang Kayu</title>
 
 		<!-- favicon img -->
-		<link rel="shortcut icon" type="image/icon" href="vendor/logo/favicon.png"/>
+		<link rel="shortcut icon" type="image/icon" href="{{asset('vendor/logo/favicon.png')}}"/>
 
 		<!--font-awesome.min.css-->
-		<link rel="stylesheet" href="vendor/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="{{asset('vendor/css/font-awesome.min.css')}}" />
 
 		<!--animate.css-->
-		<link rel="stylesheet" href="vendor/css/animate.css" />
+		<link rel="stylesheet" href="{{asset('vendor/css/animate.css')}}" />
 
 		<!--hover.css-->
-		<link rel="stylesheet" href="vendor/css/hover-min.css">
+		<link rel="stylesheet" href="{{asset('vendor/css/hover-min.css')}}">
 
 		<!--datepicker.css-->
-		<link rel="stylesheet"  href="vendor/css/datepicker.css" >
+		<link rel="stylesheet"  href="{{asset('vendor/css/datepicker.css')}}" >
 
 		<!--owl.carousel.css-->
-        <link rel="stylesheet" href="vendor/css/owl.carousel.min.css">
-		<link rel="stylesheet" href="vendor/css/owl.theme.default.min.css"/>
+        <link rel="stylesheet" href="{{asset('vendor/css/owl.carousel.min.css')}}">
+		<link rel="stylesheet" href="{{asset('vendor/css/owl.theme.default.min.css')}}"/>
 
 		<!-- range css-->
-        <link rel="stylesheet" href="vendor/css/jquery-ui.min.css" />
+        <link rel="stylesheet" href="{{asset('vendor/css/jquery-ui.min.css')}}" />
 
 		<!--bootstrap.min.css-->
-		<link rel="stylesheet" href="vendor/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="{{asset('vendor/css/bootstrap.min.css')}}" />
 
 		<!-- bootsnav -->
-		<link rel="stylesheet" href="vendor/css/bootsnav.css"/>
+		<link rel="stylesheet" href="{{asset('vendor/css/bootsnav.css')}}"/>
 
 		<!--style.css-->
-		<link rel="stylesheet" href="vendor/css/style.css" />
+		<link rel="stylesheet" href="{{asset('vendor/css/style.css')}}" />
 
 		<!--responsive.css-->
-		<link rel="stylesheet" href="vendor/css/responsive.css" />
+		<link rel="stylesheet" href="{{asset('vendor/css/responsive.css')}}" />
 
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -406,7 +406,7 @@
                                                     <p>
                                                         {{ $beritas->isi }}
                                                     </p>
-                                                    <a href="#">Read More</a>
+                                                    <a href="{{ route('berita_tampil', ['id' => IDCrypt::Encrypt( $beritas->id)])}}">Read More</a>
                                                 </div><!--/.blog-txt-->
                                             </div><!--/.caption-->
                                         </div><!--/.thumbnail-->
@@ -450,7 +450,7 @@
 
 
 
-		<script src="vendor/js/jquery.js"></script>
+		<script src="{{asset('vendor/js/jquery.js')}}"></script>
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 
 		<!--modernizr.min.js-->
@@ -458,34 +458,34 @@
 
 
 		<!--bootstrap.min.js-->
-		<script  src="vendor/js/bootstrap.min.js"></script>
+		<script  src="{{asset('vendor/js/bootstrap.min.js')}}"></script>
 
 		<!-- bootsnav js -->
-		<script src="vendor/js/bootsnav.js"></script>
+		<script src="{{asset('vendor/js/bootsnav.js')}}"></script>
 
 		<!-- jquery.filterizr.min.js -->
-		<script src="vendor/js/jquery.filterizr.min.js"></script>
+		<script src="{{asset('vendor/js/jquery.filterizr.min.js')}}"></script>
 
 		<script  src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
 
 		<!--jquery-ui.min.js-->
-        <script src="vendor/js/jquery-ui.min.js"></script>
+        <script src="{{asset('vendor/js/jquery-ui.min.js')}}"></script>
 
         <!-- counter js -->
-		<script src="vendor/js/jquery.counterup.min.js"></script>
-		<script src="vendor/js/waypoints.min.js"></script>
+		<script src="{{asset('vendor/js/jquery.counterup.min.js')}}"></script>
+		<script src="{{asset('vendor/js/waypoints.min.js')}}"></script>
 
 		<!--owl.carousel.js-->
-        <script  src="vendor/js/owl.carousel.min.js"></script>
+        <script  src="{{asset('vendor/js/owl.carousel.min.js')}}"></script>
 
         <!-- jquery.sticky.js -->
-		<script src="vendor/js/jquery.sticky.js"></script>
+		<script src="{{asset('vendor/js/jquery.sticky.js')}}"></script>
 
         <!--datepicker.js-->
-        <script  src="vendor/js/datepicker.js"></script>
+        <script  src="{{asset('vendor/js/datepicker.js')}}"></script>
 
 		<!--Custom JS-->
-		<script src="vendor/js/custom.js"></script>
+		<script src="{{asset('vendor/js/custom.js')}}	"></script>
 
 
 	</body>

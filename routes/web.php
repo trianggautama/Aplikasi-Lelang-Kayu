@@ -148,4 +148,5 @@ Route::get('/lelang/hasil-lelang/detail/{id}', 'welcomeController@hasil_lelang_d
 Auth::routes();
 
 Route::get('/home', 'dashboardController@index')->name('home');
+Route::get('/berita/tampil/{id}', 'welcomeController@berita_tampil')->name('berita_tampil');
 

@@ -35,4 +35,14 @@ class welcomeController extends Controller
         // dd($nama_lelang);
         return view('hasil_lelang_detail',compact('hasil_lelang','nama_lelang'));
     }
+
+    public function berita_tampil($id)
+    {
+        $id = IDCrypt::Decrypt($id);
+        $berita = Berita::findOrFail($id);
+        // dd($nama_lelang);
+        return view('berita_tampil',compact('berita'));
+    }
+
+
 }
