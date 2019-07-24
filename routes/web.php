@@ -80,6 +80,8 @@ Route::put('/berita/edit/{id}','adminController@berita_update')
 ->name('berita-update');
 Route::get('/berita/hapus/{id}','adminController@berita_hapus')
 ->name('berita-hapus');
+Route::get('/berita/cetak','adminController@berita_cetak')
+->name('berita_cetak');
 //data berita
 
 //data peserta

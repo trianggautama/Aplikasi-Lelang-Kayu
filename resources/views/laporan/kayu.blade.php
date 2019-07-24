@@ -7,7 +7,7 @@
     <title>Document</title>
     <style>
     h4,h2{
-        font-family:serif; 
+        font-family:serif;
     }
         body{
             font-family:sans-serif;
@@ -98,14 +98,18 @@
                         <tr>
                             <th>No</th>
                             <th>Jenis Kayu</th>
+                            <th>Keterangan</th>
                         </tr>
                         </thead>
                         <tbody>
+                            @foreach ($kayu as $d)
                         <?php $no = 0 ?>
                         <tr>
                             <td>{{$no = $no + 1}}</td>
-                            <td>Kayu Ulin</td>
+                            <td>{{ $d->nama_kayu }}</td>
+                            <td>{{ $d->keterangan }}</td>
                         </tr>
+                        @endforeach
                         </tbody>
                     </table>
                       <br>
