@@ -619,6 +619,20 @@ class adminController extends Controller
             $pdf->setPaper('a4', 'potrait');
             return $pdf->stream('Data Berita Keseluruhan.pdf');
         }//mencetak  data karyawan}
+
+    public function berita_periode_cetak(Request $request){
+
+        $periode = carbon::parse($request->created_at);
+        $bulan = carbon::parse($request->created_at)->format('F');
+        // dd($periode);
+        // $bulan = $request->tanggal_mulai;
+        $berita =berita::whereMonth('created_at',$periode)->get();
+        $tgl= Carbon::now()->format('d-m-Y');
+
+        $pdf =PDF::loadView('laporan.berita_berdasarkan_periode', ['bulan'=> $bulan,'berita' => $berita,'tgl'=>$tgl]);
+        $pdf->setPaper('a4', 'potrait');
+        return $pdf->stream('Laporan berita berdasarkan periode.pdf');
+    }
 }
 
 
