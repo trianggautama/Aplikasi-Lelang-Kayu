@@ -299,24 +299,40 @@ class adminController extends Controller
 
         return redirect(route('lelang-index'))->with('success', 'Data lelang Berhasil di hapus');
     }//fungsi menghapus data lelang
-    
+
     public function lelang_filter_status(){
-    
+
         return view('admin.lelang_filter_status');
     }//fungsi filter lelang status
 
+
+    public function lelang_status_cetak(Request $Request){
+
+        $status = $Request->status;
+        // dd($status);
+
+        $lelang =lelang::where('status',$status)->get();
+        $statusp =lelang::where('status',$status)->first();
+
+        $tgl= Carbon::now()->format('d-m-Y');
+
+        $pdf =PDF::loadView('laporan.lelang_berdasarkan_status', ['lelang' => $lelang,'tgl'=>$tgl,'statusp'=>$statusp]);
+        $pdf->setPaper('a4', 'potrait');
+        return $pdf->stream('Laporan lelang berdasarkan status.pdf');
+    }
+
     public function lelang_filter_periode(){
-    
+
         return view('admin.lelang_filter_periode');
     }//fungsi filter lelang periode
 
     public function pemenang_lelang(){
-    
+
         return view('admin.pemenang_lelang_data');
     }//fungsi pemenang lelang
 
     public function pemenang_lelang_filter_cetak(){
-    
+
         return view('admin.pemenang_lelang_filter');
     }//fungsi pemenang lelang filter
 
@@ -422,10 +438,10 @@ class adminController extends Controller
     }//fungsi menghapus data berita
 
     public function berita_cetak_periode(){
-       
+
         return view('admin.berita_filter_periode');
     }//menampilkan halaman edit  berita
-    
+
     //fungsi peserta
     public function peserta_lelang_index(){
         $data = peserta::with('user')->get();

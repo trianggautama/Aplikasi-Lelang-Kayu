@@ -13,10 +13,10 @@
                         </p>
                         <form method="post" action="" enctype="multipart/form-data">
                         <div class="form-group">
-                                <label for="exampleSelectGender">Jenis Kayu</label>
-                                <select class="form-control" name="kayu_id">
-                                    <option value="">Sedang Berlangsung</option>
-                                    <option value="">Sudah Selesai</option>
+                                <label for="exampleSelectGender">Status</label>
+                                <select class="form-control" name="status">
+                                    <option value="1">Sedang Berlangsung</option>
+                                    <option value="2">Sudah Selesai</option>
                                 </select>
                             </div>
                             </div>

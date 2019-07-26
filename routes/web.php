@@ -65,6 +65,8 @@ Route::get('/lelang/hapus/{id}','adminController@lelang_hapus')
 ->name('lelang-hapus');
 Route::get('/lelang/filter/status','adminController@lelang_filter_status')
 ->name('lelang-filter-status');
+Route::post('/lelang/filter/status','adminController@lelang_status_cetak')
+->name('lelang_status_cetak');
 Route::get('/lelang/filter/periode','adminController@lelang_filter_periode')
 ->name('lelang-filter-periode');
 Route::get('/lelang/pemenang','adminController@pemenang_lelang')
