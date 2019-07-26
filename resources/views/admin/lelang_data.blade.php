@@ -21,7 +21,7 @@
                         <h4 class="card-title">Tabel Data</h4>
                         <div class="text-right">
                           <a href="{{ route('lelang-tambah') }}" class="btn btn-bg btn-primary mt-2 mt-xl-0"> <i class=" mdi mdi-plus "></i> Tambah Data</a>
-                          <a href="{{ route('peserta-lelang-cetak') }}" class="btn btn-info mt-2 mt-xl-0"> <i
+                          <a href="{{ route('lelang-cetak') }}" class="btn btn-info mt-2 mt-xl-0"> <i
                             class=" mdi mdi-printer "></i> Cetak Lelang</a>
                             <a href="{{ route('lelang-filter-status') }}" class="btn btn-info mt-2 mt-xl-0"> <i
                             class=" mdi mdi-printer "></i> Cetak Lelang Status</a>

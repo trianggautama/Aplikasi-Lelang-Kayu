@@ -326,6 +326,20 @@ class adminController extends Controller
         return view('admin.lelang_filter_periode');
     }//fungsi filter lelang periode
 
+    public function lelang_periode_cetak(Request $request){
+
+        $periode = carbon::parse($request->tanggal_mulai);
+        $bulan = carbon::parse($request->tanggal_mulai)->format('F');
+        // dd($periode);
+        // $bulan = $request->tanggal_mulai;
+        $lelang =lelang::whereMonth('tanggal_mulai',$periode)->get();
+        $tgl= Carbon::now()->format('d-m-Y');
+
+        $pdf =PDF::loadView('laporan.lelang_berdasarkan_periode', ['bulan'=> $bulan,'lelang' => $lelang,'tgl'=>$tgl]);
+        $pdf->setPaper('a4', 'potrait');
+        return $pdf->stream('Laporan Lelang berdasarkan periode.pdf');
+    }
+
     public function pemenang_lelang(){
 
         return view('admin.pemenang_lelang_data');
@@ -566,6 +580,15 @@ class adminController extends Controller
         return $pdf->stream('Karyawan Keseluruhan.pdf');
        }//mencetak  data karyawan
 
+    public function lelang_cetak(){
+        // $permohonan_kalibrasi=permohonan_kalibrasi::all();
+            // $pejabat =pejabat::where('jabatan','Kepala Dinas')->get();
+            $lelang = lelang::all();
+            $tgl= Carbon::now()->format('d F Y');
+            $pdf =PDF::loadView('laporan.lelang_keseluruhan', ['tgl'=>$tgl,'lelang'=>$lelang]);
+            $pdf->setPaper('a4', 'potrait');
+            return $pdf->stream('Data lelang Keseluruhan.pdf');
+        }//mencetak  data karyawan}
 
     public function kayu_cetak(){
         // $permohonan_kalibrasi=permohonan_kalibrasi::all();

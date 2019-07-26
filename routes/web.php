@@ -69,10 +69,14 @@ Route::post('/lelang/filter/status','adminController@lelang_status_cetak')
 ->name('lelang_status_cetak');
 Route::get('/lelang/filter/periode','adminController@lelang_filter_periode')
 ->name('lelang-filter-periode');
+Route::post('/lelang/filter/periode','adminController@lelang_periode_cetak')
+->name('lelang_periode_cetak');
 Route::get('/lelang/pemenang','adminController@pemenang_lelang')
 ->name('pemenang_lelang');
 Route::get('/lelang/pemenang/filter','adminController@pemenang_lelang_filter_cetak')
 ->name('pendapatan_lelang_filter_cetak');
+Route::get('/lelang/cetak','adminController@lelang_cetak' )
+->name('lelang-cetak');
 
 //data lelang
 
@@ -95,6 +99,8 @@ Route::get('/berita/cetak','adminController@berita_cetak')
 ->name('berita_cetak');
 Route::get('/berita/cetak/periode','adminController@berita_cetak_periode')
 ->name('berita_cetak_periode');
+Route::post('/berita/cetak/periode','adminController@berita_periode_cetak')
+->name('berita_periode_cetak');
 //data berita
 
 //data peserta
