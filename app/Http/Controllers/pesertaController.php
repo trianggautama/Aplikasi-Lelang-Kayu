@@ -120,15 +120,21 @@ class pesertaController extends Controller
 
     public function lelang_proses($id){
         $id = IDCrypt::Decrypt($id);
+        $peserta_id = auth::user()->peserta->id;
         $lelang = lelang::findOrFail($id);
-        $hasil_lelang = hasil_lelang::where('lelang_id',$lelang->id)->get();
+        // dd($lelang->harga_awal);
+        $hasil_lelang = hasil_lelang::where('lelang_id',$id)->first();
+        // dd($hasil_lelang);
         if(isset($hasil_lelang)){
-            $bid_tertinggi = hasil_lelang::where('lelang_id',$lelang->id)->max('bid_harga');
-            $value_hasil_lelang = hasil_lelang::where('lelang_id',$lelang->id)->get()->sortByDesc('bid_harga');
+            $bid_tertinggi = hasil_lelang::where('lelang_id',$id)->max('bid_harga');
+            // dd($bid_tertinggi);
+
         }else{
             $bid_tertinggi = $lelang->harga_awal;
+            // $value_hasil_lelang = hasil_lelang::where('peserta_id',$peserta_id)->where('lelang_id',$id)->get()->sortByDesc('bid_harga');
         }
-
+        $value_hasil_lelang = hasil_lelang::where('peserta_id',$peserta_id)->where('lelang_id',$id)->get()->sortByDesc('bid_harga');
+        // dd($bid_tertinggi);
         // dd($value_hasil_lelang);
         if(isset($hasil_lelang)){
             $harga_bid = $bid_tertinggi+5000000;
@@ -136,9 +142,8 @@ class pesertaController extends Controller
             $harga_bid = $lelang->harga_awal + 5000000;
         }
 
-        $peserta_id = auth::user()->peserta->id;
         // dd($peserta_id);
-        $bid_peserta = Hasil_lelang::where('peserta_id',$peserta_id)->max('status_bid');
+        $bid_peserta = Hasil_lelang::where('peserta_id',$peserta_id)->where('lelang_id',$id)->max('status_bid');
 
         // dd($bid_peserta);
 
@@ -151,17 +156,22 @@ class pesertaController extends Controller
     public function lelang_hasil_tambah(Request $request, $id){
         $id = IDCrypt::Decrypt($id);
         // dd($id);
+
         $user_id = Auth::user()->peserta->id;
         // dd($user_id);
         $user = User::findOrfail(Auth::User()->id);
-        // dd($user);
-        $count_hasil = $user->peserta->hasil_lelang;
         $peserta_id = $user->peserta->id;
+        // dd($user);
+        $count_hasil = Hasil_lelang::where('peserta_id',$peserta_id)->where('lelang_id',$id)->first();
+        // $count_hasil = $user->peserta->hasil_lelang;
+        // dd($count_hasil);
+
         // dd($peserta_id);
         if(isset($count_hasil)){
             // $count_bid = $count_hasil->max('status_bid');
             // dd($count_bid);
-            $count_status_bid = Hasil_lelang::where('peserta_id',$peserta_id)->max('status_bid');
+            $count_status_bid = Hasil_lelang::where('peserta_id',$peserta_id)->where('lelang_id',$id)->max('status_bid');
+            // dd($count_status_bid);
 
             $hasil_lelang = new Hasil_lelang;
             // dd($hasil_lelang);

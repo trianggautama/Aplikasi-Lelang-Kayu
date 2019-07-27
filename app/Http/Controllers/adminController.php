@@ -16,7 +16,7 @@ Use File;
 use Auth;
 use Hash;
 use PDF;
-
+use App\Pendapatan_lelang;
 
 class adminController extends Controller
 {
@@ -288,6 +288,14 @@ class adminController extends Controller
         $lelang->kayu_id  = $request->kayu_id;
         $lelang->status = $request->status;
 
+        if($request->status==2){
+        $pendapatan = new Pendapatan_lelang;
+        $pendapatan->hasil_lelang_id = $lelang->hasil_lelang->id;
+        $pendapatan->pendapatan = $lelang->hasil_lelang->bid_harga;
+        // $tes = $lelang->hasil_lelang->id;
+        // dd($tes);
+        $pendapatan->save();
+        }
         $lelang->update();
         return redirect(route('lelang-index'))->with('success', 'Data lelang '.$request->nama.' Berhasil di ubah');
          }
@@ -341,9 +349,36 @@ class adminController extends Controller
     }
 
     public function pemenang_lelang(){
+        $pendapatan = Pendapatan_lelang::all();
 
-        return view('admin.pemenang_lelang_data');
+        return view('admin.pemenang_lelang_data',compact('pendapatan'));
     }//fungsi pemenang lelang
+
+    public function pendapatan_cetak(){
+        // $permohonan_kalibrasi=permohonan_kalibrasi::all();
+            // $pejabat =pejabat::where('jabatan','Kepala Dinas')->get();
+            $pendapatan = Pendapatan_lelang::all();
+            $tgl= Carbon::now()->format('d F Y');
+            $pdf =PDF::loadView('laporan.pendapatan_keseluruhan', ['tgl'=>$tgl,'pendapatan'=>$pendapatan]);
+            $pdf->setPaper('a4', 'potrait');
+            return $pdf->stream('Data Berita Keseluruhan.pdf');
+        }//mencetak  data karyawan}
+
+    public function pendapatan_periode_cetak(Request $request){
+
+        $periode = carbon::parse($request->created_at);
+        $bulan = carbon::parse($request->created_at)->format('F');
+        // dd($periode);
+        // $bulan = $request->created_at;
+        $pendapatan =Pendapatan_lelang::whereMonth('created_at',$periode)->get();
+        $total =  $pendapatan->sum('pendapatan');
+        // dd($total);
+        $tgl= Carbon::now()->format('d-m-Y');
+
+        $pdf =PDF::loadView('laporan.pendapatan_berdasarkan_periode', ['bulan'=> $bulan,'pendapatan' => $pendapatan,'tgl'=>$tgl,'total'=>$total]);
+        $pdf->setPaper('a4', 'potrait');
+        return $pdf->stream('Laporan pendapatan berdasarkan periode.pdf');
+    }
 
     public function pemenang_lelang_filter_cetak(){
 

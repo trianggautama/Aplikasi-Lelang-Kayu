@@ -14,7 +14,7 @@
                         <form method="post" action="" enctype="multipart/form-data">
                         <div class="form-group">
                                 <label for="exampleSelectGender">Periode</label>
-                                <input type="date" class="form-control">
+                                <input name="created_at" type="date" class="form-control">
                             </div>
                             </div>
                             {{ csrf_field() }}

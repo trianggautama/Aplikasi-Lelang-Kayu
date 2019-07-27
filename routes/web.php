@@ -75,6 +75,8 @@ Route::get('/lelang/pemenang','adminController@pemenang_lelang')
 ->name('pemenang_lelang');
 Route::get('/lelang/pemenang/filter','adminController@pemenang_lelang_filter_cetak')
 ->name('pendapatan_lelang_filter_cetak');
+Route::post('/lelang/pemenang/filter','adminController@pendapatan_periode_cetak')
+->name('pendapatan_periode_cetak');
 Route::get('/lelang/cetak','adminController@lelang_cetak' )
 ->name('lelang-cetak');
 
@@ -123,6 +125,10 @@ Route::get('/peserta/hapus/{id}','adminController@peserta_lelang_hapus')
 Route::get('/peserta/cetak','adminController@peserta_lelang_cetak' )
 ->name('peserta-lelang-cetak');
 //data berita
+
+//laporan pendapatan
+Route::get('/pendapatan/cetak','adminController@pendapatan_cetak')
+->name('pendapatan_cetak');
 
 });
 

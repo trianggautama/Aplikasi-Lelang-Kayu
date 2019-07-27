@@ -9,8 +9,8 @@
                 <div class="card-body">
                         <h1 class="card-title">Data Pemenang Lelang</h1>
                         <div class="text-right" style="margin-bottom:20px;">
-                          <a href="" class="btn btn-sm btn-info" > <i class=" mdi mdi-printer "></i> Cetak Pendapatan Lelang</a>
-                          <a href="{{Route('pendapatan_lelang_filter_cetak')}}" class="btn btn-sm  btn-info" > <i class=" mdi mdi-printer "></i> Cetak Pendapatan Lelang / Periode</a>
+                          <a href="{{ Route('pendapatan_cetak') }}" class="btn btn-sm btn-info" > <i class=" mdi mdi-printer "></i> Cetak Pendapatan Lelang</a>
+                          <a href="{{ Route('pendapatan_lelang_filter_cetak') }}" class="btn btn-sm  btn-info" > <i class=" mdi mdi-printer "></i> Cetak Pendapatan Lelang / Periode</a>
                         </div>
                         <div class="table-responsive">
                           <table class="table striped "  id="myTable">
@@ -20,20 +20,20 @@
                                 <th>Nama Lelang</th>
                                 <th>Peserta</th>
                                 <th>Penawaran Terakhir</th>
-                                <th class="text-center">Action</th>
                               </tr>
                             </thead>
                             <tbody>
+                                <?php $no = 0?>
+                                @foreach ($pendapatan as $d)
                             <tr>
-                                <?php $no = 0 ?>
-                                <td>{{$no = $no + 1}}</td>
-                                <td>Lelang Kayu Hasil Razia di tanjung</td>
-                                <td>Tri Angga</td>
-                                <td>Rp.8.000.000</td>
-                                <td class="text-center">
-                                        <a href=""class="btn btn-inverse-success" style="padding:6px !important;"> <i class=" mdi mdi-eye "></i></a>
-                                    </td>
+                                    <td>{{$no = $no + 1}}</td>
+                                <td>{{ $d->hasil_lelang->lelang->nama }}</td>
+                                <td>{{ $d->hasil_lelang->peserta->user->name }}</td>
+                                <td>Rp.{{ $d->pendapatan }},-</td>
+
+
                               </tr>
+                              @endforeach
                             </tbody>
                           </table>
                         </div>
