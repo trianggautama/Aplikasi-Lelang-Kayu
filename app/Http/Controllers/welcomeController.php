@@ -31,9 +31,9 @@ class welcomeController extends Controller
         // dd($id);
         $hasil_lelang = Hasil_lelang::where('lelang_id',$id)->get()->sortByDesc('bid_harga');
         $nama = Hasil_lelang::where('lelang_id',$id)->first();
-        $nama_lelang = $nama->lelang->nama;
+        // $nama_lelang = $nama->lelang->nama;
         // dd($nama_lelang);
-        return view('hasil_lelang_detail',compact('hasil_lelang','nama_lelang'));
+        return view('hasil_lelang_detail',compact('hasil_lelang','nama'));
     }
 
     public function berita_tampil($id)

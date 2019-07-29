@@ -38,9 +38,9 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
                                 <?php $no = 0 ?>
                                 @foreach ($data as $datas)
+                                    <tr>
                                     <td>{{$no = $no + 1}}</td>
                                     <td>{{$datas->user->name}}</td>
                                     <td>{{$datas->telepon}}</td>
