@@ -9,6 +9,8 @@ use App\Lelang;
 use App\Berita;
 use App\Peserta;
 use App\Karyawan;
+use App\Hasil_lelang;
+use App\Pendapatan_lelang;
 
 use Carbon\Carbon;
 use IDCrypt;
@@ -16,7 +18,6 @@ Use File;
 use Auth;
 use Hash;
 use PDF;
-use App\Pendapatan_lelang;
 
 class adminController extends Controller
 {
@@ -263,10 +264,26 @@ class adminController extends Controller
 
     public function lelang_detail($id){
         $id = IDCrypt::Decrypt($id);
-        $lelang = lelang::find($id);
+        $lelang = lelang::findOrFail($id);
         $kayu = kayu::find($lelang->kayu_id);
+        // dd($lelang->harga_awal);
+        $hasil_lelang = hasil_lelang::where('lelang_id',$id)->first();
+        // dd($hasil_lelang);
+        if(isset($hasil_lelang)){
+            $bid_tertinggi = hasil_lelang::where('lelang_id',$id)->max('bid_harga');
+            // dd($bid_tertinggi);
 
-        return view('admin.lelang_detail',compact('lelang','kayu'));
+        }else{
+            $bid_tertinggi = $lelang->harga_awal;
+            // $value_hasil_lelang = hasil_lelang::where('peserta_id',$peserta_id)->where('lelang_id',$id)->get()->sortByDesc('bid_harga');
+        }
+
+        $value_hasil_lelang = hasil_lelang::where('lelang_id',$id)->where('lelang_id',$id)->get()->sortByDesc('bid_harga');
+
+
+        // dd($peserta_id);
+
+        return view('admin.lelang_detail',compact('lelang','kayu','hasil_lelang','bid_tertinggi','value_hasil_lelang'));
     }//menampilkan halaman detail  lelang
 
     public function lelang_edit($id){

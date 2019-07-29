@@ -59,6 +59,7 @@
                         <h4 class="card-title text-primary">Detail Lelang</h4>
                         <div class="template-demo">
                             <h4 class="card-title">Harga Awal &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;: Rp. {{$lelang->harga_awal}}</h4>
+                            <h4 class="card-title">Harga Tertinggi Sementara&nbsp;: Rp.{{$bid_tertinggi}},-</h4>
                             <h4 class="card-title">Tanggal Lelang &nbsp;: {{$lelang->tanggal_mulai}}</h4>
                             <h4 class="card-title">Tanggal Selesai &nbsp;:  {{$lelang->tanggal_selesai}}</h4>
                             @if($lelang->status==1)
@@ -85,23 +86,27 @@
                     <div class="tab-pane fade" id="sales" role="tabpanel" aria-labelledby="sales-tab">
                     <div class="card-body">
                     <div class="text-right">
-                    <a href="{{Route('kayu_cetak')}}" class="btn btn-inverse-info " > <i class=" mdi mdi-printer "></i> Cetak Data peserta lelang</a>
+
                     </div>
                     <table class="table table-striped " id="myTable">
                                 <thead>
-                                    <tr>
                                     <tr>
                                         <th>No</th>
                                         <th>Nama Peserta</th>
                                         <th>Bid Status</th>
                                         <th>Bid Harga</th>
                                     </tr>
-                                    </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-
+                                        <?php $no = 0 ?>
+                                @foreach ($value_hasil_lelang as $d)
+                                <tr>
+                                    <td>{{$no = $no + 1}}</td>
+                                    <td>{{$d->peserta->user->name}}</td>
+                                    <td>Bid Ke - {{$d->status_bid}}</td>
+                                    <td>Rp.{{$d->bid_harga}},-</td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                     </div>
