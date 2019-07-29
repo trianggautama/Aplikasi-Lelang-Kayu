@@ -153,6 +153,7 @@ Route::get('/peserta/lelang/{id}', 'pesertaController@lelang_proses')
 ->name('lelang_proses');
 Route::put('/peserta/lelang/{id}','pesertaController@lelang_hasil_tambah')
 ->name('lelang_hasil_tambah');
+Route::get('/riwayat_pemenang_lelang','pesertaController@riwayat_pemenang_lelang' )->name('riwayat_pemenang_lelang');
 Route::get('/riwayat_lelang','pesertaController@riwayat_lelang' )->name('riwayat_lelang');
 
 

@@ -233,7 +233,7 @@ class adminController extends Controller
 
     //fungsi lelang
     public function lelang_index(){
-        $lelang = lelang::all();
+        $lelang = lelang::all()->sortByDesc('id');
         return view('admin.lelang_data',compact('lelang'));
     }
 
@@ -366,7 +366,7 @@ class adminController extends Controller
     }
 
     public function pemenang_lelang(){
-        $pendapatan = Pendapatan_lelang::all();
+        $pendapatan = Pendapatan_lelang::all()->sortByDesc('id');
 
         return view('admin.pemenang_lelang_data',compact('pendapatan'));
     }//fungsi pemenang lelang
@@ -404,7 +404,7 @@ class adminController extends Controller
 
     //fungsi berita
     public function berita_index(){
-        $berita = berita::all();
+        $berita = berita::all()->sortByDesc('id');
         return view('admin.berita_data',compact('berita'));
     }
 

@@ -111,6 +111,12 @@
             </a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="{{ route('riwayat_pemenang_lelang') }}">
+              <i class="mdi mdi-circle-outline menu-icon"></i>
+              <span class="menu-title">Riwayat pemenang lelang</span>
+            </a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="{{ route('riwayat_lelang') }}">
               <i class="mdi mdi-circle-outline menu-icon"></i>
               <span class="menu-title">Riwayat Saya</span>
