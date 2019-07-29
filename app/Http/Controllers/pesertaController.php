@@ -133,7 +133,7 @@ class pesertaController extends Controller
             $bid_tertinggi = $lelang->harga_awal;
             // $value_hasil_lelang = hasil_lelang::where('peserta_id',$peserta_id)->where('lelang_id',$id)->get()->sortByDesc('bid_harga');
         }
-        $value_hasil_lelang = hasil_lelang::where('peserta_id',$peserta_id)->where('lelang_id',$id)->get()->sortByDesc('bid_harga');
+        $value_hasil_lelang = hasil_lelang::where('lelang_id',$id)->where('lelang_id',$id)->get()->sortByDesc('bid_harga');
         // dd($bid_tertinggi);
         // dd($value_hasil_lelang);
         if(isset($hasil_lelang)){

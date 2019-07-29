@@ -24,7 +24,7 @@
                       <a class="nav-link active" id="overview-tab" data-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-selected="true">Detail Lelang</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" id="sales-tab" data-toggle="tab" href="#sales" role="tab" aria-controls="sales" aria-selected="false">Peserta</a>
+
                     </li>
                   </ul>
                   <div class="tab-content py-0 px-0">
@@ -74,26 +74,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="tab-pane fade" id="sales" role="tabpanel" aria-labelledby="sales-tab">
-                      <div class="d-flex flex-wrap justify-content-xl-between">
-                        <div class="d-none d-xl-flex border-md-right flex-grow-1  justify-content-center p-3 item">
-                        <table class="table table-striped " id="myTable">
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Kode Penawarans</th>
-                                        <th>Namas</th>
-                                        <th>Angka Penawarans</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                    </tr>
-                                </tbody>
-                            </table>
-                      </div>
-                    </div>
-                  </div>
+
                 </div>
               </div>
             </div>
