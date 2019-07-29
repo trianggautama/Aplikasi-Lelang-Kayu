@@ -292,7 +292,11 @@
 									</div><!--/.packages-review-->
 									<div class="about-btn" >
 										{{-- <button  class="about-view packages-btn" href="{{ route('hasil_lelang_detail', ['id' => IDCrypt::Encrypt( $lelangs->id)])}}"> --}}
+										@if(isset($hasil_lelang))
                                                 <a href="{{ route('hasil_lelang_detail', ['id' => IDCrypt::Encrypt( $lelangs->id)])}}" class="about-view packages-btn ">Detail</a>
+										@else
+										<a href="#" class="about-view packages-btn ">Belum ada peserta lelang</a>
+										@endif
 										{{-- </button> --}}
 									</div><!--/.about-btn-->
 								</div><!--/.single-package-item-txt-->

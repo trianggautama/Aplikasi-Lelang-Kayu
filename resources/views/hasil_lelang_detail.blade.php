@@ -145,7 +145,11 @@
         		<div class="row">
         			<div class="col-md-12">
                 <div class="d-flex align-items-end flex-wrap">
-                    <h2 style="text-center">Detail Hasil Lelang {{ $nama_lelang }}</h2>
+					@if(isset($nama))
+                    <h2 style="text-center">Detail Hasil Lelang {{ $nama->lelang->nama }}</h2>
+					@else
+					<h2 style="text-center">Detail Hasil Lelang belum tersedia</h2>
+					@endif
                   <hr>
                 </div>
               </div>
