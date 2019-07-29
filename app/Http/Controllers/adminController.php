@@ -538,20 +538,21 @@ class adminController extends Controller
         $Password       = Hash::make($request->password);
         $User->password = $Password;
         $User->role     = $request->role;
+        if ($request->foto!= null) {
+            $FotoExt  = $request->foto->getClientOriginalExtension();
+            $FotoName = 'peserta'.$request->user_id.'-'. $request->name;
+            $foto     = $FotoName.'.'.$FotoExt;
+            $request->foto->move('images/peserta', $foto);
+            $User->foto= $foto;
+        }else {
+            $User->foto = 'default.png';
+          }
         $User->save();
 
         $user_id = $User->id;
         $peserta = new peserta;
 
-        if ($request->foto) {
-            $FotoExt  = $request->foto->getClientOriginalExtension();
-            $FotoName = 'peserta'.$request->user_id.'-'. $request->name;
-            $foto     = $FotoName.'.'.$FotoExt;
-            $request->foto->move('images/peserta', $foto);
-            $peserta->foto= $foto;
-        }else {
-            $peserta->foto = 'default.png';
-          }
+
 
         $peserta->alamat          = $request->alamat;
         $peserta->telepon         = $request->telepon;

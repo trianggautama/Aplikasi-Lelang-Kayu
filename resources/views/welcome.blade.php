@@ -124,9 +124,7 @@
                                     Dishut Provinsi Kalsel
                                     </h2>
 									<div class="about-btn">
-										<button  class="about-view">
-											Bergabung
-										</button>
+										<a href="{{ route('register') }}" class="about-view">Bergabung</a>
 									</div><!--/.about-btn-->
 								</div><!--/.about-us-txt-->
 							</div><!--/.single-about-us-->
@@ -335,14 +333,14 @@
 										</p>
 
 										<p class="offer-para">
-											
+
 										</p>
 									</div><!--/.packages-para-->
-									
+
 								</div><!--/.single-special-offer-txt-->
 							</div><!--/.single-special-offer-->
 						</div><!--/.col-->
-						
+
 						</div><!--/.col-->
 					</div><!--/.row-->
 				</div><!--/.special-offer-content-->
