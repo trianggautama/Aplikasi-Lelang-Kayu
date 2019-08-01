@@ -375,7 +375,7 @@ class adminController extends Controller
         // $permohonan_kalibrasi=permohonan_kalibrasi::all();
             // $pejabat =pejabat::where('jabatan','Kepala Dinas')->get();
             $pendapatan = Pendapatan_lelang::all();
-            $tgl= Carbon::now()->format('d F Y');
+            $tgl= Carbon::now()->format('d-m-Y');
             $pdf =PDF::loadView('laporan.pendapatan_keseluruhan', ['tgl'=>$tgl,'pendapatan'=>$pendapatan]);
             $pdf->setPaper('a4', 'potrait');
             return $pdf->stream('Data Berita Keseluruhan.pdf');
@@ -627,7 +627,7 @@ class adminController extends Controller
        // $permohonan_kalibrasi=permohonan_kalibrasi::all();
         // $pejabat =pejabat::where('jabatan','Kepala Dinas')->get();
         $karyawan = Karyawan::all();
-        $tgl= Carbon::now()->format('d F Y');
+        $tgl= Carbon::now()->format('d-m-Y');
         $pdf =PDF::loadView('laporan.karyawan_keseluruhan', ['tgl'=>$tgl,'karyawan'=>$karyawan]);
         $pdf->setPaper('a4', 'potrait');
         return $pdf->stream('Karyawan Keseluruhan.pdf');
@@ -637,7 +637,7 @@ class adminController extends Controller
         // $permohonan_kalibrasi=permohonan_kalibrasi::all();
             // $pejabat =pejabat::where('jabatan','Kepala Dinas')->get();
             $lelang = lelang::all();
-            $tgl= Carbon::now()->format('d F Y');
+            $tgl= Carbon::now()->format('d-m-Y');
             $pdf =PDF::loadView('laporan.lelang_keseluruhan', ['tgl'=>$tgl,'lelang'=>$lelang]);
             $pdf->setPaper('a4', 'potrait');
             return $pdf->stream('Data lelang Keseluruhan.pdf');
@@ -647,7 +647,7 @@ class adminController extends Controller
         // $permohonan_kalibrasi=permohonan_kalibrasi::all();
          // $pejabat =pejabat::where('jabatan','Kepala Dinas')->get();
          $kayu = kayu::all();
-         $tgl= Carbon::now()->format('d F Y');
+         $tgl= Carbon::now()->format('d-m-Y');
          $pdf =PDF::loadView('laporan.kayu', ['tgl'=>$tgl,'kayu'=>$kayu]);
          $pdf->setPaper('a4', 'potrait');
          return $pdf->stream('Data Kayu.pdf');
@@ -657,7 +657,7 @@ class adminController extends Controller
         // $permohonan_kalibrasi=permohonan_kalibrasi::all();
             // $pejabat =pejabat::where('jabatan','Kepala Dinas')->get();
             $peserta = peserta::all();
-            $tgl= Carbon::now()->format('d F Y');
+            $tgl= Carbon::now()->format('d-m-Y');
             $pdf =PDF::loadView('laporan.peserta_lelang_keseluruhan', ['tgl'=>$tgl,'peserta'=>$peserta]);
             $pdf->setPaper('a4', 'potrait');
             return $pdf->stream('Data Peserta Lelang.pdf');
@@ -667,7 +667,7 @@ class adminController extends Controller
         // $permohonan_kalibrasi=permohonan_kalibrasi::all();
             // $pejabat =pejabat::where('jabatan','Kepala Dinas')->get();
             $berita = berita::all();
-            $tgl= Carbon::now()->format('d F Y');
+            $tgl= Carbon::now()->format('d-m-Y');
             $pdf =PDF::loadView('laporan.berita_keseluruhan', ['tgl'=>$tgl,'berita'=>$berita]);
             $pdf->setPaper('a4', 'potrait');
             return $pdf->stream('Data Berita Keseluruhan.pdf');

@@ -109,7 +109,7 @@
                             <td>{{$no = $no + 1}}</td>
                             <td>{{ $d->judul }}</td>
                             <td>{{ $d->isi }}</td>
-                            <td>{{ carbon\carbon::parse($d->created_at)->format('d M Y') }}</td>
+                            <td>{{ carbon\carbon::parse($d->created_at)->format('d-m-Y') }}</td>
                         </tr>
                         @endforeach
                         </tbody>
