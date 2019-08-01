@@ -203,7 +203,7 @@ class pesertaController extends Controller
 
     public function lelang_berlangsung_detail($id){
         $id = IDCrypt::Decrypt($id);
-        $lelang = lelang::findOrFail($id)->sortByDesc();
+        $lelang = lelang::findOrFail($id);
 
         return view('peserta.lelang_detail',compact('lelang'));
     }
@@ -218,7 +218,7 @@ class pesertaController extends Controller
         $peserta_id = Auth::user()->peserta->id;
         $hasil_lelang = hasil_lelang::where('peserta_id',$peserta_id)->get()->sortByDesc('bid_harga');
 
-        return view('peserta.riwayat_pemenang_lelang_data',compact('hasil_lelang'));
+        return view('peserta.riwayat_lelang_data',compact('hasil_lelang'));
     }
 
     public function form_lelang(){
