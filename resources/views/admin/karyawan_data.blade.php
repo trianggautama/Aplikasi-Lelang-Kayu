@@ -30,7 +30,7 @@
                                 @foreach ($data as $datas)
                                 <td>{{$no = $no + 1}}</td>
                                 <td>{{$datas->NIP}}</td>
-                                <td>{{$datas->nama}}</td>
+                                <td>{{$datas->user->name}}</td>
                                 <td>{{$datas->alamat}}</td>
                                 <td>{{$datas->telepon}}</td>
                                 <td class="text-center">
