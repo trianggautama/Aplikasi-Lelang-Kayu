@@ -102,8 +102,8 @@
                         </tr>
                         </thead>
                         <tbody>
+                                <?php $no = 0 ?>
                             @foreach ($kayu as $d)
-                        <?php $no = 0 ?>
                         <tr>
                             <td>{{$no = $no + 1}}</td>
                             <td>{{ $d->nama_kayu }}</td>

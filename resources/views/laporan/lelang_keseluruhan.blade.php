@@ -107,8 +107,8 @@
                         </tr>
                         </thead>
                         <tbody>
+                                <?php $no = 0 ?>
                             @foreach ($lelang as $d)
-                        <?php $no = 0 ?>
                         <tr>
                             <td>{{$no = $no + 1}}</td>
                             <td>{{ $d->kayu->nama_kayu }}</td>

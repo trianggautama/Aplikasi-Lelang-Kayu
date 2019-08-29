@@ -104,8 +104,8 @@
                         </tr>
                         </thead>
                         <tbody>
+                                <?php $no = 0 ?>
                             @foreach ($peserta as $d)
-                        <?php $no = 0 ?>
                         <tr>
                             <td>{{$no = $no + 1}}</td>
                             <td>{{ $d->user->name }}</td>

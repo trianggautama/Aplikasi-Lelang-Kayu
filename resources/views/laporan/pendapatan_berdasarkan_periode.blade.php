@@ -103,8 +103,8 @@
                         </tr>
                         </thead>
                         <tbody>
+                                <?php $no = 0 ?>
                             @foreach ($pendapatan as $d)
-                        <?php $no = 0 ?>
                         <tr>
                             <td>{{$no = $no + 1}}</td>
                             <td>{{ $d->hasil_lelang->lelang->nama }}</td>
