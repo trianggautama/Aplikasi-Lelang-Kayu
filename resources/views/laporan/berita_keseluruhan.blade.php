@@ -103,8 +103,9 @@
                         </tr>
                         </thead>
                         <tbody>
-                            @foreach ($berita as $d)
                         <?php $no = 0 ?>
+                            @foreach ($berita as $d)
+                        
                         <tr>
                             <td>{{$no = $no + 1}}</td>
                             <td>{{ $d->judul }}</td>
