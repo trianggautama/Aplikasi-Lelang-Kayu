@@ -19,6 +19,7 @@ class CreateLelangsTable extends Migration
             $table->string('nama')->length(100);
             $table->date('tanggal_mulai');
             $table->date('tanggal_selesai');
+            $table->string('jumlah_kayu')->length(100);
             $table->string('tempat')->length(100);
             $table->string('harga_awal')->length(50);
             $table->tinyInteger('status')->length(2);

@@ -62,6 +62,7 @@
                             <h4 class="card-title">Harga Tertinggi Sementara&nbsp;: Rp.{{$bid_tertinggi}},-</h4>
                             <h4 class="card-title">Tanggal Lelang &nbsp;: {{$lelang->tanggal_mulai}}</h4>
                             <h4 class="card-title">Tanggal Selesai &nbsp;:  {{$lelang->tanggal_selesai}}</h4>
+                            <h4 class="card-title">Jumlah Kayu &nbsp;:  {{ $lelang->jumlah_kayu}}</h4>
                             @if($lelang->status==1)
                             <h4 class="card-title">Status &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;: <label class="badge badge-primary">Lelang Sedang Berlangsung</label></h4>
                             @else

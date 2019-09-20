@@ -26,6 +26,10 @@
                                 <input type="date" class="form-control" name="tanggal_selesai" id="tanggal_selesai">
                             </div>
                             <div class="form-group">
+                                    <label for="exampleInputUsername1">Jumlah Kayu </label>
+                                    <input type="text" class="form-control" name="jumlah_kayu" id="jumlah_kayu" placeholder="Jumlah Kayu">
+                                </div>
+                            <div class="form-group">
                                 <label for="exampleInputUsername1">Tempat </label>
                                 <input type="text" class="form-control" name="tempat" id="tempat" placeholder="Tempat">
                             </div>

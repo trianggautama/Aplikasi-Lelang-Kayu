@@ -38,11 +38,12 @@
                                         <a href="{{ route('kayu-hapus', ['id' => IDCrypt::Encrypt( $kayus->id)])}}" class="btn btn-inverse-danger" style="padding:6px !important;"> <i class="mdi mdi-delete"></i></a>
                                     </td>
                               </tr>
-                              <div id="myModal_{{ $kayus->id}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
+                              {{-- <div id="myModal_{{ $kayus->id}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> --}}
+                            <div id="myModal_{{ $kayus->id}}" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
                                   <div class="modal-content">
                                       <div class="modal-body" style="position:relative;">
-                                          <img src="{{ asset('/images/kayu/'.$kayus->foto)}}" class="img-responsive">
+                                          <img src="{{ asset('/images/kayu/'.$kayus->foto)}}" class="img-fluid">
                                       </div>
                                   </div>
                                 </div>
