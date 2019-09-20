@@ -250,6 +250,7 @@ class adminController extends Controller
         $lelang->nama  = $request->nama;
         $lelang->tanggal_mulai  = $request->tanggal_mulai;
         $lelang->tanggal_selesai  = $request->tanggal_selesai;
+        $lelang->jumlah_kayu  = $request->jumlah_kayu;
         $lelang->tempat  = $request->tempat;
         $lelang->harga_awal  = $request->harga_awal;
         $lelang->kayu_id  = $request->kayu_id;
@@ -300,6 +301,7 @@ class adminController extends Controller
         $lelang->nama  = $request->nama;
         $lelang->tanggal_mulai  = $request->tanggal_mulai;
         $lelang->tanggal_selesai  = $request->tanggal_selesai;
+        $lelang->jumlah_kayu  = $request->jumlah_kayu;
         $lelang->tempat  = $request->tempat;
         $lelang->harga_awal  = $request->harga_awal;
         $lelang->kayu_id  = $request->kayu_id;
