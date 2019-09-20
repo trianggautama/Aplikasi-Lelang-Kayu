@@ -470,7 +470,7 @@ class adminController extends Controller
     	$path     = explode(" ", $path);
         $path     = implode("-", $path);
 
-        $karyawan_id     = Auth::user()->id;
+        // $karyawan_id     = Auth::user()->id;
 
         if ($request->foto) {
             if ($berita->foto != 'default.png') {
@@ -485,7 +485,7 @@ class adminController extends Controller
             $berita->foto= $foto;
           }
 
-        $berita->karyawan_id  = $karyawan_id;
+        // $berita->karyawan_id  = $karyawan_id;
         $berita->judul  = $request->judul;
         $berita->isi  = $request->isi;
         $berita->path  = $path;

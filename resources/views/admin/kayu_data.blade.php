@@ -18,6 +18,7 @@
                               <tr>
                                 <th>No</th>
                                 <th>Nama Kayu</th>
+                                <th scope="row" style="vertical-align: middle; !important">Foto</th>
                                 <th class="text-center">Action</th>
                               </tr>
                             </thead>
@@ -27,11 +28,25 @@
                                 @foreach ($kayu as $kayus)
                                 <td>{{$no = $no + 1}}</td>
                                 <td>{{$kayus->nama_kayu}}</td>
+                                <td class="w-25" style="vertical-align: middle; !important">
+                                    {{-- <img class="img-circle " src="{{ asset('/images/admin/'.Auth::user()->foto) }}" style="width:40px;" alt="User Image"> --}}
+                                    <img src="{{ asset('/images/kayu/'.$kayus->foto)}}" class="img-fluid img-thumbnail" alt="Sheep" >
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal_{{ $kayus->id }}">Lihat foto</button>
+                                </td>
                                 <td class="text-center">
                                         <a href="{{ route('kayu-detail', ['id' => IDCrypt::Encrypt( $kayus->id)])}}"class="btn btn-inverse-success" style="padding:6px !important;"> <i class=" mdi mdi-eye "></i></a>
                                         <a href="{{ route('kayu-hapus', ['id' => IDCrypt::Encrypt( $kayus->id)])}}" class="btn btn-inverse-danger" style="padding:6px !important;"> <i class="mdi mdi-delete"></i></a>
                                     </td>
                               </tr>
+                              <div id="myModal_{{ $kayus->id}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                  <div class="modal-content">
+                                      <div class="modal-body" style="position:relative;">
+                                          <img src="{{ asset('/images/kayu/'.$kayus->foto)}}" class="img-responsive">
+                                      </div>
+                                  </div>
+                                </div>
+                              </div>
                               @endforeach
                             </tbody>
                           </table>
@@ -42,6 +57,7 @@
       </div>
 
     </div>
+
 
 
 <!-- Modal -->
